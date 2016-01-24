@@ -1,6 +1,6 @@
 ---
 layout: post
-title: (번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 1부
+title: (번역) Neural networks and Deep learning - 1장 (1)
 category: neural networks and deep learning
 tags: [번역, 1장]
 ---
@@ -11,7 +11,7 @@ tags: [번역, 1장]
 <br>
 <br>
 
-## 뉴럴네트워크로 손글씨 숫자를 인식하기 ##
+##1.  뉴럴네트워크로 손글씨 숫자를 인식하기##
 
 인간의 시각시스템은 이 세상에서 경이로운 것 중 하나이다. 아래의 필기체 숫자를 잠시 보자.
 
