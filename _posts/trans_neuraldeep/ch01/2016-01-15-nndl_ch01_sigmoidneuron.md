@@ -4,7 +4,7 @@ title: (번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 �
 tags: [neural network, sigmoid neuron, deep learning, 번역, 1장]
 ---
 -**원저자: [Michael Neilson](http://michaelnielsen.org/)**<br>
--**원문주소: [http://neural네트워크sanddeeplearning.com/chap1.html](http://neural네트워크sanddeeplearning.com/chap1.html)**<br>
+-**원문주소: [http://neuralnetworksanddeeplearning.com/chap1.html](http://neuralnetworksanddeeplearning.com/chap1.html)**<br>
 -**역자: [galji(지중현)](joonghyunji@gmail.com)**<br>
 ***본 번역의 무단 전재 및 재배포를 금지합니다.***
 <br>
