@@ -1,0 +1,328 @@
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      // inlineMath: [ ['$','$'], ['\(', '\)'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { scale: 80}
+  });
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 2부</title>
+    
+    <meta name="author" content="Joonghyun Ji">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/assets/themes/bootstrap/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/bootstrap/resources/bootstrap/css/mystyle.css" rel="stylesheet">
+  
+    <!--[if lt IE 9]>
+      <script src="/assets/themes/bootstrap/resources/respond/Respond.min.js"></script>
+    <![endif]-->
+
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><h2>galji의 딥러닝 블로그</h2></a>
+                  <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">전체글</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/atom.xml">피드</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">카테고리</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">태그</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+        </div>
+
+
+      </div>
+    </nav>
+    <div class="container">
+      
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<div class="page-header">
+  <h4>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 2부 </h4>
+    <div class="date">
+      <span>14 January 2016</span>
+    </div>
+</div>
+
+<div class="row post-full">
+  <div class="col-md-12">
+    <div class="content">
+      <p>-<strong>원저자: <a href="http://michaelnielsen.org/">Michael Neilson</a></strong><br />
+-<strong>원문주소: <a href="http://neuralnetworksanddeeplearning.com/chap1.html">http://neuralnetworksanddeeplearning.com/chap1.html</a></strong><br />
+-<strong>역자: <a href="joonghyunji@gmail.com">galji(지중현)</a></strong><br />
+<strong><em>본 번역의 무단 전재 및 재배포를 금지합니다.</em></strong>
+<br />
+<br /></p>
+
+<h3 id="section">퍼셉트론</h3>
+
+<p>뉴럴네트워크란 무엇일까? 시작하기에 앞서, 인공뉴런의 하나인 ‘<em>퍼셉트론(perceptron)</em>‘에 대해 알아보자. 퍼셉트론은 <a href="https://en.wikipedia.org/wiki/Warren_Sturgis_McCulloch">워렌 맥쿨로치(Warren McCulloch)</a>와 <a href="https://en.wikipedia.org/wiki/Walter_Pitts">월터 피츠(Walter Pitss)</a>의 연구에서 힌트를 얻어 1950~1960년대에 과학자 <a href="https://en.wikipedia.org/wiki/Frank_Rosenblatt">프랭크 로젠블래트(Frank Rosenblatt)</a>가 개발했다. 그러나, 현재는 또다른 인공뉴런 모델이 일반적으로 쓰인다. - 이 책에서, 그리고 현대 신경망 연구의 대부분에서 <em>시그모이드 뉴런</em> 모델을 쓰고 있다. 시그모이드 뉴런에 대해서 곧 공부할 것이다. 하지만 시그모이드 뉴런을 왜 특정한 방식으로 정의했는지 이해하려면 먼저 퍼셉트론부터 들여다 봐야 한다.</p>
+
+<p>그럼 퍼셉트론은 어떻게 작동하는 걸까? 퍼셉트론은 몇 개의 이진수 입력 <script type="math/tex">x_1,x_2,\ldots,</script>을 받아들이고 한개의 이진수 출력을 가진다:</p>
+
+<p><img src="/deeplearning/assets/images/tikz0.png" alt="perceptron" class="center-image" /></p>
+
+<p>위의 예는 <script type="math/tex">x_1,x_2,x_3</script>를 입력으로 받는다. 입력 갯수가 이것보다 적거나 많아도 된다. 로젠블래트는 퍼셉트론의 출력을 계산하는 간단한 방법을 제안했다. 각각의 입력이 출력에 대한 상대적 중요도를 실수형의 가중치인 <script type="math/tex">w_1,w_2,\ldots,</script>등으로 표현하는 것이다. 뉴런의 출력은 가중합<script type="math/tex">\sum_j{w_jx_j}</script>이 정해진 <a href="http://toparadic.tistory.com/495">문턱값</a>보다 작으면 0을, 크면 1로 결정된다. 문턱값은 실수로서 뉴런의 매개변수이다. 이를 좀 더 대수적으로 표현하면:</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{equation}
+output (출력)=
+  \begin{cases}
+    0       & \quad \text{if } \sum_j{w_jx_j} \le\text{문턱값}\\
+    1  		& \quad \text{if } \sum_j{w_jx_j} > \text{문턱값}\\
+  \end{cases}
+ \end{equation} %]]></script>
+
+<p>이것이 퍼셉트론이 작동하는 원리의 전부이다.</p>
+
+<p>퍼셉트론은 기본적인 수학모델이다. 퍼셉트론은 여러 입력들을 심사숙고하여 결정하는 장치와 같다고 생각하면 된다. 그렇게 현실적인 예는 아니지만 쉬운 예를 들어보자. 나중에 곧 현실적인 예를 보여줄 것이다. 주말이 다가오고 있고, 여러분이 살고 있는 동네에 치즈 축제가 열린다고 가정 해보자. 여러분은 치즈를 좋아하기 때문에 갈지 말지 고민하기 시작했다. 이 때 여러분은 3가지 요소를 가늠해서 결정을 내릴지 모른다.</p>
+
+<ol>
+  <li>날씨가 화창한가?</li>
+  <li>여러분의 연인이 같이 가고 싶어하는가?</li>
+  <li>축제가 대중교통 근처인가? (자가용이 없다고 가정)</li>
+</ol>
+
+<p>위의 세 가지 요소를 <script type="math/tex">x_1,x_2,x_3</script>이라고 두자. 예를 들어, 날씨가 화창하면 <script type="math/tex">x_1=1</script>을, 날씨가 나쁘다면 <script type="math/tex">x_1=0</script>이 된다. 비슷하게, 연인이 같이 가고 싶어하면 <script type="math/tex">x_2=1</script>을, 같이 가기 싫어하면 <script type="math/tex">x_2=0</script>이 된다. 마지막으로, 대중 교통이 근처에 있다면 <script type="math/tex">x_3=1</script>을, 대중 교통이 근처에 없다면 <script type="math/tex">x_3=0</script>이 된다.</p>
+
+<p>지금 여러분은 치즈를 너무 너무 좋아해서 심지어 연인이 축제에 관심이 없고 마땅히 이용할 교통수단이 없어도 축제에 가고 싶다고 가정하자. 그렇지만 여러분은 혹시 나쁜 날씨를 정말 싫어하는 성격일지도 모른다. 이런 종류의 의사결정은 퍼셉트론으로 가능하다. 의사결정의 한가지 방법은 날씨 가중치를 <script type="math/tex">w_1=6</script>로 두고 다른 가중치를 각각 <script type="math/tex">w_2=2</script>와 <script type="math/tex">w_3=2</script>로 놓는 것이다. 두 가중치보다 <script type="math/tex">w_1</script>이 크므로 날씨가 연인이나 대중교통 접근성보다 훨씬 중요하다는 사실을 나타낸다. 마지막으로, 문턱값을 5로 정했다고 가정하자. 이 선택에서 퍼셉트론은 날씨가 화창하면 출력은 언제나 1이 되고, 나쁘면 출력은 0이 된다. 그렇다면, 연인의 선택과 대중교통의 접근성이 결과에 전혀 영향을 미치지 않는 것이다.</p>
+
+<p>가중치와 문턱값을 다양하게 조정해보면 우리는 다른 의사결정 모델을 얻게 된다. 예를 들어, 문턱값을 3으로 골랐다고 가정하자. 그렇다면 퍼셉트론은 우리에게 날씨가 화창할때는 언제든지, 아니면 대중교통 접근성이 좋고 연인이 같이 가길 원할때면 축제에 가라고 말한다. 이건 앞선 것과 또 다른 의사결정 모델이다. 문턱값을 내림으로서 축제에 가고싶은 욕구를 더 나타내는 것이다.</p>
+
+<p>당연히, 퍼셉트론은 인간의 의사결정에 이써 완전한 모델은 아니다! 하지만 위의 예에서 퍼셉트론이 의사 결정을 내리기 위해 어떻게 다른 종류의 정황을 저울질 하는지 보여주었다. 좀 더 복잡한 퍼셉트론 네트워크를 사용하면 더 예리한 결정도 가능할 듯 하다.</p>
+
+<p><img src="/deeplearning/assets/images/tikz1.png" alt="complex perceptron" class="center-image" /></p>
+
+<p>위의 네트워크에서, 첫번째 열의 퍼셉트론들은 여러 입력들을 저울질하여 3개의 매우 간단한 결정을 내린다. 이 때, 첫번째 열의 각 퍼셉트론을 첫번째 퍼셉트론 층(layer)라고 부를 것이다. 두번째 퍼셉트론 층에서는 무엇을 하는가? 첫번째 층에 있는 결과들을 이 곳의 퍼셉트론들이 다시 저울질하여 의사결정을 만든다. 두번째 층에서는 첫번째 층에서 이루어진 의사결정 레벨보다 한층 복잡하고 추상적인 결정을 내릴 수 있다. 세번째 퍼셉트론 층은 그보다 훨씬 복잡한 의사결정도 가능하다. 이런 식으로, 퍼셉트론의 다층(many-layer) 네트워크는 수준높은 의사결정 문제의 해결도 가능하다.</p>
+
+<p>그런데, 아까 퍼셉트론을 정의할 때 그것이 하나의 출력만을 가진다고 말했다. 위의 네트워크에서 퍼셉트론의 출력은 여러개처럼 보임에도 말이다. 사실, 그것들은 여전히 하나의 출력이다. 각각의 출력 화살표들은 다른 퍼셉트론들의 입력으로 사용되는 것을 가리킬 때만 유용하다. 단일한 출력 선을 그린 후 그것을 다시 여러개로 갈라지게 하는 것보다 덜 복잡하기 때문이다.</p>
+
+<p>이제 간단한 방식으로 퍼셉트론이 무엇인지 서술해보자. $\sum_j{w_jx_j}=문턱값$이라는 조건은 복잡해보이므로 표기법에 두가지 변화를 주었다. 첫째로, $\sum_j{w_jx_j}$를 내적값 $w\cdot x \equiv \sum_j{w_jx_j}$으로 바꾸는 것이다. 여기에서 $w$와 $x$는 각각 가중치와 입력 벡터이다. 둘째로, (1)의 식에 있던 문턱치를 왼쪽편으로 넘겨버리는 것이다. 이 때 퍼셉트론의 편향치(bias) $b$는 음의 문턱값과 동일하다. 문턱값 대신에 편향치를 이용해서 퍼셉트론 규칙을 다시 써보면 다음과 같다.</p>
+
+<script type="math/tex; mode=display">% <![CDATA[
+\begin{eqnarray} 
+\mbox{출력} = \left\{ \begin{array}{ll} 0 & \mbox{if } w\cdot x + b \leq 0 \\ 1 & \mbox{if } w\cdot x + b > 0 \end{array} \right. \tag{2}\end{eqnarray} %]]></script>
+
+<p>여기에서, 편향치는 퍼셉트론이 1인 출력을 얻는 것이 얼마나 쉬운지 척도를 말해준다. 생물학적인 용어로 말하자면, 편향치는 퍼셉트론이 얼마나 쉽게 <em>발화</em>하는 지의 척도이다. 굉장히 큰 편향치를 가진 퍼셉트론의 경우, 퍼셉트론이 1의 출력을 만드는 것은 너무 쉽다. 하지만 만약 편향치가 너무 큰 음수라면, 출력을 1로 만드는 것은 어렵다. 여기선 비록 편향치가 퍼셉트론을 설명하는 비중이 작지만, 나중에 이것이 수식을 더욱 간단하게 만들어 줄 것이다. 이것 때문에, 책의 나머지 부분에서, 우리는 언제나 편중치를 문턱값 대신 사용할 것이다.</p>
+
+<p>나는 퍼셉트론이 입력들을 가중치에 따라 저울질하여 의사결정하는 방법이라고 소개했다. 우리는 퍼셉트론을 AND, OR, 그리고 NAND같은 기초적인 논리 함수를 계산하는데도 사용할 수 있다. 예를 들어, 아래의 그림처럼 각각의 가중치가 모두 $-2$이고 총 편향치는 $3$인 두개의 입력을 가진 퍼셉트론이 있다고 하자.</p>
+
+<p><img src="/deeplearning/assets/images/tikz2.png" alt="complex perceptron" class="center-image" /></p>
+
+<p>여기서, 입력 $00$을 계산하면 $(-2)\times 0 + (-2)\times 0 + 3 = 3$이 양수이므로 출력은 1이 된다. 입력 $01$과 $10$도 $1$을 출력한다. 하지만, 입력 $11$을 계산하면 $(-2)\times 1 + (-2)\times 1 + 3 = -1$ 음수이므로 $0$을 출력한다. 자, 이제 퍼셉트론을 가지고 NAND게이트를 만들어 보자!</p>
+
+<p>NAND만들기 예제는 퍼셉트론을 간단한 논리함수 계산에 이용할 수 있다는 것을 보여준다. 실제로, 퍼셉트론은 어떤 논리함수든 계산할 수 있다. 그 이유는 NAND게이트는 모든 계산에서 보편적 요소이고, 그 말은 NAND를 가지고 어떤 계산식도 세울 수 있다는 이야기다. 예를 들어, NAND게이트로 $x_1$과 $x_2$를 더하는 회로를 만들 수 있다. 이 때, $x_1$과 $x_2$가 모두 $1$이면 윗자리로 1을 넘겨주는 비트올림(carry bit)이 가능해야 하고, 또한 비트단위합 $x_1\oplus x_2$도 필요하다. 비트올림은 그저 비트단위곱인 $x_1x_2$다.</p>
+
+<p><img src="/deeplearning/assets/images/add.png" alt="NAND gate addition" class="center-image" /></p>
+
+<p>두 개의 입력을 가중치를 $-2$ 그리고 총 편향치를 $3$으로 세팅한 퍼셉트론은 위의 연산과 같다. 아래의 네트워크가 결과를 보여준다. 도표를 보면, 오른쪽 아래 NAND 게이트에 해당하는 퍼셉트론을 화살표를 쉽게 그리기 위해 살짝 옮겨 놓았다.</p>
+
+<p><img src="/deeplearning/assets/images/tikz4.png" alt="complex perceptron" class="center-image" /></p>
+
+<p>이 퍼셉트론 네트워크에서 한가지 주목할 만한 점은 가장 왼쪽에 있는 퍼셉트론에서 나온 출력이 가장 아래에 있는 퍼셉트론에 두번이나 입력된다는 것이다.  퍼셉트론 모델을 정의할때, 나는 이런 중복 입력이 가능한지 말하지 않았다. 사실, 이건 별 문제가 아니다. 만약 이런 종류의 입력을 차단하려면, 가중치가 각각 $2$인 두개의 선을 가중치가 $4$인 하나의 선으로 합치면 된다. (잘 이해가 안된다면, 하던 걸 멈추고 이것이 맞는지 스스로 증명해 보라.) 이렇게 바꾸면, 가중치를 표시하지 않은 선의 가중치는 모두 $-2$이고 편향치는 $3$인 네트워크와 같음을 볼 수 있다.</p>
+
+<p><img src="/deeplearning/assets/images/tikz5.png" alt="complex perceptron" class="center-image" /></p>
+
+<p>지금까지 우리는 $x_1$이나 $x_2$와 같은 입력을 퍼센트론 네트워크의 왼쪽에서 떠다니는 변수로 그려왔다. 사실, 입력은 ‘입력 층’이라고 부르는 별도의 퍼셉트론 층으로 표현하는 방법이 좀 더 일반적이다.</p>
+
+<p><img src="/deeplearning/assets/images/tikz6.png" alt="complex perceptron" class="center-image" /></p>
+
+<p>따라서, 출력은 있지만 입력은 없는 입력 퍼셉트론은  다음과 같이 약식으로 표기할 수 있다.</p>
+
+<p><img src="/deeplearning/assets/images/tikz7.png" alt="complex perceptron" class="center-image" /></p>
+
+<p>이건 입력이 없는 퍼셉트론을 뜻하지는 않는다. 이걸 이해하려면 입력이 없는 퍼셉트론을 가정해보아야 한다. 그렇다면 가중합 $\sum_j w_j x_j$은 언제나 0이 되고, $b &gt; 0$라면 퍼셉트론은 출력을 $1$로, $b \leq 0$면 출력을 $0$으로 가질 것이기 때문이다. 즉, 퍼셉트론은 당연히 나오는 출력값(여기서는 $x_1$)이 아니라 항상 고정된 값만 출력할 것이다. 따라서, 입력 퍼셉트론은 진짜 퍼셉트론이 아니라 $x1$, $x2$등과 같은 입력을 단순히 출력해주는 특별한 유닛(unit)으로 간주해야 한다.</p>
+
+<p>위의 덧셈 예제에서는 퍼셉트론 네트워크를 가지고 여러개의 NAND 게이트를 가진 회로를 시뮬레이션 하는 방법을 보여주었다. NAND 게이트가 계산보편성이 있으므로, 당연히 퍼셉트론도 그렇다.</p>
+
+<p>퍼셉트론의 계산보편성은 장점과 단점을 동시에 보여준다. 퍼셉트론 네트워크가 다른 계산장치들 만큼이나 강력하다는 것은 좋은 소식이다. 하지만, 한편으로는 이것이 새로운 NAND 게이트의 종류에 불과해보여 실망스러울 지 모른다. 그건 결코 좋은 소식이 아니다!</p>
+
+<p>그러나 실제로는 위의 관점보다 낙관적이다. <em>학습 알고리즘</em>을 고안해서 인공뉴런 네트워크의 가중치와 편향치를 자동으로 조정(tuning) 줄 수 있기 때문이다. 이 조정은 프로그래머의 직접적인 개입없이 외부의 자극에 반응하여 일어난다. 이런 학습 알고리즘은 전통적인 논리게이트와 근본적으로 다른 방식으로 인공뉴런의 사용을 가능케 해준다. 결론적으로, 전통적 회로설계법을 이용하여 NAND및 여타 게이트들을 회로위에 직접 깔아두고 문제를 푸는 대신에, 뉴럴네트워크는 극도로 어려운 문제도 쉽게 풀 수 있다.</p>
+
+    </div>
+
+
+<div class="page-header">
+</div>
+
+
+    
+
+    
+     <h3> 관련 태그 </h3>
+    <ul class="tag_box inline">
+        
+      
+
+
+
+  
+     
+    	<a href="/tags.html#neural networks and deep learning-ref">neural networks and deep learning <span>(1)</span></a>
+     
+    	<a href="/tags.html#소개글-ref">소개글 <span>(1)</span></a>
+     
+    	<a href="/tags.html#neural network-ref">neural network <span>(16)</span></a>
+     
+    	<a href="/tags.html#perceptron-ref">perceptron <span>(4)</span></a>
+     
+    	<a href="/tags.html#deep learning-ref">deep learning <span>(16)</span></a>
+     
+    	<a href="/tags.html#번역-ref">번역 <span>(16)</span></a>
+     
+    	<a href="/tags.html#1장-ref">1장 <span>(16)</span></a>
+     
+    	<a href="/tags.html#sigmoid neuron-ref">sigmoid neuron <span>(2)</span></a>
+    
+  
+
+
+
+    </ul>
+    
+
+    <hr>
+    
+    <ul class="pagination">
+      
+        <li class="prev"><a href="/2016/01/14/nndl_ch01_perceptron" title="(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 2부">&larr; Previous</a></li>
+      
+        <li><a href="/archive.html">Archive</a></li>
+      
+        <li class="next"><a href="/2016/01/15/nndl_ch01_sigmoidneuron" title="(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 3부">Next &rarr;</a></li>
+      
+    </ul>
+    <hr>
+    
+
+
+  <div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_developer = 1;
+    var disqus_shortname = 'galji-deeplearning'; // required: replace example with your forum shortname
+    
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = 'https://' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+
+
+
+
+  </div>
+</div>
+
+
+      <hr>
+      <footer>
+        <p>
+          &copy; 2016 Joonghyun Ji
+          <span class="pull-right text-muted">
+            powered by
+            <a href="http://dbtek.github.io/jekyll-bootstrap-3" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll-Bootstrap-3</a>
+            and <a href="http://getbootstrap.com" target="_blank">Twitter Bootstrap 3.0.3</a>
+          </span>
+        </p>
+      </footer>
+    </div>
+
+    
+
+    <script src="/assets/themes/bootstrap/resources/jquery/jquery.min.js"></script>
+    <script src="/assets/themes/bootstrap/resources/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
+

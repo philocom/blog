@@ -1,0 +1,2191 @@
+
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    TeX: {
+      equationNumbers: {
+        autoNumber: "AMS"
+      }
+    },
+    tex2jax: {
+      inlineMath: [ ['$','$'] ],
+      // inlineMath: [ ['$','$'], ['\(', '\)'] ],
+      displayMath: [ ['$$','$$'] ],
+      processEscapes: true,
+    }
+  });
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    "HTML-CSS": { scale: 80}
+  });
+</script>
+
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <title>RSS 피드</title>
+    
+    <meta name="author" content="Joonghyun Ji">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="/assets/themes/bootstrap/resources/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/assets/themes/bootstrap/resources/bootstrap/css/mystyle.css" rel="stylesheet">
+  
+    <!--[if lt IE 9]>
+      <script src="/assets/themes/bootstrap/resources/respond/Respond.min.js"></script>
+    <![endif]-->
+
+    <link href="/atom.xml" type="application/atom+xml" rel="alternate" title="Sitewide ATOM Feed">
+    <link href="/rss.xml" type="application/rss+xml" rel="alternate" title="Sitewide RSS Feed">
+
+  </head>
+
+  <body>
+    <nav class="navbar navbar-default" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/"><h2>galji의 딥러닝 블로그</h2></a>
+                  <div class="collapse navbar-collapse navbar-ex1-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+            
+
+
+  
+    
+      
+      	
+      	<li><a href="/archive.html">전체글</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/atom.xml">피드</a></li>
+      	
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/categories.html">카테고리</a></li>
+      	
+      
+    
+  
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+    
+  
+    
+      
+      	
+      	<li><a href="/tags.html">태그</a></li>
+      	
+      
+    
+  
+
+
+
+          </ul>
+        </div>
+        </div>
+
+
+      </div>
+    </nav>
+    <div class="container">
+      
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<div class="page-header">
+  <h1>RSS 피드 </h1>
+</div>
+
+<div class="row">
+  <div class="col-xs-12">
+      <?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+        <title>galji의 딥러닝 블로그</title>
+        <description>galji의 딥러닝 블로그 - Joonghyun Ji</description>
+        <link>http://galji.github.io/</link>
+        <link>http://galji.github.io/</link>
+        <lastBuildDate>2016-01-20T19:10:30+09:00</lastBuildDate>
+        <pubDate>2016-01-20T19:10:30+09:00</pubDate>
+        <ttl>1800</ttl>
+
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 8부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neural네트워크sanddeeplearning.com/chap1.html&quot;&gt;http://neural네트워크sanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;딥러닝을 향해서&lt;/h3&gt;
+
+&lt;p&gt;While our neural network gives impressive performance, that performance is somewhat mysterious. The weights and biases in the network were discovered automatically. And that means we don’t immediately have an explanation of how the network does what it does. Can we find some way to understand the principles by which our network is classifying handwritten digits? And, given such principles, can we do better?&lt;/p&gt;
+
+&lt;p&gt;To put these questions more starkly, suppose that a few decades hence neural networks lead to artificial intelligence (AI). Will we understand how such intelligent networks work? Perhaps the networks will be opaque to us, with weights and biases we don’t understand, because they’ve been learned automatically. In the early days of AI research people hoped that the effort to build an AI would also help us understand the principles behind intelligence and, maybe, the functioning of the human brain. But perhaps the outcome will be that we end up understanding neither the brain nor how artificial intelligence works!&lt;/p&gt;
+
+&lt;p&gt;To address these questions, let’s think back to the interpretation of artificial neurons that I gave at the start of the chapter, as a means of weighing evidence. Suppose we want to determine whether an image shows a human face or not:&lt;/p&gt;
+
+&lt;p&gt;Credits: 1. Ester Inbar. 2. Unknown. 3. NASA, ESA, G. Illingworth, D. Magee, and P. Oesch (University of California, Santa Cruz), R. Bouwens (Leiden University), and the HUDF09 Team. Click on the images for more details.&lt;/p&gt;
+
+&lt;p&gt;We could attack this problem the same way we attacked handwriting recognition - by using the pixels in the image as input to a neural network, with the output from the network a single neuron indicating either “Yes, it’s a face” or “No, it’s not a face”.&lt;/p&gt;
+
+&lt;p&gt;Let’s suppose we do this, but that we’re not using a learning algorithm. Instead, we’re going to try to design a network by hand, choosing appropriate weights and biases. How might we go about it? Forgetting neural networks entirely for the moment, a heuristic we could use is to decompose the problem into sub-problems: does the image have an eye in the top left? Does it have an eye in the top right? Does it have a nose in the middle? Does it have a mouth in the bottom middle? Is there hair on top? And so on.&lt;/p&gt;
+
+&lt;p&gt;If the answers to several of these questions are “yes”, or even just “probably yes”, then we’d conclude that the image is likely to be a face. Conversely, if the answers to most of the questions are “no”, then the image probably isn’t a face.&lt;/p&gt;
+
+&lt;p&gt;Of course, this is just a rough heuristic, and it suffers from many deficiencies. Maybe the person is bald, so they have no hair. Maybe we can only see part of the face, or the face is at an angle, so some of the facial features are obscured. Still, the heuristic suggests that if we can solve the sub-problems using neural networks, then perhaps we can build a neural network for face-detection, by combining the networks for the sub-problems. Here’s a possible architecture, with rectangles denoting the sub-networks. Note that this isn’t intended as a realistic approach to solving the face-detection problem; rather, it’s to help us build intuition about how networks function. Here’s the architecture:&lt;/p&gt;
+
+&lt;p&gt;It’s also plausible that the sub-networks can be decomposed. Suppose we’re considering the question: “Is there an eye in the top left?” This can be decomposed into questions such as: “Is there an eyebrow?”; “Are there eyelashes?”; “Is there an iris?”; and so on. Of course, these questions should really include positional information, as well - “Is the eyebrow in the top left, and above the iris?”, that kind of thing - but let’s keep it simple. The network to answer the question “Is there an eye in the top left?” can now be decomposed:&lt;/p&gt;
+
+&lt;p&gt;Those questions too can be broken down, further and further through multiple layers. Ultimately, we’ll be working with sub-networks that answer questions so simple they can easily be answered at the level of single pixels. Those questions might, for example, be about the presence or absence of very simple shapes at particular points in the image. Such questions can be answered by single neurons connected to the raw pixels in the image.&lt;/p&gt;
+
+&lt;p&gt;The end result is a network which breaks down a very complicated question - does this image show a face or not - into very simple questions answerable at the level of single pixels. It does this through a series of many layers, with early layers answering very simple and specific questions about the input image, and later layers building up a hierarchy of ever more complex and abstract concepts. Networks with this kind of many-layer structure - two or more hidden layers - are called deep neural networks.&lt;/p&gt;
+
+&lt;p&gt;Of course, I haven’t said how to do this recursive decomposition into sub-networks. It certainly isn’t practical to hand-design the weights and biases in the network. Instead, we’d like to use learning algorithms so that the network can automatically learn the weights and biases - and thus, the hierarchy of concepts - from training data. Researchers in the 1980s and 1990s tried using stochastic gradient descent and backpropagation to train deep networks. Unfortunately, except for a few special architectures, they didn’t have much luck. The networks would learn, but very slowly, and in practice often too slowly to be useful.&lt;/p&gt;
+
+&lt;p&gt;Since 2006, a set of techniques has been developed that enable learning in deep neural nets. These deep learning techniques are based on stochastic gradient descent and backpropagation, but also introduce new ideas. These techniques have enabled much deeper (and larger) networks to be trained - people now routinely train networks with 5 to 10 hidden layers. And, it turns out that these perform far better on many problems than shallow neural networks, i.e., networks with just a single hidden layer. The reason, of course, is the ability of deep nets to build up a complex hierarchy of concepts. It’s a bit like the way conventional programming languages use modular design and ideas about abstraction to enable the creation of complex computer programs. Comparing a deep network to a shallow network is a bit like comparing a programming language with the ability to make function calls to a stripped down language with no ability to make such calls. Abstraction takes a different form in neural networks than it does in conventional programming, but it’s just as important.&lt;/p&gt;
+</description>
+                <link>http://galji.github.io//2016/01/20/nndl_ch01_towarddeeplearning</link>
+                <guid>http://galji.github.io//2016/01/20/nndl_ch01_towarddeeplearning</guid>
+                <pubDate>2016-01-20T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 8부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neural네트워크sanddeeplearning.com/chap1.html&quot;&gt;http://neural네트워크sanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;딥러닝을 향해서&lt;/h3&gt;
+
+&lt;p&gt;While our neural network gives impressive performance, that performance is somewhat mysterious. The weights and biases in the network were discovered automatically. And that means we don’t immediately have an explanation of how the network does what it does. Can we find some way to understand the principles by which our network is classifying handwritten digits? And, given such principles, can we do better?&lt;/p&gt;
+
+&lt;p&gt;To put these questions more starkly, suppose that a few decades hence neural networks lead to artificial intelligence (AI). Will we understand how such intelligent networks work? Perhaps the networks will be opaque to us, with weights and biases we don’t understand, because they’ve been learned automatically. In the early days of AI research people hoped that the effort to build an AI would also help us understand the principles behind intelligence and, maybe, the functioning of the human brain. But perhaps the outcome will be that we end up understanding neither the brain nor how artificial intelligence works!&lt;/p&gt;
+
+&lt;p&gt;To address these questions, let’s think back to the interpretation of artificial neurons that I gave at the start of the chapter, as a means of weighing evidence. Suppose we want to determine whether an image shows a human face or not:&lt;/p&gt;
+
+&lt;p&gt;Credits: 1. Ester Inbar. 2. Unknown. 3. NASA, ESA, G. Illingworth, D. Magee, and P. Oesch (University of California, Santa Cruz), R. Bouwens (Leiden University), and the HUDF09 Team. Click on the images for more details.&lt;/p&gt;
+
+&lt;p&gt;We could attack this problem the same way we attacked handwriting recognition - by using the pixels in the image as input to a neural network, with the output from the network a single neuron indicating either “Yes, it’s a face” or “No, it’s not a face”.&lt;/p&gt;
+
+&lt;p&gt;Let’s suppose we do this, but that we’re not using a learning algorithm. Instead, we’re going to try to design a network by hand, choosing appropriate weights and biases. How might we go about it? Forgetting neural networks entirely for the moment, a heuristic we could use is to decompose the problem into sub-problems: does the image have an eye in the top left? Does it have an eye in the top right? Does it have a nose in the middle? Does it have a mouth in the bottom middle? Is there hair on top? And so on.&lt;/p&gt;
+
+&lt;p&gt;If the answers to several of these questions are “yes”, or even just “probably yes”, then we’d conclude that the image is likely to be a face. Conversely, if the answers to most of the questions are “no”, then the image probably isn’t a face.&lt;/p&gt;
+
+&lt;p&gt;Of course, this is just a rough heuristic, and it suffers from many deficiencies. Maybe the person is bald, so they have no hair. Maybe we can only see part of the face, or the face is at an angle, so some of the facial features are obscured. Still, the heuristic suggests that if we can solve the sub-problems using neural networks, then perhaps we can build a neural network for face-detection, by combining the networks for the sub-problems. Here’s a possible architecture, with rectangles denoting the sub-networks. Note that this isn’t intended as a realistic approach to solving the face-detection problem; rather, it’s to help us build intuition about how networks function. Here’s the architecture:&lt;/p&gt;
+
+&lt;p&gt;It’s also plausible that the sub-networks can be decomposed. Suppose we’re considering the question: “Is there an eye in the top left?” This can be decomposed into questions such as: “Is there an eyebrow?”; “Are there eyelashes?”; “Is there an iris?”; and so on. Of course, these questions should really include positional information, as well - “Is the eyebrow in the top left, and above the iris?”, that kind of thing - but let’s keep it simple. The network to answer the question “Is there an eye in the top left?” can now be decomposed:&lt;/p&gt;
+
+&lt;p&gt;Those questions too can be broken down, further and further through multiple layers. Ultimately, we’ll be working with sub-networks that answer questions so simple they can easily be answered at the level of single pixels. Those questions might, for example, be about the presence or absence of very simple shapes at particular points in the image. Such questions can be answered by single neurons connected to the raw pixels in the image.&lt;/p&gt;
+
+&lt;p&gt;The end result is a network which breaks down a very complicated question - does this image show a face or not - into very simple questions answerable at the level of single pixels. It does this through a series of many layers, with early layers answering very simple and specific questions about the input image, and later layers building up a hierarchy of ever more complex and abstract concepts. Networks with this kind of many-layer structure - two or more hidden layers - are called deep neural networks.&lt;/p&gt;
+
+&lt;p&gt;Of course, I haven’t said how to do this recursive decomposition into sub-networks. It certainly isn’t practical to hand-design the weights and biases in the network. Instead, we’d like to use learning algorithms so that the network can automatically learn the weights and biases - and thus, the hierarchy of concepts - from training data. Researchers in the 1980s and 1990s tried using stochastic gradient descent and backpropagation to train deep networks. Unfortunately, except for a few special architectures, they didn’t have much luck. The networks would learn, but very slowly, and in practice often too slowly to be useful.&lt;/p&gt;
+
+&lt;p&gt;Since 2006, a set of techniques has been developed that enable learning in deep neural nets. These deep learning techniques are based on stochastic gradient descent and backpropagation, but also introduce new ideas. These techniques have enabled much deeper (and larger) networks to be trained - people now routinely train networks with 5 to 10 hidden layers. And, it turns out that these perform far better on many problems than shallow neural networks, i.e., networks with just a single hidden layer. The reason, of course, is the ability of deep nets to build up a complex hierarchy of concepts. It’s a bit like the way conventional programming languages use modular design and ideas about abstraction to enable the creation of complex computer programs. Comparing a deep network to a shallow network is a bit like comparing a programming language with the ability to make function calls to a stripped down language with no ability to make such calls. Abstraction takes a different form in neural networks than it does in conventional programming, but it’s just as important.&lt;/p&gt;
+</description>
+                <link>http://galji.github.io//2016/01/20/nndl_ch01_towarddeeplearning</link>
+                <guid>http://galji.github.io//2016/01/20/nndl_ch01_towarddeeplearning</guid>
+                <pubDate>2016-01-20T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 7부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neural네트워크sanddeeplearning.com/chap1.html&quot;&gt;http://neural네트워크sanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;숫자를 분류하기 위해 네트워크를 구현해 보기&lt;/h3&gt;
+
+&lt;p&gt;Alright, let’s write a program that learns how to recognize handwritten digits, using stochastic gradient descent and the MNIST training data. The first thing we need is to get the MNIST data. If you’re a git user then you can obtain the data by cloning the code repository for this book,&lt;/p&gt;
+
+&lt;p&gt;git clone https://github.com/mnielsen/neural-networks-and-deep-learning.git&lt;/p&gt;
+
+&lt;p&gt;If you don’t use git then you can download the data and code here.&lt;/p&gt;
+
+&lt;p&gt;Incidentally, when I described the MNIST data earlier, I said it was split into 60,000 training images, and 10,000 test images. That’s the official MNIST description. Actually, we’re going to split the data a little differently. We’ll leave the test images as is, but split the 60,000-image MNIST training set into two parts: a set of 50,000 images, which we’ll use to train our neural network, and a separate 10,000 image validation set. We won’t use the validation data in this chapter, but later in the book we’ll find it useful in figuring out how to set certain hyper-parameters of the neural network - things like the learning rate, and so on, which aren’t directly selected by our learning algorithm. Although the validation data isn’t part of the original MNIST specification, many people use MNIST in this fashion, and the use of validation data is common in neural networks. When I refer to the “MNIST training data” from now on, I’ll be referring to our 50,000 image data set, not the original 60,000 image data set* *As noted earlier, the MNIST data set is based on two data sets collected by NIST, the United States’ National Institute of Standards and Technology. To construct MNIST the NIST data sets were stripped down and put into a more convenient format by Yann LeCun, Corinna Cortes, and Christopher J. C. Burges. See this link for more details. The data set in my repository is in a form that makes it easy to load and manipulate the MNIST data in Python. I obtained this particular form of the data from the LISA machine learning laboratory at the University of Montreal (link)..&lt;/p&gt;
+
+&lt;p&gt;Apart from the MNIST data we also need a Python library called Numpy, for doing fast linear algebra. If you don’t already have Numpy installed, you can get it here.&lt;/p&gt;
+
+&lt;p&gt;Let me explain the core features of the neural networks code, before giving a full listing, below. The centerpiece is a Network class, which we use to represent a neural network. Here’s the code we use to initialize a Network object:&lt;/p&gt;
+
+&lt;p&gt;class Network(object):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def __init__(self, sizes):
+    self.num_layers = len(sizes)
+    self.sizes = sizes
+    self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
+    self.weights = [np.random.randn(y, x) 
+                    for x, y in zip(sizes[:-1], sizes[1:])]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this code, the list sizes contains the number of neurons in the respective layers. So, for example, if we want to create a Network object with 2 neurons in the first layer, 3 neurons in the second layer, and 1 neuron in the final layer, we’d do this with the code:&lt;/p&gt;
+
+&lt;p&gt;net = Network([2, 3, 1])&lt;/p&gt;
+
+&lt;p&gt;The biases and weights in the Network object are all initialized randomly, using the Numpy np.random.randn function to generate Gaussian distributions with mean 00 and standard deviation 11. This random initialization gives our stochastic gradient descent algorithm a place to start from. In later chapters we’ll find better ways of initializing the weights and biases, but this will do for now. Note that the Network initialization code assumes that the first layer of neurons is an input layer, and omits to set any biases for those neurons, since biases are only ever used in computing the outputs from later layers.&lt;/p&gt;
+
+&lt;p&gt;Note also that the biases and weights are stored as lists of Numpy matrices. So, for example net.weights[1] is a Numpy matrix storing the weights connecting the second and third layers of neurons. (It’s not the first and second layers, since Python’s list indexing starts at 0.) Since net.weights[1] is rather verbose, let’s just denote that matrix ww. It’s a matrix such that wjkwjk is the weight for the connection between the kthkth neuron in the second layer, and the jthjth neuron in the third layer. This ordering of the jj and kk indices may seem strange - surely it’d make more sense to swap the jj and kk indices around? The big advantage of using this ordering is that it means that the vector of activations of the third layer of neurons is:
+a′=σ(wa+b).(22)
+a′=σ(wa+b).
+There’s quite a bit going on in this equation, so let’s unpack it piece by piece. aa is the vector of activations of the second layer of neurons. To obtain a′a′ we multiply aa by the weight matrix ww, and add the vector bb of biases. We then apply the function σσ elementwise to every entry in the vector wa+bwa+b. (This is called vectorizing the function σσ.) It’s easy to verify that Equation (22) gives the same result as our earlier rule, Equation (4), for computing the output of a sigmoid neuron.&lt;/p&gt;
+
+&lt;p&gt;Exercise&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Write out Equation (22) in component form, and verify that it gives the same result as the rule (4) for computing the output of a sigmoid neuron. 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With all this in mind, it’s easy to write code computing the output from a Network instance. We begin by defining the sigmoid function:&lt;/p&gt;
+
+&lt;p&gt;def sigmoid(z):
+    return 1.0/(1.0+np.exp(-z))&lt;/p&gt;
+
+&lt;p&gt;Note that when the input z is a vector or Numpy array, Numpy automatically applies the function sigmoid elementwise, that is, in vectorized form.&lt;/p&gt;
+
+&lt;p&gt;We then add a feedforward method to the Network class, which, given an input a for the network, returns the corresponding output* *It is assumed that the input a is an (n, 1) Numpy ndarray, not a (n,) vector. Here, n is the number of inputs to the network. If you try to use an (n,) vector as input you’ll get strange results. Although using an (n,) vector appears the more natural choice, using an (n, 1) ndarray makes it particularly easy to modify the code to feedforward multiple inputs at once, and that is sometimes convenient. . All the method does is applies Equation (22) for each layer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def feedforward(self, a):
+    &quot;&quot;&quot;Return the output of the network if &quot;a&quot; is input.&quot;&quot;&quot;
+    for b, w in zip(self.biases, self.weights):
+        a = sigmoid(np.dot(w, a)+b)
+    return a
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course, the main thing we want our Network objects to do is to learn. To that end we’ll give them an SGD method which implements stochastic gradient descent. Here’s the code. It’s a little mysterious in a few places, but I’ll break it down below, after the listing.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def SGD(self, training_data, epochs, mini_batch_size, eta,
+        test_data=None):
+    &quot;&quot;&quot;Train the neural network using mini-batch stochastic
+    gradient descent.  The &quot;training_data&quot; is a list of tuples
+    &quot;(x, y)&quot; representing the training inputs and the desired
+    outputs.  The other non-optional parameters are
+    self-explanatory.  If &quot;test_data&quot; is provided then the
+    network will be evaluated against the test data after each
+    epoch, and partial progress printed out.  This is useful for
+    tracking progress, but slows things down substantially.&quot;&quot;&quot;
+    if test_data: n_test = len(test_data)
+    n = len(training_data)
+    for j in xrange(epochs):
+        random.shuffle(training_data)
+        mini_batches = [
+            training_data[k:k+mini_batch_size]
+            for k in xrange(0, n, mini_batch_size)]
+        for mini_batch in mini_batches:
+            self.update_mini_batch(mini_batch, eta)
+        if test_data:
+            print &quot;Epoch {0}: {1} / {2}&quot;.format(
+                j, self.evaluate(test_data), n_test)
+        else:
+            print &quot;Epoch {0} complete&quot;.format(j)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The training_data is a list of tuples (x, y) representing the training inputs and corresponding desired outputs. The variables epochs and mini_batch_size are what you’d expect - the number of epochs to train for, and the size of the mini-batches to use when sampling. eta is the learning rate, ηη. If the optional argument test_data is supplied, then the program will evaluate the network after each epoch of training, and print out partial progress. This is useful for tracking progress, but slows things down substantially.&lt;/p&gt;
+
+&lt;p&gt;The code works as follows. In each epoch, it starts by randomly shuffling the training data, and then partitions it into mini-batches of the appropriate size. This is an easy way of sampling randomly from the training data. Then for each mini_batch we apply a single step of gradient descent. This is done by the code self.update_mini_batch(mini_batch, eta), which updates the network weights and biases according to a single iteration of gradient descent, using just the training data in mini_batch. Here’s the code for the update_mini_batch method:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def update_mini_batch(self, mini_batch, eta):
+    &quot;&quot;&quot;Update the network&#39;s weights and biases by applying
+    gradient descent using backpropagation to a single mini batch.
+    The &quot;mini_batch&quot; is a list of tuples &quot;(x, y)&quot;, and &quot;eta&quot;
+    is the learning rate.&quot;&quot;&quot;
+    nabla_b = [np.zeros(b.shape) for b in self.biases]
+    nabla_w = [np.zeros(w.shape) for w in self.weights]
+    for x, y in mini_batch:
+        delta_nabla_b, delta_nabla_w = self.backprop(x, y)
+        nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
+        nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
+    self.weights = [w-(eta/len(mini_batch))*nw 
+                    for w, nw in zip(self.weights, nabla_w)]
+    self.biases = [b-(eta/len(mini_batch))*nb 
+                   for b, nb in zip(self.biases, nabla_b)]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Most of the work is done by the line&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;        delta_nabla_b, delta_nabla_w = self.backprop(x, y)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This invokes something called the backpropagation algorithm, which is a fast way of computing the gradient of the cost function. So update_mini_batch works simply by computing these gradients for every training example in the mini_batch, and then updating self.weights and self.biases appropriately.&lt;/p&gt;
+
+&lt;p&gt;I’m not going to show the code for self.backprop right now. We’ll study how backpropagation works in the next chapter, including the code for self.backprop. For now, just assume that it behaves as claimed, returning the appropriate gradient for the cost associated to the training example x.&lt;/p&gt;
+
+&lt;p&gt;Let’s look at the full program, including the documentation strings, which I omitted above. Apart from self.backprop the program is self-explanatory - all the heavy lifting is done in self.SGD and self.update_mini_batch, which we’ve already discussed. The self.backprop method makes use of a few extra functions to help in computing the gradient, namely sigmoid_prime, which computes the derivative of the σσ function, and self.cost_derivative, which I won’t describe here. You can get the gist of these (and perhaps the details) just by looking at the code and documentation strings. We’ll look at them in detail in the next chapter. Note that while the program appears lengthy, much of the code is documentation strings intended to make the code easy to understand. In fact, the program contains just 74 lines of non-whitespace, non-comment code. All the code may be found on GitHub here.&lt;/p&gt;
+
+&lt;p&gt;”””
+network.py
+~~~~~~~~~~&lt;/p&gt;
+
+&lt;p&gt;A module to implement the stochastic gradient descent learning
+algorithm for a feedforward neural network.  Gradients are calculated
+using backpropagation.  Note that I have focused on making the code
+simple, easily readable, and easily modifiable.  It is not optimized,
+and omits many desirable features.
+“””&lt;/p&gt;
+
+&lt;h4 id=&quot;libraries&quot;&gt;Libraries&lt;/h4&gt;
+&lt;p&gt;# Standard library
+import random&lt;/p&gt;
+
+&lt;h1 id=&quot;third-party-libraries&quot;&gt;Third-party libraries&lt;/h1&gt;
+&lt;p&gt;import numpy as np&lt;/p&gt;
+
+&lt;p&gt;class Network(object):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def __init__(self, sizes):
+    &quot;&quot;&quot;The list ``sizes`` contains the number of neurons in the
+    respective layers of the network.  For example, if the list
+    was [2, 3, 1] then it would be a three-layer network, with the
+    first layer containing 2 neurons, the second layer 3 neurons,
+    and the third layer 1 neuron.  The biases and weights for the
+    network are initialized randomly, using a Gaussian
+    distribution with mean 0, and variance 1.  Note that the first
+    layer is assumed to be an input layer, and by convention we
+    won&#39;t set any biases for those neurons, since biases are only
+    ever used in computing the outputs from later layers.&quot;&quot;&quot;
+    self.num_layers = len(sizes)
+    self.sizes = sizes
+    self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
+    self.weights = [np.random.randn(y, x)
+                    for x, y in zip(sizes[:-1], sizes[1:])]
+
+def feedforward(self, a):
+    &quot;&quot;&quot;Return the output of the network if ``a`` is input.&quot;&quot;&quot;
+    for b, w in zip(self.biases, self.weights):
+        a = sigmoid(np.dot(w, a)+b)
+    return a
+
+def SGD(self, training_data, epochs, mini_batch_size, eta,
+        test_data=None):
+    &quot;&quot;&quot;Train the neural network using mini-batch stochastic
+    gradient descent.  The ``training_data`` is a list of tuples
+    ``(x, y)`` representing the training inputs and the desired
+    outputs.  The other non-optional parameters are
+    self-explanatory.  If ``test_data`` is provided then the
+    network will be evaluated against the test data after each
+    epoch, and partial progress printed out.  This is useful for
+    tracking progress, but slows things down substantially.&quot;&quot;&quot;
+    if test_data: n_test = len(test_data)
+    n = len(training_data)
+    for j in xrange(epochs):
+        random.shuffle(training_data)
+        mini_batches = [
+            training_data[k:k+mini_batch_size]
+            for k in xrange(0, n, mini_batch_size)]
+        for mini_batch in mini_batches:
+            self.update_mini_batch(mini_batch, eta)
+        if test_data:
+            print &quot;Epoch {0}: {1} / {2}&quot;.format(
+                j, self.evaluate(test_data), n_test)
+        else:
+            print &quot;Epoch {0} complete&quot;.format(j)
+
+def update_mini_batch(self, mini_batch, eta):
+    &quot;&quot;&quot;Update the network&#39;s weights and biases by applying
+    gradient descent using backpropagation to a single mini batch.
+    The ``mini_batch`` is a list of tuples ``(x, y)``, and ``eta``
+    is the learning rate.&quot;&quot;&quot;
+    nabla_b = [np.zeros(b.shape) for b in self.biases]
+    nabla_w = [np.zeros(w.shape) for w in self.weights]
+    for x, y in mini_batch:
+        delta_nabla_b, delta_nabla_w = self.backprop(x, y)
+        nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
+        nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
+    self.weights = [w-(eta/len(mini_batch))*nw
+                    for w, nw in zip(self.weights, nabla_w)]
+    self.biases = [b-(eta/len(mini_batch))*nb
+                   for b, nb in zip(self.biases, nabla_b)]
+
+def backprop(self, x, y):
+    &quot;&quot;&quot;Return a tuple ``(nabla_b, nabla_w)`` representing the
+    gradient for the cost function C_x.  ``nabla_b`` and
+    ``nabla_w`` are layer-by-layer lists of numpy arrays, similar
+    to ``self.biases`` and ``self.weights``.&quot;&quot;&quot;
+    nabla_b = [np.zeros(b.shape) for b in self.biases]
+    nabla_w = [np.zeros(w.shape) for w in self.weights]
+    # feedforward
+    activation = x
+    activations = [x] # list to store all the activations, layer by layer
+    zs = [] # list to store all the z vectors, layer by layer
+    for b, w in zip(self.biases, self.weights):
+        z = np.dot(w, activation)+b
+        zs.append(z)
+        activation = sigmoid(z)
+        activations.append(activation)
+    # backward pass
+    delta = self.cost_derivative(activations[-1], y) * \
+        sigmoid_prime(zs[-1])
+    nabla_b[-1] = delta
+    nabla_w[-1] = np.dot(delta, activations[-2].transpose())
+    # Note that the variable l in the loop below is used a little
+    # differently to the notation in Chapter 2 of the book.  Here,
+    # l = 1 means the last layer of neurons, l = 2 is the
+    # second-last layer, and so on.  It&#39;s a renumbering of the
+    # scheme in the book, used here to take advantage of the fact
+    # that Python can use negative indices in lists.
+    for l in xrange(2, self.num_layers):
+        z = zs[-l]
+        sp = sigmoid_prime(z)
+        delta = np.dot(self.weights[-l+1].transpose(), delta) * sp
+        nabla_b[-l] = delta
+        nabla_w[-l] = np.dot(delta, activations[-l-1].transpose())
+    return (nabla_b, nabla_w)
+
+def evaluate(self, test_data):
+    &quot;&quot;&quot;Return the number of test inputs for which the neural
+    network outputs the correct result. Note that the neural
+    network&#39;s output is assumed to be the index of whichever
+    neuron in the final layer has the highest activation.&quot;&quot;&quot;
+    test_results = [(np.argmax(self.feedforward(x)), y)
+                    for (x, y) in test_data]
+    return sum(int(x == y) for (x, y) in test_results)
+
+def cost_derivative(self, output_activations, y):
+    &quot;&quot;&quot;Return the vector of partial derivatives \partial C_x /
+    \partial a for the output activations.&quot;&quot;&quot;
+    return (output_activations-y)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;miscellaneous-functions&quot;&gt;Miscellaneous functions&lt;/h4&gt;
+&lt;p&gt;def sigmoid(z):
+    “&quot;”The sigmoid function.”””
+    return 1.0/(1.0+np.exp(-z))&lt;/p&gt;
+
+&lt;p&gt;def sigmoid_prime(z):
+    “&quot;”Derivative of the sigmoid function.”””
+    return sigmoid(z)*(1-sigmoid(z))&lt;/p&gt;
+
+&lt;p&gt;How well does the program recognize handwritten digits? Well, let’s start by loading in the MNIST data. I’ll do this using a little helper program, mnist_loader.py, to be described below. We execute the following commands in a Python shell,&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;import mnist_loader
+training_data, validation_data, test_data = \
+… mnist_loader.load_data_wrapper()&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Of course, this could also be done in a separate Python program, but if you’re following along it’s probably easiest to do in a Python shell.&lt;/p&gt;
+
+&lt;p&gt;After loading the MNIST data, we’ll set up a Network with 3030 hidden neurons. We do this after importing the Python program listed above, which is named network,&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;import network
+net = network.Network([784, 30, 10])&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Finally, we’ll use stochastic gradient descent to learn from the MNIST training_data over 30 epochs, with a mini-batch size of 10, and a learning rate of η=3.0η=3.0,&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;net.SGD(training_data, 30, 10, 3.0, test_data=test_data)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Note that if you’re running the code as you read along, it will take some time to execute - for a typical machine (as of 2015) it will likely take a few minutes to run. I suggest you set things running, continue to read, and periodically check the output from the code. If you’re in a rush you can speed things up by decreasing the number of epochs, by decreasing the number of hidden neurons, or by using only part of the training data. Note that production code would be much, much faster: these Python scripts are intended to help you understand how neural nets work, not to be high-performance code! And, of course, once we’ve trained a network it can be run very quickly indeed, on almost any computing platform. For example, once we’ve learned a good set of weights and biases for a network, it can easily be ported to run in Javascript in a web browser, or as a native app on a mobile device. In any case, here is a partial transcript of the output of one training run of the neural network. The transcript shows the number of test images correctly recognized by the neural network after each epoch of training. As you can see, after just a single epoch this has reached 9,129 out of 10,000, and the number continues to grow,&lt;/p&gt;
+
+&lt;p&gt;Epoch 0: 9129 / 10000
+Epoch 1: 9295 / 10000
+Epoch 2: 9348 / 10000
+…
+Epoch 27: 9528 / 10000
+Epoch 28: 9542 / 10000
+Epoch 29: 9534 / 10000&lt;/p&gt;
+
+&lt;p&gt;That is, the trained network gives us a classification rate of about 9595 percent - 95.4295.42 percent at its peak (“Epoch 28”)! That’s quite encouraging as a first attempt. I should warn you, however, that if you run the code then your results are not necessarily going to be quite the same as mine, since we’ll be initializing our network using (different) random weights and biases. To generate results in this chapter I’ve taken best-of-three runs.&lt;/p&gt;
+
+&lt;p&gt;Let’s rerun the above experiment, changing the number of hidden neurons to 100100. As was the case earlier, if you’re running the code as you read along, you should be warned that it takes quite a while to execute (on my machine this experiment takes tens of seconds for each training epoch), so it’s wise to continue reading in parallel while the code executes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;net = network.Network([784, 100, 10])
+net.SGD(training_data, 30, 10, 3.0, test_data=test_data)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Sure enough, this improves the results to 96.5996.59 percent. At least in this case, using more hidden neurons helps us get better results* *Reader feedback indicates quite some variation in results for this experiment, and some training runs give results quite a bit worse. Using the techniques introduced in chapter 3 will greatly reduce the variation in performance across different training runs for our networks..&lt;/p&gt;
+
+&lt;p&gt;Of course, to obtain these accuracies I had to make specific choices for the number of epochs of training, the mini-batch size, and the learning rate, ηη. As I mentioned above, these are known as hyper-parameters for our neural network, in order to distinguish them from the parameters (weights and biases) learnt by our learning algorithm. If we choose our hyper-parameters poorly, we can get bad results. Suppose, for example, that we’d chosen the learning rate to be η=0.001η=0.001,&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;net = network.Network([784, 100, 10])
+net.SGD(training_data, 30, 10, 0.001, test_data=test_data)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The results are much less encouraging,&lt;/p&gt;
+
+&lt;p&gt;Epoch 0: 1139 / 10000
+Epoch 1: 1136 / 10000
+Epoch 2: 1135 / 10000
+…
+Epoch 27: 2101 / 10000
+Epoch 28: 2123 / 10000
+Epoch 29: 2142 / 10000&lt;/p&gt;
+
+&lt;p&gt;However, you can see that the performance of the network is getting slowly better over time. That suggests increasing the learning rate, say to η=0.01η=0.01. If we do that, we get better results, which suggests increasing the learning rate again. (If making a change improves things, try doing more!) If we do that several times over, we’ll end up with a learning rate of something like η=1.0η=1.0 (and perhaps fine tune to 3.03.0), which is close to our earlier experiments. So even though we initially made a poor choice of hyper-parameters, we at least got enough information to help us improve our choice of hyper-parameters.&lt;/p&gt;
+
+&lt;p&gt;In general, debugging a neural network can be challenging. This is especially true when the initial choice of hyper-parameters produces results no better than random noise. Suppose we try the successful 30 hidden neuron network architecture from earlier, but with the learning rate changed to η=100.0η=100.0:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;net = network.Network([784, 30, 10])
+net.SGD(training_data, 30, 10, 100.0, test_data=test_data)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;At this point we’ve actually gone too far, and the learning rate is too high:&lt;/p&gt;
+
+&lt;p&gt;Epoch 0: 1009 / 10000
+Epoch 1: 1009 / 10000
+Epoch 2: 1009 / 10000
+Epoch 3: 1009 / 10000
+…
+Epoch 27: 982 / 10000
+Epoch 28: 982 / 10000
+Epoch 29: 982 / 10000&lt;/p&gt;
+
+&lt;p&gt;Now imagine that we were coming to this problem for the first time. Of course, we know from our earlier experiments that the right thing to do is to decrease the learning rate. But if we were coming to this problem for the first time then there wouldn’t be much in the output to guide us on what to do. We might worry not only about the learning rate, but about every other aspect of our neural network. We might wonder if we’ve initialized the weights and biases in a way that makes it hard for the network to learn? Or maybe we don’t have enough training data to get meaningful learning? Perhaps we haven’t run for enough epochs? Or maybe it’s impossible for a neural network with this architecture to learn to recognize handwritten digits? Maybe the learning rate is too low? Or, maybe, the learning rate is too high? When you’re coming to a problem for the first time, you’re not always sure.&lt;/p&gt;
+
+&lt;p&gt;The lesson to take away from this is that debugging a neural network is not trivial, and, just as for ordinary programming, there is an art to it. You need to learn that art of debugging in order to get good results from neural networks. More generally, we need to develop heuristics for choosing good hyper-parameters and a good architecture. We’ll discuss all these at length through the book, including how I chose the hyper-parameters above.&lt;/p&gt;
+
+&lt;p&gt;Exercise&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Try creating a network with just two layers - an input and an output layer, no hidden layer - with 784 and 10 neurons, respectively. Train the network using stochastic gradient descent. What classification accuracy can you achieve? 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Earlier, I skipped over the details of how the MNIST data is loaded. It’s pretty straightforward. For completeness, here’s the code. The data structures used to store the MNIST data are described in the documentation strings - it’s straightforward stuff, tuples and lists of Numpy ndarray objects (think of them as vectors if you’re not familiar with ndarrays):&lt;/p&gt;
+
+&lt;p&gt;”””
+mnist_loader
+~~~~~~~~~~~~&lt;/p&gt;
+
+&lt;p&gt;A library to load the MNIST image data.  For details of the data
+structures that are returned, see the doc strings for &lt;code&gt;load_data&lt;/code&gt;
+and &lt;code&gt;load_data_wrapper&lt;/code&gt;.  In practice, &lt;code&gt;load_data_wrapper&lt;/code&gt; is the
+function usually called by our neural network code.
+“””&lt;/p&gt;
+
+&lt;h4 id=&quot;libraries-1&quot;&gt;Libraries&lt;/h4&gt;
+&lt;p&gt;# Standard library
+import cPickle
+import gzip&lt;/p&gt;
+
+&lt;h1 id=&quot;third-party-libraries-1&quot;&gt;Third-party libraries&lt;/h1&gt;
+&lt;p&gt;import numpy as np&lt;/p&gt;
+
+&lt;p&gt;def load_data():
+    “&quot;”Return the MNIST data as a tuple containing the training data,
+    the validation data, and the test data.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;The ``training_data`` is returned as a tuple with two entries.
+The first entry contains the actual training images.  This is a
+numpy ndarray with 50,000 entries.  Each entry is, in turn, a
+numpy ndarray with 784 values, representing the 28 * 28 = 784
+pixels in a single MNIST image.
+
+The second entry in the ``training_data`` tuple is a numpy ndarray
+containing 50,000 entries.  Those entries are just the digit
+values (0...9) for the corresponding images contained in the first
+entry of the tuple.
+
+The ``validation_data`` and ``test_data`` are similar, except
+each contains only 10,000 images.
+
+This is a nice data format, but for use in neural networks it&#39;s
+helpful to modify the format of the ``training_data`` a little.
+That&#39;s done in the wrapper function ``load_data_wrapper()``, see
+below.
+&quot;&quot;&quot;
+f = gzip.open(&#39;../data/mnist.pkl.gz&#39;, &#39;rb&#39;)
+training_data, validation_data, test_data = cPickle.load(f)
+f.close()
+return (training_data, validation_data, test_data)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;def load_data_wrapper():
+    “&quot;”Return a tuple containing &lt;code&gt;(training_data, validation_data,
+    test_data)&lt;/code&gt;. Based on &lt;code&gt;load_data&lt;/code&gt;, but the format is more
+    convenient for use in our implementation of neural networks.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;In particular, ``training_data`` is a list containing 50,000
+2-tuples ``(x, y)``.  ``x`` is a 784-dimensional numpy.ndarray
+containing the input image.  ``y`` is a 10-dimensional
+numpy.ndarray representing the unit vector corresponding to the
+correct digit for ``x``.
+
+``validation_data`` and ``test_data`` are lists containing 10,000
+2-tuples ``(x, y)``.  In each case, ``x`` is a 784-dimensional
+numpy.ndarry containing the input image, and ``y`` is the
+corresponding classification, i.e., the digit values (integers)
+corresponding to ``x``.
+
+Obviously, this means we&#39;re using slightly different formats for
+the training data and the validation / test data.  These formats
+turn out to be the most convenient for use in our neural network
+code.&quot;&quot;&quot;
+tr_d, va_d, te_d = load_data()
+training_inputs = [np.reshape(x, (784, 1)) for x in tr_d[0]]
+training_results = [vectorized_result(y) for y in tr_d[1]]
+training_data = zip(training_inputs, training_results)
+validation_inputs = [np.reshape(x, (784, 1)) for x in va_d[0]]
+validation_data = zip(validation_inputs, va_d[1])
+test_inputs = [np.reshape(x, (784, 1)) for x in te_d[0]]
+test_data = zip(test_inputs, te_d[1])
+return (training_data, validation_data, test_data)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;def vectorized_result(j):
+    “&quot;”Return a 10-dimensional unit vector with a 1.0 in the jth
+    position and zeroes elsewhere.  This is used to convert a digit
+    (0…9) into a corresponding desired output from the neural
+    network.”””
+    e = np.zeros((10, 1))
+    e[j] = 1.0
+    return e&lt;/p&gt;
+
+&lt;p&gt;I said above that our program gets pretty good results. What does that mean? Good compared to what? It’s informative to have some simple (non-neural-network) baseline tests to compare against, to understand what it means to perform well. The simplest baseline of all, of course, is to randomly guess the digit. That’ll be right about ten percent of the time. We’re doing much better than that!&lt;/p&gt;
+
+&lt;p&gt;What about a less trivial baseline? Let’s try an extremely simple idea: we’ll look at how dark an image is. For instance, an image of a 22 will typically be quite a bit darker than an image of a 11, just because more pixels are blackened out, as the following examples illustrate:&lt;/p&gt;
+
+&lt;p&gt;This suggests using the training data to compute average darknesses for each digit, 0,1,2,…,90,1,2,…,9. When presented with a new image, we compute how dark the image is, and then guess that it’s whichever digit has the closest average darkness. This is a simple procedure, and is easy to code up, so I won’t explicitly write out the code - if you’re interested it’s in the GitHub repository. But it’s a big improvement over random guessing, getting 2,2252,225 of the 10,00010,000 test images correct, i.e., 22.2522.25 percent accuracy.&lt;/p&gt;
+
+&lt;p&gt;It’s not difficult to find other ideas which achieve accuracies in the 2020 to 5050 percent range. If you work a bit harder you can get up over 5050 percent. But to get much higher accuracies it helps to use established machine learning algorithms. Let’s try using one of the best known algorithms, the support vector machine or SVM. If you’re not familiar with SVMs, not to worry, we’re not going to need to understand the details of how SVMs work. Instead, we’ll use a Python library called scikit-learn, which provides a simple Python interface to a fast C-based library for SVMs known as LIBSVM.&lt;/p&gt;
+
+&lt;p&gt;If we run scikit-learn’s SVM classifier using the default settings, then it gets 9,435 of 10,000 test images correct. (The code is available here.) That’s a big improvement over our naive approach of classifying an image based on how dark it is. Indeed, it means that the SVM is performing roughly as well as our neural networks, just a little worse. In later chapters we’ll introduce new techniques that enable us to improve our neural networks so that they perform much better than the SVM.&lt;/p&gt;
+
+&lt;p&gt;That’s not the end of the story, however. The 9,435 of 10,000 result is for scikit-learn’s default settings for SVMs. SVMs have a number of tunable parameters, and it’s possible to search for parameters which improve this out-of-the-box performance. I won’t explicitly do this search, but instead refer you to this blog post by Andreas Mueller if you’d like to know more. Mueller shows that with some work optimizing the SVM’s parameters it’s possible to get the performance up above 98.5 percent accuracy. In other words, a well-tuned SVM only makes an error on about one digit in 70. That’s pretty good! Can neural networks do better?&lt;/p&gt;
+
+&lt;p&gt;In fact, they can. At present, well-designed neural networks outperform every other technique for solving MNIST, including SVMs. The current (2013) record is classifying 9,979 of 10,000 images correctly. This was done by Li Wan, Matthew Zeiler, Sixin Zhang, Yann LeCun, and Rob Fergus. We’ll see most of the techniques they used later in the book. At that level the performance is close to human-equivalent, and is arguably better, since quite a few of the MNIST images are difficult even for humans to recognize with confidence, for example:&lt;/p&gt;
+
+&lt;p&gt;I trust you’ll agree that those are tough to classify! With images like these in the MNIST data set it’s remarkable that neural networks can accurately classify all but 21 of the 10,000 test images. Usually, when programming we believe that solving a complicated problem like recognizing the MNIST digits requires a sophisticated algorithm. But even the neural networks in the Wan et al paper just mentioned involve quite simple algorithms, variations on the algorithm we’ve seen in this chapter. All the complexity is learned, automatically, from the training data. In some sense, the moral of both our results and those in more sophisticated papers, is that for some problems:
+sophisticated algorithm ≤≤ simple learning algorithm + good training data.&lt;/p&gt;
+</description>
+                <link>http://galji.github.io//2016/01/19/nndl_ch01_implementingournetwork</link>
+                <guid>http://galji.github.io//2016/01/19/nndl_ch01_implementingournetwork</guid>
+                <pubDate>2016-01-19T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 7부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neural네트워크sanddeeplearning.com/chap1.html&quot;&gt;http://neural네트워크sanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;숫자를 분류하기 위해 네트워크를 구현해 보기&lt;/h3&gt;
+
+&lt;p&gt;Alright, let’s write a program that learns how to recognize handwritten digits, using stochastic gradient descent and the MNIST training data. The first thing we need is to get the MNIST data. If you’re a git user then you can obtain the data by cloning the code repository for this book,&lt;/p&gt;
+
+&lt;p&gt;git clone https://github.com/mnielsen/neural-networks-and-deep-learning.git&lt;/p&gt;
+
+&lt;p&gt;If you don’t use git then you can download the data and code here.&lt;/p&gt;
+
+&lt;p&gt;Incidentally, when I described the MNIST data earlier, I said it was split into 60,000 training images, and 10,000 test images. That’s the official MNIST description. Actually, we’re going to split the data a little differently. We’ll leave the test images as is, but split the 60,000-image MNIST training set into two parts: a set of 50,000 images, which we’ll use to train our neural network, and a separate 10,000 image validation set. We won’t use the validation data in this chapter, but later in the book we’ll find it useful in figuring out how to set certain hyper-parameters of the neural network - things like the learning rate, and so on, which aren’t directly selected by our learning algorithm. Although the validation data isn’t part of the original MNIST specification, many people use MNIST in this fashion, and the use of validation data is common in neural networks. When I refer to the “MNIST training data” from now on, I’ll be referring to our 50,000 image data set, not the original 60,000 image data set* *As noted earlier, the MNIST data set is based on two data sets collected by NIST, the United States’ National Institute of Standards and Technology. To construct MNIST the NIST data sets were stripped down and put into a more convenient format by Yann LeCun, Corinna Cortes, and Christopher J. C. Burges. See this link for more details. The data set in my repository is in a form that makes it easy to load and manipulate the MNIST data in Python. I obtained this particular form of the data from the LISA machine learning laboratory at the University of Montreal (link)..&lt;/p&gt;
+
+&lt;p&gt;Apart from the MNIST data we also need a Python library called Numpy, for doing fast linear algebra. If you don’t already have Numpy installed, you can get it here.&lt;/p&gt;
+
+&lt;p&gt;Let me explain the core features of the neural networks code, before giving a full listing, below. The centerpiece is a Network class, which we use to represent a neural network. Here’s the code we use to initialize a Network object:&lt;/p&gt;
+
+&lt;p&gt;class Network(object):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def __init__(self, sizes):
+    self.num_layers = len(sizes)
+    self.sizes = sizes
+    self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
+    self.weights = [np.random.randn(y, x) 
+                    for x, y in zip(sizes[:-1], sizes[1:])]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;In this code, the list sizes contains the number of neurons in the respective layers. So, for example, if we want to create a Network object with 2 neurons in the first layer, 3 neurons in the second layer, and 1 neuron in the final layer, we’d do this with the code:&lt;/p&gt;
+
+&lt;p&gt;net = Network([2, 3, 1])&lt;/p&gt;
+
+&lt;p&gt;The biases and weights in the Network object are all initialized randomly, using the Numpy np.random.randn function to generate Gaussian distributions with mean 00 and standard deviation 11. This random initialization gives our stochastic gradient descent algorithm a place to start from. In later chapters we’ll find better ways of initializing the weights and biases, but this will do for now. Note that the Network initialization code assumes that the first layer of neurons is an input layer, and omits to set any biases for those neurons, since biases are only ever used in computing the outputs from later layers.&lt;/p&gt;
+
+&lt;p&gt;Note also that the biases and weights are stored as lists of Numpy matrices. So, for example net.weights[1] is a Numpy matrix storing the weights connecting the second and third layers of neurons. (It’s not the first and second layers, since Python’s list indexing starts at 0.) Since net.weights[1] is rather verbose, let’s just denote that matrix ww. It’s a matrix such that wjkwjk is the weight for the connection between the kthkth neuron in the second layer, and the jthjth neuron in the third layer. This ordering of the jj and kk indices may seem strange - surely it’d make more sense to swap the jj and kk indices around? The big advantage of using this ordering is that it means that the vector of activations of the third layer of neurons is:
+a′=σ(wa+b).(22)
+a′=σ(wa+b).
+There’s quite a bit going on in this equation, so let’s unpack it piece by piece. aa is the vector of activations of the second layer of neurons. To obtain a′a′ we multiply aa by the weight matrix ww, and add the vector bb of biases. We then apply the function σσ elementwise to every entry in the vector wa+bwa+b. (This is called vectorizing the function σσ.) It’s easy to verify that Equation (22) gives the same result as our earlier rule, Equation (4), for computing the output of a sigmoid neuron.&lt;/p&gt;
+
+&lt;p&gt;Exercise&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Write out Equation (22) in component form, and verify that it gives the same result as the rule (4) for computing the output of a sigmoid neuron. 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With all this in mind, it’s easy to write code computing the output from a Network instance. We begin by defining the sigmoid function:&lt;/p&gt;
+
+&lt;p&gt;def sigmoid(z):
+    return 1.0/(1.0+np.exp(-z))&lt;/p&gt;
+
+&lt;p&gt;Note that when the input z is a vector or Numpy array, Numpy automatically applies the function sigmoid elementwise, that is, in vectorized form.&lt;/p&gt;
+
+&lt;p&gt;We then add a feedforward method to the Network class, which, given an input a for the network, returns the corresponding output* *It is assumed that the input a is an (n, 1) Numpy ndarray, not a (n,) vector. Here, n is the number of inputs to the network. If you try to use an (n,) vector as input you’ll get strange results. Although using an (n,) vector appears the more natural choice, using an (n, 1) ndarray makes it particularly easy to modify the code to feedforward multiple inputs at once, and that is sometimes convenient. . All the method does is applies Equation (22) for each layer:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def feedforward(self, a):
+    &quot;&quot;&quot;Return the output of the network if &quot;a&quot; is input.&quot;&quot;&quot;
+    for b, w in zip(self.biases, self.weights):
+        a = sigmoid(np.dot(w, a)+b)
+    return a
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Of course, the main thing we want our Network objects to do is to learn. To that end we’ll give them an SGD method which implements stochastic gradient descent. Here’s the code. It’s a little mysterious in a few places, but I’ll break it down below, after the listing.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def SGD(self, training_data, epochs, mini_batch_size, eta,
+        test_data=None):
+    &quot;&quot;&quot;Train the neural network using mini-batch stochastic
+    gradient descent.  The &quot;training_data&quot; is a list of tuples
+    &quot;(x, y)&quot; representing the training inputs and the desired
+    outputs.  The other non-optional parameters are
+    self-explanatory.  If &quot;test_data&quot; is provided then the
+    network will be evaluated against the test data after each
+    epoch, and partial progress printed out.  This is useful for
+    tracking progress, but slows things down substantially.&quot;&quot;&quot;
+    if test_data: n_test = len(test_data)
+    n = len(training_data)
+    for j in xrange(epochs):
+        random.shuffle(training_data)
+        mini_batches = [
+            training_data[k:k+mini_batch_size]
+            for k in xrange(0, n, mini_batch_size)]
+        for mini_batch in mini_batches:
+            self.update_mini_batch(mini_batch, eta)
+        if test_data:
+            print &quot;Epoch {0}: {1} / {2}&quot;.format(
+                j, self.evaluate(test_data), n_test)
+        else:
+            print &quot;Epoch {0} complete&quot;.format(j)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;The training_data is a list of tuples (x, y) representing the training inputs and corresponding desired outputs. The variables epochs and mini_batch_size are what you’d expect - the number of epochs to train for, and the size of the mini-batches to use when sampling. eta is the learning rate, ηη. If the optional argument test_data is supplied, then the program will evaluate the network after each epoch of training, and print out partial progress. This is useful for tracking progress, but slows things down substantially.&lt;/p&gt;
+
+&lt;p&gt;The code works as follows. In each epoch, it starts by randomly shuffling the training data, and then partitions it into mini-batches of the appropriate size. This is an easy way of sampling randomly from the training data. Then for each mini_batch we apply a single step of gradient descent. This is done by the code self.update_mini_batch(mini_batch, eta), which updates the network weights and biases according to a single iteration of gradient descent, using just the training data in mini_batch. Here’s the code for the update_mini_batch method:&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def update_mini_batch(self, mini_batch, eta):
+    &quot;&quot;&quot;Update the network&#39;s weights and biases by applying
+    gradient descent using backpropagation to a single mini batch.
+    The &quot;mini_batch&quot; is a list of tuples &quot;(x, y)&quot;, and &quot;eta&quot;
+    is the learning rate.&quot;&quot;&quot;
+    nabla_b = [np.zeros(b.shape) for b in self.biases]
+    nabla_w = [np.zeros(w.shape) for w in self.weights]
+    for x, y in mini_batch:
+        delta_nabla_b, delta_nabla_w = self.backprop(x, y)
+        nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
+        nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
+    self.weights = [w-(eta/len(mini_batch))*nw 
+                    for w, nw in zip(self.weights, nabla_w)]
+    self.biases = [b-(eta/len(mini_batch))*nb 
+                   for b, nb in zip(self.biases, nabla_b)]
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Most of the work is done by the line&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;        delta_nabla_b, delta_nabla_w = self.backprop(x, y)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;This invokes something called the backpropagation algorithm, which is a fast way of computing the gradient of the cost function. So update_mini_batch works simply by computing these gradients for every training example in the mini_batch, and then updating self.weights and self.biases appropriately.&lt;/p&gt;
+
+&lt;p&gt;I’m not going to show the code for self.backprop right now. We’ll study how backpropagation works in the next chapter, including the code for self.backprop. For now, just assume that it behaves as claimed, returning the appropriate gradient for the cost associated to the training example x.&lt;/p&gt;
+
+&lt;p&gt;Let’s look at the full program, including the documentation strings, which I omitted above. Apart from self.backprop the program is self-explanatory - all the heavy lifting is done in self.SGD and self.update_mini_batch, which we’ve already discussed. The self.backprop method makes use of a few extra functions to help in computing the gradient, namely sigmoid_prime, which computes the derivative of the σσ function, and self.cost_derivative, which I won’t describe here. You can get the gist of these (and perhaps the details) just by looking at the code and documentation strings. We’ll look at them in detail in the next chapter. Note that while the program appears lengthy, much of the code is documentation strings intended to make the code easy to understand. In fact, the program contains just 74 lines of non-whitespace, non-comment code. All the code may be found on GitHub here.&lt;/p&gt;
+
+&lt;p&gt;”””
+network.py
+~~~~~~~~~~&lt;/p&gt;
+
+&lt;p&gt;A module to implement the stochastic gradient descent learning
+algorithm for a feedforward neural network.  Gradients are calculated
+using backpropagation.  Note that I have focused on making the code
+simple, easily readable, and easily modifiable.  It is not optimized,
+and omits many desirable features.
+“””&lt;/p&gt;
+
+&lt;h4 id=&quot;libraries&quot;&gt;Libraries&lt;/h4&gt;
+&lt;p&gt;# Standard library
+import random&lt;/p&gt;
+
+&lt;h1 id=&quot;third-party-libraries&quot;&gt;Third-party libraries&lt;/h1&gt;
+&lt;p&gt;import numpy as np&lt;/p&gt;
+
+&lt;p&gt;class Network(object):&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;def __init__(self, sizes):
+    &quot;&quot;&quot;The list ``sizes`` contains the number of neurons in the
+    respective layers of the network.  For example, if the list
+    was [2, 3, 1] then it would be a three-layer network, with the
+    first layer containing 2 neurons, the second layer 3 neurons,
+    and the third layer 1 neuron.  The biases and weights for the
+    network are initialized randomly, using a Gaussian
+    distribution with mean 0, and variance 1.  Note that the first
+    layer is assumed to be an input layer, and by convention we
+    won&#39;t set any biases for those neurons, since biases are only
+    ever used in computing the outputs from later layers.&quot;&quot;&quot;
+    self.num_layers = len(sizes)
+    self.sizes = sizes
+    self.biases = [np.random.randn(y, 1) for y in sizes[1:]]
+    self.weights = [np.random.randn(y, x)
+                    for x, y in zip(sizes[:-1], sizes[1:])]
+
+def feedforward(self, a):
+    &quot;&quot;&quot;Return the output of the network if ``a`` is input.&quot;&quot;&quot;
+    for b, w in zip(self.biases, self.weights):
+        a = sigmoid(np.dot(w, a)+b)
+    return a
+
+def SGD(self, training_data, epochs, mini_batch_size, eta,
+        test_data=None):
+    &quot;&quot;&quot;Train the neural network using mini-batch stochastic
+    gradient descent.  The ``training_data`` is a list of tuples
+    ``(x, y)`` representing the training inputs and the desired
+    outputs.  The other non-optional parameters are
+    self-explanatory.  If ``test_data`` is provided then the
+    network will be evaluated against the test data after each
+    epoch, and partial progress printed out.  This is useful for
+    tracking progress, but slows things down substantially.&quot;&quot;&quot;
+    if test_data: n_test = len(test_data)
+    n = len(training_data)
+    for j in xrange(epochs):
+        random.shuffle(training_data)
+        mini_batches = [
+            training_data[k:k+mini_batch_size]
+            for k in xrange(0, n, mini_batch_size)]
+        for mini_batch in mini_batches:
+            self.update_mini_batch(mini_batch, eta)
+        if test_data:
+            print &quot;Epoch {0}: {1} / {2}&quot;.format(
+                j, self.evaluate(test_data), n_test)
+        else:
+            print &quot;Epoch {0} complete&quot;.format(j)
+
+def update_mini_batch(self, mini_batch, eta):
+    &quot;&quot;&quot;Update the network&#39;s weights and biases by applying
+    gradient descent using backpropagation to a single mini batch.
+    The ``mini_batch`` is a list of tuples ``(x, y)``, and ``eta``
+    is the learning rate.&quot;&quot;&quot;
+    nabla_b = [np.zeros(b.shape) for b in self.biases]
+    nabla_w = [np.zeros(w.shape) for w in self.weights]
+    for x, y in mini_batch:
+        delta_nabla_b, delta_nabla_w = self.backprop(x, y)
+        nabla_b = [nb+dnb for nb, dnb in zip(nabla_b, delta_nabla_b)]
+        nabla_w = [nw+dnw for nw, dnw in zip(nabla_w, delta_nabla_w)]
+    self.weights = [w-(eta/len(mini_batch))*nw
+                    for w, nw in zip(self.weights, nabla_w)]
+    self.biases = [b-(eta/len(mini_batch))*nb
+                   for b, nb in zip(self.biases, nabla_b)]
+
+def backprop(self, x, y):
+    &quot;&quot;&quot;Return a tuple ``(nabla_b, nabla_w)`` representing the
+    gradient for the cost function C_x.  ``nabla_b`` and
+    ``nabla_w`` are layer-by-layer lists of numpy arrays, similar
+    to ``self.biases`` and ``self.weights``.&quot;&quot;&quot;
+    nabla_b = [np.zeros(b.shape) for b in self.biases]
+    nabla_w = [np.zeros(w.shape) for w in self.weights]
+    # feedforward
+    activation = x
+    activations = [x] # list to store all the activations, layer by layer
+    zs = [] # list to store all the z vectors, layer by layer
+    for b, w in zip(self.biases, self.weights):
+        z = np.dot(w, activation)+b
+        zs.append(z)
+        activation = sigmoid(z)
+        activations.append(activation)
+    # backward pass
+    delta = self.cost_derivative(activations[-1], y) * \
+        sigmoid_prime(zs[-1])
+    nabla_b[-1] = delta
+    nabla_w[-1] = np.dot(delta, activations[-2].transpose())
+    # Note that the variable l in the loop below is used a little
+    # differently to the notation in Chapter 2 of the book.  Here,
+    # l = 1 means the last layer of neurons, l = 2 is the
+    # second-last layer, and so on.  It&#39;s a renumbering of the
+    # scheme in the book, used here to take advantage of the fact
+    # that Python can use negative indices in lists.
+    for l in xrange(2, self.num_layers):
+        z = zs[-l]
+        sp = sigmoid_prime(z)
+        delta = np.dot(self.weights[-l+1].transpose(), delta) * sp
+        nabla_b[-l] = delta
+        nabla_w[-l] = np.dot(delta, activations[-l-1].transpose())
+    return (nabla_b, nabla_w)
+
+def evaluate(self, test_data):
+    &quot;&quot;&quot;Return the number of test inputs for which the neural
+    network outputs the correct result. Note that the neural
+    network&#39;s output is assumed to be the index of whichever
+    neuron in the final layer has the highest activation.&quot;&quot;&quot;
+    test_results = [(np.argmax(self.feedforward(x)), y)
+                    for (x, y) in test_data]
+    return sum(int(x == y) for (x, y) in test_results)
+
+def cost_derivative(self, output_activations, y):
+    &quot;&quot;&quot;Return the vector of partial derivatives \partial C_x /
+    \partial a for the output activations.&quot;&quot;&quot;
+    return (output_activations-y)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&quot;miscellaneous-functions&quot;&gt;Miscellaneous functions&lt;/h4&gt;
+&lt;p&gt;def sigmoid(z):
+    “&quot;”The sigmoid function.”””
+    return 1.0/(1.0+np.exp(-z))&lt;/p&gt;
+
+&lt;p&gt;def sigmoid_prime(z):
+    “&quot;”Derivative of the sigmoid function.”””
+    return sigmoid(z)*(1-sigmoid(z))&lt;/p&gt;
+
+&lt;p&gt;How well does the program recognize handwritten digits? Well, let’s start by loading in the MNIST data. I’ll do this using a little helper program, mnist_loader.py, to be described below. We execute the following commands in a Python shell,&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;import mnist_loader
+training_data, validation_data, test_data = \
+… mnist_loader.load_data_wrapper()&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Of course, this could also be done in a separate Python program, but if you’re following along it’s probably easiest to do in a Python shell.&lt;/p&gt;
+
+&lt;p&gt;After loading the MNIST data, we’ll set up a Network with 3030 hidden neurons. We do this after importing the Python program listed above, which is named network,&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;import network
+net = network.Network([784, 30, 10])&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Finally, we’ll use stochastic gradient descent to learn from the MNIST training_data over 30 epochs, with a mini-batch size of 10, and a learning rate of η=3.0η=3.0,&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;net.SGD(training_data, 30, 10, 3.0, test_data=test_data)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Note that if you’re running the code as you read along, it will take some time to execute - for a typical machine (as of 2015) it will likely take a few minutes to run. I suggest you set things running, continue to read, and periodically check the output from the code. If you’re in a rush you can speed things up by decreasing the number of epochs, by decreasing the number of hidden neurons, or by using only part of the training data. Note that production code would be much, much faster: these Python scripts are intended to help you understand how neural nets work, not to be high-performance code! And, of course, once we’ve trained a network it can be run very quickly indeed, on almost any computing platform. For example, once we’ve learned a good set of weights and biases for a network, it can easily be ported to run in Javascript in a web browser, or as a native app on a mobile device. In any case, here is a partial transcript of the output of one training run of the neural network. The transcript shows the number of test images correctly recognized by the neural network after each epoch of training. As you can see, after just a single epoch this has reached 9,129 out of 10,000, and the number continues to grow,&lt;/p&gt;
+
+&lt;p&gt;Epoch 0: 9129 / 10000
+Epoch 1: 9295 / 10000
+Epoch 2: 9348 / 10000
+…
+Epoch 27: 9528 / 10000
+Epoch 28: 9542 / 10000
+Epoch 29: 9534 / 10000&lt;/p&gt;
+
+&lt;p&gt;That is, the trained network gives us a classification rate of about 9595 percent - 95.4295.42 percent at its peak (“Epoch 28”)! That’s quite encouraging as a first attempt. I should warn you, however, that if you run the code then your results are not necessarily going to be quite the same as mine, since we’ll be initializing our network using (different) random weights and biases. To generate results in this chapter I’ve taken best-of-three runs.&lt;/p&gt;
+
+&lt;p&gt;Let’s rerun the above experiment, changing the number of hidden neurons to 100100. As was the case earlier, if you’re running the code as you read along, you should be warned that it takes quite a while to execute (on my machine this experiment takes tens of seconds for each training epoch), so it’s wise to continue reading in parallel while the code executes.&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;net = network.Network([784, 100, 10])
+net.SGD(training_data, 30, 10, 3.0, test_data=test_data)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Sure enough, this improves the results to 96.5996.59 percent. At least in this case, using more hidden neurons helps us get better results* *Reader feedback indicates quite some variation in results for this experiment, and some training runs give results quite a bit worse. Using the techniques introduced in chapter 3 will greatly reduce the variation in performance across different training runs for our networks..&lt;/p&gt;
+
+&lt;p&gt;Of course, to obtain these accuracies I had to make specific choices for the number of epochs of training, the mini-batch size, and the learning rate, ηη. As I mentioned above, these are known as hyper-parameters for our neural network, in order to distinguish them from the parameters (weights and biases) learnt by our learning algorithm. If we choose our hyper-parameters poorly, we can get bad results. Suppose, for example, that we’d chosen the learning rate to be η=0.001η=0.001,&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;net = network.Network([784, 100, 10])
+net.SGD(training_data, 30, 10, 0.001, test_data=test_data)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;The results are much less encouraging,&lt;/p&gt;
+
+&lt;p&gt;Epoch 0: 1139 / 10000
+Epoch 1: 1136 / 10000
+Epoch 2: 1135 / 10000
+…
+Epoch 27: 2101 / 10000
+Epoch 28: 2123 / 10000
+Epoch 29: 2142 / 10000&lt;/p&gt;
+
+&lt;p&gt;However, you can see that the performance of the network is getting slowly better over time. That suggests increasing the learning rate, say to η=0.01η=0.01. If we do that, we get better results, which suggests increasing the learning rate again. (If making a change improves things, try doing more!) If we do that several times over, we’ll end up with a learning rate of something like η=1.0η=1.0 (and perhaps fine tune to 3.03.0), which is close to our earlier experiments. So even though we initially made a poor choice of hyper-parameters, we at least got enough information to help us improve our choice of hyper-parameters.&lt;/p&gt;
+
+&lt;p&gt;In general, debugging a neural network can be challenging. This is especially true when the initial choice of hyper-parameters produces results no better than random noise. Suppose we try the successful 30 hidden neuron network architecture from earlier, but with the learning rate changed to η=100.0η=100.0:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;blockquote&gt;
+    &lt;blockquote&gt;
+      &lt;p&gt;net = network.Network([784, 30, 10])
+net.SGD(training_data, 30, 10, 100.0, test_data=test_data)&lt;/p&gt;
+    &lt;/blockquote&gt;
+  &lt;/blockquote&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;At this point we’ve actually gone too far, and the learning rate is too high:&lt;/p&gt;
+
+&lt;p&gt;Epoch 0: 1009 / 10000
+Epoch 1: 1009 / 10000
+Epoch 2: 1009 / 10000
+Epoch 3: 1009 / 10000
+…
+Epoch 27: 982 / 10000
+Epoch 28: 982 / 10000
+Epoch 29: 982 / 10000&lt;/p&gt;
+
+&lt;p&gt;Now imagine that we were coming to this problem for the first time. Of course, we know from our earlier experiments that the right thing to do is to decrease the learning rate. But if we were coming to this problem for the first time then there wouldn’t be much in the output to guide us on what to do. We might worry not only about the learning rate, but about every other aspect of our neural network. We might wonder if we’ve initialized the weights and biases in a way that makes it hard for the network to learn? Or maybe we don’t have enough training data to get meaningful learning? Perhaps we haven’t run for enough epochs? Or maybe it’s impossible for a neural network with this architecture to learn to recognize handwritten digits? Maybe the learning rate is too low? Or, maybe, the learning rate is too high? When you’re coming to a problem for the first time, you’re not always sure.&lt;/p&gt;
+
+&lt;p&gt;The lesson to take away from this is that debugging a neural network is not trivial, and, just as for ordinary programming, there is an art to it. You need to learn that art of debugging in order to get good results from neural networks. More generally, we need to develop heuristics for choosing good hyper-parameters and a good architecture. We’ll discuss all these at length through the book, including how I chose the hyper-parameters above.&lt;/p&gt;
+
+&lt;p&gt;Exercise&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Try creating a network with just two layers - an input and an output layer, no hidden layer - with 784 and 10 neurons, respectively. Train the network using stochastic gradient descent. What classification accuracy can you achieve? 
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;Earlier, I skipped over the details of how the MNIST data is loaded. It’s pretty straightforward. For completeness, here’s the code. The data structures used to store the MNIST data are described in the documentation strings - it’s straightforward stuff, tuples and lists of Numpy ndarray objects (think of them as vectors if you’re not familiar with ndarrays):&lt;/p&gt;
+
+&lt;p&gt;”””
+mnist_loader
+~~~~~~~~~~~~&lt;/p&gt;
+
+&lt;p&gt;A library to load the MNIST image data.  For details of the data
+structures that are returned, see the doc strings for &lt;code&gt;load_data&lt;/code&gt;
+and &lt;code&gt;load_data_wrapper&lt;/code&gt;.  In practice, &lt;code&gt;load_data_wrapper&lt;/code&gt; is the
+function usually called by our neural network code.
+“””&lt;/p&gt;
+
+&lt;h4 id=&quot;libraries-1&quot;&gt;Libraries&lt;/h4&gt;
+&lt;p&gt;# Standard library
+import cPickle
+import gzip&lt;/p&gt;
+
+&lt;h1 id=&quot;third-party-libraries-1&quot;&gt;Third-party libraries&lt;/h1&gt;
+&lt;p&gt;import numpy as np&lt;/p&gt;
+
+&lt;p&gt;def load_data():
+    “&quot;”Return the MNIST data as a tuple containing the training data,
+    the validation data, and the test data.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;The ``training_data`` is returned as a tuple with two entries.
+The first entry contains the actual training images.  This is a
+numpy ndarray with 50,000 entries.  Each entry is, in turn, a
+numpy ndarray with 784 values, representing the 28 * 28 = 784
+pixels in a single MNIST image.
+
+The second entry in the ``training_data`` tuple is a numpy ndarray
+containing 50,000 entries.  Those entries are just the digit
+values (0...9) for the corresponding images contained in the first
+entry of the tuple.
+
+The ``validation_data`` and ``test_data`` are similar, except
+each contains only 10,000 images.
+
+This is a nice data format, but for use in neural networks it&#39;s
+helpful to modify the format of the ``training_data`` a little.
+That&#39;s done in the wrapper function ``load_data_wrapper()``, see
+below.
+&quot;&quot;&quot;
+f = gzip.open(&#39;../data/mnist.pkl.gz&#39;, &#39;rb&#39;)
+training_data, validation_data, test_data = cPickle.load(f)
+f.close()
+return (training_data, validation_data, test_data)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;def load_data_wrapper():
+    “&quot;”Return a tuple containing &lt;code&gt;(training_data, validation_data,
+    test_data)&lt;/code&gt;. Based on &lt;code&gt;load_data&lt;/code&gt;, but the format is more
+    convenient for use in our implementation of neural networks.&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;In particular, ``training_data`` is a list containing 50,000
+2-tuples ``(x, y)``.  ``x`` is a 784-dimensional numpy.ndarray
+containing the input image.  ``y`` is a 10-dimensional
+numpy.ndarray representing the unit vector corresponding to the
+correct digit for ``x``.
+
+``validation_data`` and ``test_data`` are lists containing 10,000
+2-tuples ``(x, y)``.  In each case, ``x`` is a 784-dimensional
+numpy.ndarry containing the input image, and ``y`` is the
+corresponding classification, i.e., the digit values (integers)
+corresponding to ``x``.
+
+Obviously, this means we&#39;re using slightly different formats for
+the training data and the validation / test data.  These formats
+turn out to be the most convenient for use in our neural network
+code.&quot;&quot;&quot;
+tr_d, va_d, te_d = load_data()
+training_inputs = [np.reshape(x, (784, 1)) for x in tr_d[0]]
+training_results = [vectorized_result(y) for y in tr_d[1]]
+training_data = zip(training_inputs, training_results)
+validation_inputs = [np.reshape(x, (784, 1)) for x in va_d[0]]
+validation_data = zip(validation_inputs, va_d[1])
+test_inputs = [np.reshape(x, (784, 1)) for x in te_d[0]]
+test_data = zip(test_inputs, te_d[1])
+return (training_data, validation_data, test_data)
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;def vectorized_result(j):
+    “&quot;”Return a 10-dimensional unit vector with a 1.0 in the jth
+    position and zeroes elsewhere.  This is used to convert a digit
+    (0…9) into a corresponding desired output from the neural
+    network.”””
+    e = np.zeros((10, 1))
+    e[j] = 1.0
+    return e&lt;/p&gt;
+
+&lt;p&gt;I said above that our program gets pretty good results. What does that mean? Good compared to what? It’s informative to have some simple (non-neural-network) baseline tests to compare against, to understand what it means to perform well. The simplest baseline of all, of course, is to randomly guess the digit. That’ll be right about ten percent of the time. We’re doing much better than that!&lt;/p&gt;
+
+&lt;p&gt;What about a less trivial baseline? Let’s try an extremely simple idea: we’ll look at how dark an image is. For instance, an image of a 22 will typically be quite a bit darker than an image of a 11, just because more pixels are blackened out, as the following examples illustrate:&lt;/p&gt;
+
+&lt;p&gt;This suggests using the training data to compute average darknesses for each digit, 0,1,2,…,90,1,2,…,9. When presented with a new image, we compute how dark the image is, and then guess that it’s whichever digit has the closest average darkness. This is a simple procedure, and is easy to code up, so I won’t explicitly write out the code - if you’re interested it’s in the GitHub repository. But it’s a big improvement over random guessing, getting 2,2252,225 of the 10,00010,000 test images correct, i.e., 22.2522.25 percent accuracy.&lt;/p&gt;
+
+&lt;p&gt;It’s not difficult to find other ideas which achieve accuracies in the 2020 to 5050 percent range. If you work a bit harder you can get up over 5050 percent. But to get much higher accuracies it helps to use established machine learning algorithms. Let’s try using one of the best known algorithms, the support vector machine or SVM. If you’re not familiar with SVMs, not to worry, we’re not going to need to understand the details of how SVMs work. Instead, we’ll use a Python library called scikit-learn, which provides a simple Python interface to a fast C-based library for SVMs known as LIBSVM.&lt;/p&gt;
+
+&lt;p&gt;If we run scikit-learn’s SVM classifier using the default settings, then it gets 9,435 of 10,000 test images correct. (The code is available here.) That’s a big improvement over our naive approach of classifying an image based on how dark it is. Indeed, it means that the SVM is performing roughly as well as our neural networks, just a little worse. In later chapters we’ll introduce new techniques that enable us to improve our neural networks so that they perform much better than the SVM.&lt;/p&gt;
+
+&lt;p&gt;That’s not the end of the story, however. The 9,435 of 10,000 result is for scikit-learn’s default settings for SVMs. SVMs have a number of tunable parameters, and it’s possible to search for parameters which improve this out-of-the-box performance. I won’t explicitly do this search, but instead refer you to this blog post by Andreas Mueller if you’d like to know more. Mueller shows that with some work optimizing the SVM’s parameters it’s possible to get the performance up above 98.5 percent accuracy. In other words, a well-tuned SVM only makes an error on about one digit in 70. That’s pretty good! Can neural networks do better?&lt;/p&gt;
+
+&lt;p&gt;In fact, they can. At present, well-designed neural networks outperform every other technique for solving MNIST, including SVMs. The current (2013) record is classifying 9,979 of 10,000 images correctly. This was done by Li Wan, Matthew Zeiler, Sixin Zhang, Yann LeCun, and Rob Fergus. We’ll see most of the techniques they used later in the book. At that level the performance is close to human-equivalent, and is arguably better, since quite a few of the MNIST images are difficult even for humans to recognize with confidence, for example:&lt;/p&gt;
+
+&lt;p&gt;I trust you’ll agree that those are tough to classify! With images like these in the MNIST data set it’s remarkable that neural networks can accurately classify all but 21 of the 10,000 test images. Usually, when programming we believe that solving a complicated problem like recognizing the MNIST digits requires a sophisticated algorithm. But even the neural networks in the Wan et al paper just mentioned involve quite simple algorithms, variations on the algorithm we’ve seen in this chapter. All the complexity is learned, automatically, from the training data. In some sense, the moral of both our results and those in more sophisticated papers, is that for some problems:
+sophisticated algorithm ≤≤ simple learning algorithm + good training data.&lt;/p&gt;
+</description>
+                <link>http://galji.github.io//2016/01/19/nndl_ch01_implementingournetwork</link>
+                <guid>http://galji.github.io//2016/01/19/nndl_ch01_implementingournetwork</guid>
+                <pubDate>2016-01-19T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 6부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neural네트워크sanddeeplearning.com/chap1.html&quot;&gt;http://neural네트워크sanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;경사하강법을 통학 학습&lt;/h3&gt;
+
+&lt;p&gt;지금까지 우리는 neural network를 정의했으며, 다시 손글씨 인지 문제로 돌아와 보자. 우리는 손글씨 인지 문제를 두개의 소문제(sub-problem)로 나눌 수 있다. 먼저, 우리는 이미지를 하나의 숫자만 포함하는 작은 이미지들로 나누는 것이다. 예를들어, 아래의 이미지를&lt;/p&gt;
+
+&lt;p&gt;6개의 분리된 이미지로 나누면,&lt;/p&gt;
+
+&lt;p&gt;위의 그림처럼 될 것이다. 우리 인간은 이러한 분할 문제 (segmentation problem) 을 손쉽게 해결할 수 있지만, 컴퓨터 프로그램에게는 그렇지 않다. 일단 이미지가 분리되고 나면, 프로그램은 각각의 숫자를 인지해야 한다. 위의 예시에서 처음으로 분할된 이미지를&lt;/p&gt;
+
+&lt;p&gt;프로그램은 5라고 인지해야 할 것이다.
+우리는 두번째 문제, 즉 각각의 숫자를 분류하는 문제를 해결하는 프로그램을 짜는데 집중할 것이다. 왜냐하면 여러분이 하나의 숫자를 구분할 수 있다면, 분할 문제를 해결하는 것은 크게 어렵지 않기 때문이다. 이미지 분할 문제를 해결하는 방법에는 여러가지가 있다. 한가지 방법으로는 여러번 이미지를 나눠 본 후 시도한 분할을 단일 숫자 분류기로 점수를 내는 것이다. 만약 단일 숫자 분류기가 작은 이미지들을 분류하는데 어려움을 겪지 않았다면 높은 점수를 받을 것이고, 숫자를 인지하는데 어려움을 겪는다면 낮은 점수를 받을것이다. 이 방법의 핵심 아이디어는, 만약 단일 숫자 분류기가 어딘가에서 난항을 겪는다면, 아마 이미지 분할이 제대로 이루어지지 않았을 가능성이 높다는 데에 있다. 이러한 아이디어 뿐만 아니라 다른 여러가지 방법으로 이미지 분할 문제를 잘 해결할 수 있을 것이다. 그렇기 때문에, 이미지 분할 문제 보다는 더 흥미롭고 어려운 단일 숫자를 분류할 수 있는 neural network를 만드는 데에 집중할 것이다.
+하나의 숫자를 인지하기 위해 다음과 같은 3개의 layer를 가진 neural network를 이용할 것이다:&lt;/p&gt;
+
+&lt;p&gt;input layer는 픽셀들의 값을 인코딩한 뉴런들로 구성되어 있다. 다음 섹션에서 다루겠지만, 우리의 training data는 $28 times 28$ 픽셀 이미지기 때문에 $784 = 28 times 28$개 만큼의 neuron을 필요로 한다. 간단하게 그리기 위해서 위의 그림에서는 neuron을 많이 생략했다. input pixel은 흰색을 의미하는 0.0 부터 검정색을 의미하는 1.0 까지의 실수 값을 가지게 되며, 그 값은 회색의 진한 정도를 나타낸다.
+두번째 layer는 hidden layer다. hidden layer에 존재하는 neuron의 갯수를 $n$으로 나타내며 우리는 $n$을 바꿔가며 실험을 진행할 것이다. 위의 예시에 나와있는 hidden layer는 $n = 15$개의 neuron을 갖고 있다.
+output layer는 10개의 neuron을 갖고 있다. 만약 첫번째 neuron의 상태가 output $\approx 1$이면 network가 input 이미지를 0으로 인식한다는 것을 의미한다. 만약 두번째 neuron의 상태가 $\approx 1$이면 이미지를 1로 인식한다는 것이다. 좀더 정확하게 설명하면, 우리는 output neuron을 0 부터 9까지 숫자를 붙이고, 어떤 neuron이 가장 높은 activation 값을 가지고 있는지 알아낼 것이다. 만약 6이라고 이름 붙인 neuron의 값이 가장 크다면, network는 input 숫자를 6으로 인지하고 있다는 의미다.
+당신은 아마 왜 우리가 10개의 output neuron을 사용하고 있는지 궁금할 것이다. 그 이유는 우리가 만들고 있는 netork가 숫자 0, 1, 2, … , 9를 구분해야하기 때문이다. 하지만 여러분은 각각의 output을 이진수로 생각해서, 4개의 output neuron으로도 충분하다고 생각할 지도 모른다. 이렇게 생각하는 이유는, $2^4 = 16$이기 때문에 충분히 10개의 가능한 값을 구분할 수 있을 것이라 말하고 싶을것이다. 하지만 왜 우리는 10개의 neuron을 상용해야만 하는 것일까? 그것은 비효율적이지 않을까? 우리가 이를 정당화 할 수 있는 방법은 경험에 의거했기 때문이다. 우리는 두가지 network를 모두 만들어 실험을 해 보았지만, 10개의 neuron을 가진 network가 4개의 neuron을 가진 network 보다 숫자를 더 잘 인지했다. 이런 경험적 증명이 아닌 다른 방법으로 10개 output network가 4개 output neuron보다 뛰어난 이유를 설명할 수 있을까?
+이것을 이해하기 위해서, 처음으로 돌아가 neural network가 무엇인지에 대해 생각해 보는것이 도움이 된다. 먼저 10개 output neuron의 경우를 보자. 첫번째 output neroun을 보면, 이것은 input 이미지의 숫자가 0인지 아닌지를 hidden layer를 거치면서 결정된다. 그렇다면 hidden neroun들은 무엇을 하는 것일까? 여기서 hidden layer의 첫번째 neroun이 아래와 같은 이미지가 있는지 없는지를 알아낸다고 가정해 보자:&lt;/p&gt;
+
+&lt;p&gt;그렇다면, input 이미지와 위의 이미지를 겹쳐서 겹친 부분의 pixel에는 큰 weight를 곱하고, 그렇지 않은 pixel에는 작은 weight를 곱하면 될 것이다. 비슷한 방식으로, hhidden layer의 두번째, 세번째 그리고 네번째 neuron은 아래에 나열된 이미지가 존재하는지 존재하지 않는지를 구분한다고 가정해 보자:&lt;/p&gt;
+
+&lt;p&gt;위에 그림들을 조합해 보면, 각각의 이미지가 0의 부분 이미지라는 것을 알 수 있을것이다:&lt;/p&gt;
+
+&lt;p&gt;그래서 위에서 언급된 4개의 hidden neuron이 active라면 우리는 숫자가 0이라고 결론을 내릴 수 있을 것이다. 하지만 당연히 이 방법만이 숫자 0을 결정하는 증거가 되는 것은 아니다. 예를 들면, 앞서 제시한 4개의 이미지를 조금씩 변형할 수도 있고, 찌그러 트릴 수도 있다. 어쨋든, 적어도 이 방법으로 0을 안전하게 인지할 수 있을것으로 보인다.
+이러한 방법으로 network 함수들을 생각해 본다면, 우리는 왜 4개의 경우보다 10개의 output을 가진 network의 성능이 더 높다는 것을 그럴듯 하게 설명할 수 있을 것이다. 만약 4개의 output neuron의 경우를 상상해 본다면, 쉽게 위와 같은 process를 상상하기 어려울 것이다.
+하지만 결론적으로 이것은 모두 경험적 실험에 의한 결과이다. 그 어떤것도 3개 layer의 neural network가 내가 설명한 것처럼 작동할 것이라는 걸 증명하지 않는다. 아마 좀더 똑똑한 learning algorithm을 사용한다면 4개의 output neuron의 경우에 적합한 wiehgt를 찾아낼 지도 모른다. 하지만, 나의 실험적 결과로는 10개의 output neuron의 경우가 훨씬 더 잘 작동했고, 이 사실은 여러분이 neural network 구조를 디자인하는데 있어 많은 시간을 줄여 줄 것이다.&lt;/p&gt;
+</description>
+                <link>http://galji.github.io//2016/01/18/nndl_ch01_gradientdescent</link>
+                <guid>http://galji.github.io//2016/01/18/nndl_ch01_gradientdescent</guid>
+                <pubDate>2016-01-18T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 6부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neural네트워크sanddeeplearning.com/chap1.html&quot;&gt;http://neural네트워크sanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;경사하강법을 통학 학습&lt;/h3&gt;
+
+&lt;p&gt;지금까지 우리는 neural network를 정의했으며, 다시 손글씨 인지 문제로 돌아와 보자. 우리는 손글씨 인지 문제를 두개의 소문제(sub-problem)로 나눌 수 있다. 먼저, 우리는 이미지를 하나의 숫자만 포함하는 작은 이미지들로 나누는 것이다. 예를들어, 아래의 이미지를&lt;/p&gt;
+
+&lt;p&gt;6개의 분리된 이미지로 나누면,&lt;/p&gt;
+
+&lt;p&gt;위의 그림처럼 될 것이다. 우리 인간은 이러한 분할 문제 (segmentation problem) 을 손쉽게 해결할 수 있지만, 컴퓨터 프로그램에게는 그렇지 않다. 일단 이미지가 분리되고 나면, 프로그램은 각각의 숫자를 인지해야 한다. 위의 예시에서 처음으로 분할된 이미지를&lt;/p&gt;
+
+&lt;p&gt;프로그램은 5라고 인지해야 할 것이다.
+우리는 두번째 문제, 즉 각각의 숫자를 분류하는 문제를 해결하는 프로그램을 짜는데 집중할 것이다. 왜냐하면 여러분이 하나의 숫자를 구분할 수 있다면, 분할 문제를 해결하는 것은 크게 어렵지 않기 때문이다. 이미지 분할 문제를 해결하는 방법에는 여러가지가 있다. 한가지 방법으로는 여러번 이미지를 나눠 본 후 시도한 분할을 단일 숫자 분류기로 점수를 내는 것이다. 만약 단일 숫자 분류기가 작은 이미지들을 분류하는데 어려움을 겪지 않았다면 높은 점수를 받을 것이고, 숫자를 인지하는데 어려움을 겪는다면 낮은 점수를 받을것이다. 이 방법의 핵심 아이디어는, 만약 단일 숫자 분류기가 어딘가에서 난항을 겪는다면, 아마 이미지 분할이 제대로 이루어지지 않았을 가능성이 높다는 데에 있다. 이러한 아이디어 뿐만 아니라 다른 여러가지 방법으로 이미지 분할 문제를 잘 해결할 수 있을 것이다. 그렇기 때문에, 이미지 분할 문제 보다는 더 흥미롭고 어려운 단일 숫자를 분류할 수 있는 neural network를 만드는 데에 집중할 것이다.
+하나의 숫자를 인지하기 위해 다음과 같은 3개의 layer를 가진 neural network를 이용할 것이다:&lt;/p&gt;
+
+&lt;p&gt;input layer는 픽셀들의 값을 인코딩한 뉴런들로 구성되어 있다. 다음 섹션에서 다루겠지만, 우리의 training data는 $28 times 28$ 픽셀 이미지기 때문에 $784 = 28 times 28$개 만큼의 neuron을 필요로 한다. 간단하게 그리기 위해서 위의 그림에서는 neuron을 많이 생략했다. input pixel은 흰색을 의미하는 0.0 부터 검정색을 의미하는 1.0 까지의 실수 값을 가지게 되며, 그 값은 회색의 진한 정도를 나타낸다.
+두번째 layer는 hidden layer다. hidden layer에 존재하는 neuron의 갯수를 $n$으로 나타내며 우리는 $n$을 바꿔가며 실험을 진행할 것이다. 위의 예시에 나와있는 hidden layer는 $n = 15$개의 neuron을 갖고 있다.
+output layer는 10개의 neuron을 갖고 있다. 만약 첫번째 neuron의 상태가 output $\approx 1$이면 network가 input 이미지를 0으로 인식한다는 것을 의미한다. 만약 두번째 neuron의 상태가 $\approx 1$이면 이미지를 1로 인식한다는 것이다. 좀더 정확하게 설명하면, 우리는 output neuron을 0 부터 9까지 숫자를 붙이고, 어떤 neuron이 가장 높은 activation 값을 가지고 있는지 알아낼 것이다. 만약 6이라고 이름 붙인 neuron의 값이 가장 크다면, network는 input 숫자를 6으로 인지하고 있다는 의미다.
+당신은 아마 왜 우리가 10개의 output neuron을 사용하고 있는지 궁금할 것이다. 그 이유는 우리가 만들고 있는 netork가 숫자 0, 1, 2, … , 9를 구분해야하기 때문이다. 하지만 여러분은 각각의 output을 이진수로 생각해서, 4개의 output neuron으로도 충분하다고 생각할 지도 모른다. 이렇게 생각하는 이유는, $2^4 = 16$이기 때문에 충분히 10개의 가능한 값을 구분할 수 있을 것이라 말하고 싶을것이다. 하지만 왜 우리는 10개의 neuron을 상용해야만 하는 것일까? 그것은 비효율적이지 않을까? 우리가 이를 정당화 할 수 있는 방법은 경험에 의거했기 때문이다. 우리는 두가지 network를 모두 만들어 실험을 해 보았지만, 10개의 neuron을 가진 network가 4개의 neuron을 가진 network 보다 숫자를 더 잘 인지했다. 이런 경험적 증명이 아닌 다른 방법으로 10개 output network가 4개 output neuron보다 뛰어난 이유를 설명할 수 있을까?
+이것을 이해하기 위해서, 처음으로 돌아가 neural network가 무엇인지에 대해 생각해 보는것이 도움이 된다. 먼저 10개 output neuron의 경우를 보자. 첫번째 output neroun을 보면, 이것은 input 이미지의 숫자가 0인지 아닌지를 hidden layer를 거치면서 결정된다. 그렇다면 hidden neroun들은 무엇을 하는 것일까? 여기서 hidden layer의 첫번째 neroun이 아래와 같은 이미지가 있는지 없는지를 알아낸다고 가정해 보자:&lt;/p&gt;
+
+&lt;p&gt;그렇다면, input 이미지와 위의 이미지를 겹쳐서 겹친 부분의 pixel에는 큰 weight를 곱하고, 그렇지 않은 pixel에는 작은 weight를 곱하면 될 것이다. 비슷한 방식으로, hhidden layer의 두번째, 세번째 그리고 네번째 neuron은 아래에 나열된 이미지가 존재하는지 존재하지 않는지를 구분한다고 가정해 보자:&lt;/p&gt;
+
+&lt;p&gt;위에 그림들을 조합해 보면, 각각의 이미지가 0의 부분 이미지라는 것을 알 수 있을것이다:&lt;/p&gt;
+
+&lt;p&gt;그래서 위에서 언급된 4개의 hidden neuron이 active라면 우리는 숫자가 0이라고 결론을 내릴 수 있을 것이다. 하지만 당연히 이 방법만이 숫자 0을 결정하는 증거가 되는 것은 아니다. 예를 들면, 앞서 제시한 4개의 이미지를 조금씩 변형할 수도 있고, 찌그러 트릴 수도 있다. 어쨋든, 적어도 이 방법으로 0을 안전하게 인지할 수 있을것으로 보인다.
+이러한 방법으로 network 함수들을 생각해 본다면, 우리는 왜 4개의 경우보다 10개의 output을 가진 network의 성능이 더 높다는 것을 그럴듯 하게 설명할 수 있을 것이다. 만약 4개의 output neuron의 경우를 상상해 본다면, 쉽게 위와 같은 process를 상상하기 어려울 것이다.
+하지만 결론적으로 이것은 모두 경험적 실험에 의한 결과이다. 그 어떤것도 3개 layer의 neural network가 내가 설명한 것처럼 작동할 것이라는 걸 증명하지 않는다. 아마 좀더 똑똑한 learning algorithm을 사용한다면 4개의 output neuron의 경우에 적합한 wiehgt를 찾아낼 지도 모른다. 하지만, 나의 실험적 결과로는 10개의 output neuron의 경우가 훨씬 더 잘 작동했고, 이 사실은 여러분이 neural network 구조를 디자인하는데 있어 많은 시간을 줄여 줄 것이다.&lt;/p&gt;
+</description>
+                <link>http://galji.github.io//2016/01/18/nndl_ch01_gradientdescent</link>
+                <guid>http://galji.github.io//2016/01/18/nndl_ch01_gradientdescent</guid>
+                <pubDate>2016-01-18T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 5부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neural네트워크sanddeeplearning.com/chap1.html&quot;&gt;http://neural네트워크sanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;손글씨 숫자를 분류할 수 있는 간단한 네트워크&lt;/h3&gt;
+
+&lt;p&gt;뉴럴네트워크를 정의한 상태로 이제 다시 손글씨 인식으로 돌아가 보자. 우리는 손글씨 인식 문제를 두개 의 하위 문제(sub-problem)로 나눌 수 있다. 먼저, 원래 이미지를 숫자 한개만 들어간 작은 이미지들로 나누는 것이다. 예를들어, 아래의 이미지를&lt;/p&gt;
+
+&lt;p&gt;아래의 이미지처럼 6개의 분리된 이미지로 나누어 보자.&lt;/p&gt;
+
+&lt;p&gt;이러한 이미지 분할 문제(segmentation problem)를 인간은 쉽게 해결할 수 있지만, 컴퓨터 프로그램은 정확하게 하기가 어렵다. 일단 이미지가 분할되면 , 프로그램은 각각의 숫자를 분류해야 한다. 예를 들어, 가장 큰 자릿수를 나타내는 아래의 그림을 $5$라고 인식해야 할 것이다.&lt;/p&gt;
+
+&lt;p&gt;이제는 두번째 문제인 각 이미지에서 숫자를 분류하는 프로그램을 작성하는데 집중하자. 이렇게 하는 데는 이유가 있다. 숫자 한개를 분류할 수 있다면, 분할 문제를 푸는 것도 크게 어렵지 않기 때문이다. 이미지 분할에 대한 해결책은 많이 있다. 한가지 방법을 들자면, 이미지 분할을 여러 방법으로 실시한 후 단일 숫자 분류기를 이용해 각 분할법의 결과 점수를 매겨 평가하는 것이다. 만약, 단일 숫자 분류기가 모든 분할 이미지들을 정확하게 분류해낸다면 높은 점수를 받을 것이고, 한 개이상의 분할 이미지를 분류할 때 많은 어려움이 발생한다면 낮은 점수를 받을것이다. 만약 단일 숫자 분류기가 어느 부분에서 잘 작동하지 않는다면, 이 문제의 원인이 미숙한 분할 때문일 것이라고 가정하는 것이다. 여러가지 분할 문제를 해결하기 위해 이러한 발상이 들어간 접근법을 사용할 수 있다. 따라서, 이미지 분할 문제 보다는 더 흥미롭고 어려운 문제인 단일 숫자 분류기 제작을 위해 뉴럴네트워크에 촛점을 맞출 것이다.&lt;/p&gt;
+
+&lt;p&gt;단일 숫자를 인식하기 위해 다음과 같이 3층구조의 뉴럴네트워크를 사용하기로 하자:&lt;/p&gt;
+
+&lt;p&gt;입력층은 픽셀값들을 부호화한 뉴런들을 가지고 있다. 다음 섹션에서 다루겠지만, 우리의 훈련 데이터는 $28 \times 28$ 크기의 픽셀을 가진 이미지이기 때문에 총 $784$개의 픽셀이 있고, 따라서 $784$개의 뉴런이 필요하다. 위의 그림은 간단한 도식을 위해 많은 뉴런들을 생략했다. 입력 픽셀은 흰색을 의미하는 $0.0$에서 검은색을 의미하는 $1.0$까지의 실수를 가지게 되며, 그 사이 값은 회색의 농도로 표현한다.&lt;/p&gt;
+
+&lt;p&gt;두번째 층은 은닉층이다. 은닉층에 있는 뉴런의 갯수를 $n$으로 표기한다. 그리고 다양한 $n$을 가지고 실험을 진행할 것이다. 위의 예는 적은 수의 은닉층이며 $n=15$개의 뉴런을 포함한다.&lt;/p&gt;
+
+&lt;p&gt;출력층은 10개의 뉴런을 포함한다. 예를들어, 만약 첫번째 뉴런이 발화하여 출력이 대략 $1$에 가깝다면, 네트워크가 입력 이미지를 $0$이라고 가리키는 것이다. 만약 두번째 뉴런이 발화하여 출력이 대략 $1$에 가깝다면, 이미지를 $1$로 가리키는 것이다. 정확히 말하자면, 출력뉴런에 $0$부터 $9$까지 숫자를 매기고, 어느 출력뉴런에서 가장 큰 활성도 (activation)를 가지는지 알아내는 것이다. 만약 $6$번째 출력뉴런 값이 가장 크다면, 네트워크는 입력 숫자를 $6$으로 짐작한다는 뜻이다.&lt;/p&gt;
+
+&lt;p&gt;왜 출력 뉴런의 갯수가 하필 $10$개인지 궁금할 것이다. 그 이유는 이 네트워크의 목적이 숫자 $0, 1, 2, \ldots , 9$를 분류하는 것이기 때문이다. 따라오는 생각은 각각의 출력이 $0$과 $1$중 어느 쪽에 가까운가에 따라서 이진수 값으로 취할 수 있다고 생각하는 것이다. 그러면 4개의 출력뉴런만으로 부호화가 충분히 가능하다. 당연히, $2^4 = 16$개이므로, 충분히 쓰고도 남는다. 그런데 왜 10개의 뉴런을 꼭 사용해야 하는 것일까? 비효율적이라고 생각하지 않는가? 그것의 타당성은 경험에서 나온 것이다.  이 특정한 예제에서 두가지 네트워크 모델을 실험을 해 비교해 보면, $10$개의 출력뉴런을 포함하는 네트워크가 4개의 출력뉴런을 포함하는 네트워크보다 숫자를 더 잘 인식했다. 하지만 왜 $10$개의 출력뉴런이 있으면 더 나은지 궁금하게 된다. $4$개-출력 부호화 방식 대신에 $10$개-출력 부호화 방식을 쓰도록 미리 알려주는 휴리스틱같은 것은 없을까?&lt;/p&gt;
+
+&lt;p&gt;이것을 이해하려면, 뉴럴네트워크가 동작하는 첫번째 원리를 다시 떠올려봐야 한다. 우선 $10$개의 출력뉴런이 있는 경우를 보자. 이 경우 첫번째 출력뉴런에 집중하여 보면, 이 뉴런은 입력 이미지의 숫자가 $0$인지 아닌지  결정한다. 은닉층에 있는 뉴런에서 증거들을 저울질하여 판단하는 것이다. 그렇다면 은닉뉴런 (hidden neuron)들은 어떤 일을 하는 것일까? 여기서 논의의 편리를 위해 은닉층의 첫번째 뉴런이 다음와 같은 이미지인지 아닌지 검출(detection)한다고 가정해 보자:&lt;/p&gt;
+
+&lt;p&gt;입력 픽셀들이 위의 이미지와 겹친다면 큰 가중치를 곱하고, 그렇지 않은 픽셀에는 작은 가중치를 곱하는 방식으로 검출하는 것이다. 은닉층의 두번째, 세번째 그리고 네번째 뉴런들도 비슷한 방법을 아래에 이미지들이 존재하는지 입력과 겹친 부분을 판단하여 감지할 수 있다고 가정해 보자:&lt;/p&gt;
+
+&lt;p&gt;짐작했듯이, 앞선 4개의 이미지를 모두 조합하면 $0$을 가리키는 이미지가 된다.&lt;/p&gt;
+
+&lt;p&gt;따라서, 만약 이 은닉뉴런 4개 모두 발화한다면 우리는 이 이미지를 숫자 $0$라고 결론내릴 수 있다. 물론, 이런 종류의 증거들만이 이미지를 $0$이라고 결론내리게 하는 유일한 수단은 아니다. 이것 말고도 다양한 방식을 사용할 수 있다. 앞의 4개의 이미지에다 살짝 위치변화나 왜곡을 가하는 방식도 사용할 수 있다. 어쨋든, 이 방법은 적어도 0을 인식하기에 충분해 보인다.&lt;/p&gt;
+
+&lt;p&gt;네트워크 함수들을 이런 방식으로 상상한다면, 왜 출력뉴런이 4개일 때보다 10개일때 네트워크가 더 잘 작동하는지 충분히 설명할 수 있다. 만약 출력뉴런이 4개라면, 첫번째 출력뉴런은 이진수 표현으로 최상위 비트의 숫자 (여기에선 $8$에서 $15$까지의 수)가 무엇인지 결정을 시도할 것이다. 이 경우에는 최상위 비트를 위에 열거한 간단한 모양과 어떻게 연관시킬 지 명확하지 않다. 은닉층에 있는 숫자를 이루는 선분조각들과 출력단에 있는 최상위 비트가 역사적인 어떤 좋은 이유로 서로 연관되어 있다고 상상하기 어려운 것이다.&lt;/p&gt;
+
+&lt;p&gt;자, 그럼에도 불구하고 이건 휴리스틱일 뿐이다. 어떤것도 3층구조의 뉴럴네트워크가 내가 설명한 방식, 즉 은닉뉴런들이 간단한 모양요소들을 검출하는 방식으로 작동해야 한다고 말하지는 않는다. 아마 좀더 현명한 학습 알고리즘이라면 4개의 출력뉴런에 대해 잘 할당된 가중치를 찾아낼지 모른다. 어쨌든, 내가 실험한 결과에서 10개의 출력뉴런을 쓰는 휴리스틱이 잘 작동했기 때문에,  뉴럴네트워크 구조를 설계하는데 이 휴리스틱이 여러분의 시간을 많이 절약해 줄 수 있을 것이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;연습문제&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;앞서 보인 3층구조의 네트워크에 별도의 층을 추가하여 어떤 숫자에 대한 비트단위 표현을 결정할 수 있는 방법이 있다. 별도층은 이전 층에서 나온 출력을 다음과 같은 그림같이 이진수 표현으로 변환한다. 이 새로운 출력층에 대한 가중치와 편향치들을 모두 찾아라. 처음 3개층에 있는 뉴런들은 다음 사항을 가정한다. 이들의 3번째 층 (즉, 오래된 출력층)에서 정확한 출력은 활성도가 적어도 $0.99$ 이상이 되어야 하고, 부정확한 출력은 활성도가 $0.01$보다 적어야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <link>http://galji.github.io//2016/01/17/nndl_ch01_asimplenetwork</link>
+                <guid>http://galji.github.io//2016/01/17/nndl_ch01_asimplenetwork</guid>
+                <pubDate>2016-01-17T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 5부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neural네트워크sanddeeplearning.com/chap1.html&quot;&gt;http://neural네트워크sanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;손글씨 숫자를 분류할 수 있는 간단한 네트워크&lt;/h3&gt;
+
+&lt;p&gt;뉴럴네트워크를 정의한 상태로 이제 다시 손글씨 인식으로 돌아가 보자. 우리는 손글씨 인식 문제를 두개 의 하위 문제(sub-problem)로 나눌 수 있다. 먼저, 원래 이미지를 숫자 한개만 들어간 작은 이미지들로 나누는 것이다. 예를들어, 아래의 이미지를&lt;/p&gt;
+
+&lt;p&gt;아래의 이미지처럼 6개의 분리된 이미지로 나누어 보자.&lt;/p&gt;
+
+&lt;p&gt;이러한 이미지 분할 문제(segmentation problem)를 인간은 쉽게 해결할 수 있지만, 컴퓨터 프로그램은 정확하게 하기가 어렵다. 일단 이미지가 분할되면 , 프로그램은 각각의 숫자를 분류해야 한다. 예를 들어, 가장 큰 자릿수를 나타내는 아래의 그림을 $5$라고 인식해야 할 것이다.&lt;/p&gt;
+
+&lt;p&gt;이제는 두번째 문제인 각 이미지에서 숫자를 분류하는 프로그램을 작성하는데 집중하자. 이렇게 하는 데는 이유가 있다. 숫자 한개를 분류할 수 있다면, 분할 문제를 푸는 것도 크게 어렵지 않기 때문이다. 이미지 분할에 대한 해결책은 많이 있다. 한가지 방법을 들자면, 이미지 분할을 여러 방법으로 실시한 후 단일 숫자 분류기를 이용해 각 분할법의 결과 점수를 매겨 평가하는 것이다. 만약, 단일 숫자 분류기가 모든 분할 이미지들을 정확하게 분류해낸다면 높은 점수를 받을 것이고, 한 개이상의 분할 이미지를 분류할 때 많은 어려움이 발생한다면 낮은 점수를 받을것이다. 만약 단일 숫자 분류기가 어느 부분에서 잘 작동하지 않는다면, 이 문제의 원인이 미숙한 분할 때문일 것이라고 가정하는 것이다. 여러가지 분할 문제를 해결하기 위해 이러한 발상이 들어간 접근법을 사용할 수 있다. 따라서, 이미지 분할 문제 보다는 더 흥미롭고 어려운 문제인 단일 숫자 분류기 제작을 위해 뉴럴네트워크에 촛점을 맞출 것이다.&lt;/p&gt;
+
+&lt;p&gt;단일 숫자를 인식하기 위해 다음과 같이 3층구조의 뉴럴네트워크를 사용하기로 하자:&lt;/p&gt;
+
+&lt;p&gt;입력층은 픽셀값들을 부호화한 뉴런들을 가지고 있다. 다음 섹션에서 다루겠지만, 우리의 훈련 데이터는 $28 \times 28$ 크기의 픽셀을 가진 이미지이기 때문에 총 $784$개의 픽셀이 있고, 따라서 $784$개의 뉴런이 필요하다. 위의 그림은 간단한 도식을 위해 많은 뉴런들을 생략했다. 입력 픽셀은 흰색을 의미하는 $0.0$에서 검은색을 의미하는 $1.0$까지의 실수를 가지게 되며, 그 사이 값은 회색의 농도로 표현한다.&lt;/p&gt;
+
+&lt;p&gt;두번째 층은 은닉층이다. 은닉층에 있는 뉴런의 갯수를 $n$으로 표기한다. 그리고 다양한 $n$을 가지고 실험을 진행할 것이다. 위의 예는 적은 수의 은닉층이며 $n=15$개의 뉴런을 포함한다.&lt;/p&gt;
+
+&lt;p&gt;출력층은 10개의 뉴런을 포함한다. 예를들어, 만약 첫번째 뉴런이 발화하여 출력이 대략 $1$에 가깝다면, 네트워크가 입력 이미지를 $0$이라고 가리키는 것이다. 만약 두번째 뉴런이 발화하여 출력이 대략 $1$에 가깝다면, 이미지를 $1$로 가리키는 것이다. 정확히 말하자면, 출력뉴런에 $0$부터 $9$까지 숫자를 매기고, 어느 출력뉴런에서 가장 큰 활성도 (activation)를 가지는지 알아내는 것이다. 만약 $6$번째 출력뉴런 값이 가장 크다면, 네트워크는 입력 숫자를 $6$으로 짐작한다는 뜻이다.&lt;/p&gt;
+
+&lt;p&gt;왜 출력 뉴런의 갯수가 하필 $10$개인지 궁금할 것이다. 그 이유는 이 네트워크의 목적이 숫자 $0, 1, 2, \ldots , 9$를 분류하는 것이기 때문이다. 따라오는 생각은 각각의 출력이 $0$과 $1$중 어느 쪽에 가까운가에 따라서 이진수 값으로 취할 수 있다고 생각하는 것이다. 그러면 4개의 출력뉴런만으로 부호화가 충분히 가능하다. 당연히, $2^4 = 16$개이므로, 충분히 쓰고도 남는다. 그런데 왜 10개의 뉴런을 꼭 사용해야 하는 것일까? 비효율적이라고 생각하지 않는가? 그것의 타당성은 경험에서 나온 것이다.  이 특정한 예제에서 두가지 네트워크 모델을 실험을 해 비교해 보면, $10$개의 출력뉴런을 포함하는 네트워크가 4개의 출력뉴런을 포함하는 네트워크보다 숫자를 더 잘 인식했다. 하지만 왜 $10$개의 출력뉴런이 있으면 더 나은지 궁금하게 된다. $4$개-출력 부호화 방식 대신에 $10$개-출력 부호화 방식을 쓰도록 미리 알려주는 휴리스틱같은 것은 없을까?&lt;/p&gt;
+
+&lt;p&gt;이것을 이해하려면, 뉴럴네트워크가 동작하는 첫번째 원리를 다시 떠올려봐야 한다. 우선 $10$개의 출력뉴런이 있는 경우를 보자. 이 경우 첫번째 출력뉴런에 집중하여 보면, 이 뉴런은 입력 이미지의 숫자가 $0$인지 아닌지  결정한다. 은닉층에 있는 뉴런에서 증거들을 저울질하여 판단하는 것이다. 그렇다면 은닉뉴런 (hidden neuron)들은 어떤 일을 하는 것일까? 여기서 논의의 편리를 위해 은닉층의 첫번째 뉴런이 다음와 같은 이미지인지 아닌지 검출(detection)한다고 가정해 보자:&lt;/p&gt;
+
+&lt;p&gt;입력 픽셀들이 위의 이미지와 겹친다면 큰 가중치를 곱하고, 그렇지 않은 픽셀에는 작은 가중치를 곱하는 방식으로 검출하는 것이다. 은닉층의 두번째, 세번째 그리고 네번째 뉴런들도 비슷한 방법을 아래에 이미지들이 존재하는지 입력과 겹친 부분을 판단하여 감지할 수 있다고 가정해 보자:&lt;/p&gt;
+
+&lt;p&gt;짐작했듯이, 앞선 4개의 이미지를 모두 조합하면 $0$을 가리키는 이미지가 된다.&lt;/p&gt;
+
+&lt;p&gt;따라서, 만약 이 은닉뉴런 4개 모두 발화한다면 우리는 이 이미지를 숫자 $0$라고 결론내릴 수 있다. 물론, 이런 종류의 증거들만이 이미지를 $0$이라고 결론내리게 하는 유일한 수단은 아니다. 이것 말고도 다양한 방식을 사용할 수 있다. 앞의 4개의 이미지에다 살짝 위치변화나 왜곡을 가하는 방식도 사용할 수 있다. 어쨋든, 이 방법은 적어도 0을 인식하기에 충분해 보인다.&lt;/p&gt;
+
+&lt;p&gt;네트워크 함수들을 이런 방식으로 상상한다면, 왜 출력뉴런이 4개일 때보다 10개일때 네트워크가 더 잘 작동하는지 충분히 설명할 수 있다. 만약 출력뉴런이 4개라면, 첫번째 출력뉴런은 이진수 표현으로 최상위 비트의 숫자 (여기에선 $8$에서 $15$까지의 수)가 무엇인지 결정을 시도할 것이다. 이 경우에는 최상위 비트를 위에 열거한 간단한 모양과 어떻게 연관시킬 지 명확하지 않다. 은닉층에 있는 숫자를 이루는 선분조각들과 출력단에 있는 최상위 비트가 역사적인 어떤 좋은 이유로 서로 연관되어 있다고 상상하기 어려운 것이다.&lt;/p&gt;
+
+&lt;p&gt;자, 그럼에도 불구하고 이건 휴리스틱일 뿐이다. 어떤것도 3층구조의 뉴럴네트워크가 내가 설명한 방식, 즉 은닉뉴런들이 간단한 모양요소들을 검출하는 방식으로 작동해야 한다고 말하지는 않는다. 아마 좀더 현명한 학습 알고리즘이라면 4개의 출력뉴런에 대해 잘 할당된 가중치를 찾아낼지 모른다. 어쨌든, 내가 실험한 결과에서 10개의 출력뉴런을 쓰는 휴리스틱이 잘 작동했기 때문에,  뉴럴네트워크 구조를 설계하는데 이 휴리스틱이 여러분의 시간을 많이 절약해 줄 수 있을 것이다.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;연습문제&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;앞서 보인 3층구조의 네트워크에 별도의 층을 추가하여 어떤 숫자에 대한 비트단위 표현을 결정할 수 있는 방법이 있다. 별도층은 이전 층에서 나온 출력을 다음과 같은 그림같이 이진수 표현으로 변환한다. 이 새로운 출력층에 대한 가중치와 편향치들을 모두 찾아라. 처음 3개층에 있는 뉴런들은 다음 사항을 가정한다. 이들의 3번째 층 (즉, 오래된 출력층)에서 정확한 출력은 활성도가 적어도 $0.99$ 이상이 되어야 하고, 부정확한 출력은 활성도가 $0.01$보다 적어야 한다.&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <link>http://galji.github.io//2016/01/17/nndl_ch01_asimplenetwork</link>
+                <guid>http://galji.github.io//2016/01/17/nndl_ch01_asimplenetwork</guid>
+                <pubDate>2016-01-17T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 4부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neural네트워크sanddeeplearning.com/chap1.html&quot;&gt;http://neural네트워크sanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;뉴럴네트워크 구조&lt;/h3&gt;
+
+&lt;p&gt;다음 절에서 나는 손글씨 숫자들을 꽤 잘 분류할 수 있는 뉴럴네트워크를 소개할 것이다. 따라서, 이 네트워크에서 각 부분들에 대한 이름을 붙이는 것이 용어들을 설명하는데 도움이 될 것 같다. 아래 그림과 같은 네트워크가 있다고 생각해 보자:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/tikz10.png&quot; alt=&quot;handwritten digits&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 네트워크에서 가장 왼쪽에 있는 층은 앞서 언급했듯이 입력층이라고 부르며, 입력층 안에 있는 뉴런들을 입력뉴런이라고 부른다. 가장 오른쪽 층은 출력층이라고 부르며 출력뉴런들을 포함한다 (여기서는 단 하나의 출력뉴런이 있다). 중간 층은 입력층이나 출력층도 아니므로 은닉층(hiden layer)라고 부른다. “은닉”이라는 용어가 조금 신비하게 들릴지 모른다. 이 용어를 처음 들었을때, 나는 이것에 철학적인 혹은 수학적인 심오함이 있을거라 생각했다). 그러나 은닉이라는 단어는 입력도 출력도 아닌 것을 의미할 뿐이다. 위에 예시된 네트워크는 한 개의 은닉층이 있지만 여러 개의 은닉층도 가능하다. 예를 들어, 아래의  4층짜리 네트워크에서 은닉층은 두 개이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/tikz11.png&quot; alt=&quot;handwritten digits&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;역사적인 이유로 위와 같은 시그모이드 뉴런 네트워크를 다층 퍼셉트론 (multilayer perceptron)이나 MLP라는 이름으로 부르기도 한다. 사실, 좀 혼동스러울 것이다. 이 책에서는 혼란을 피하기 위해 MLP라는 용어를 쓰지 않겠다. 그러나 이러한 용어가 쓰이고 있다는 사실은 알고 있어야 한다.&lt;/p&gt;
+
+&lt;p&gt;뉴럴네트워크의 입력층과 출력층을 설계(design)하기는 쉬워보인다. 예를들면, 어떤 손글씨 숫자를 “$9$”인지 판별하고 싶다고 가정해 보자. 가장 자연스러워 보이는 방법은, 이미지에서 픽셀 밝기를 입력뉴런으로 부호화(encoding)하여 네트워크를 만드는 것이다. 만약, 이미지가 $64 \times 64$ 크기의 회색조(greyscale) 이미지라면, $64 \times 64$개, 즉 $4096$개의 입력뉴런이 필요하다. 여기서의 밝기는 원본 밝기를 $0$에서 $1$ 사이로 정규화(normalization)한 것이다. 이 출력층에는 하나의 뉴런만 포함하고 있다. 만약, 출력값이 $0.5$보다 작으면 “입력 이미지는 $9$가 아니다”라고 가리킬 것이다. 그리고 출력값이 $0.5$보다 크면 “입력 이미지는 $9$다”라고 가리킬 것이다.&lt;/p&gt;
+
+&lt;p&gt;뉴럴네트워크에서 입력층이나 출력층을 설계하는 것은 꽤 쉬운 반면에, 은닉층을 설계하는 것은 예술이라고 말할 수 있을 정도로 어렵다. hidden layer를 디자인 하는것은 꽤나 어려워 보인다. 특히, 경험으로 얻은  몇개의 규칙만으로 은닉층을 전체적으로 설계하기는 불가능하다. 대신에, 뉴럴네트워크 연구자들은 네트워크를 원하는 방향으로 움직이게끔 도와주는 다양한 설계 휴리스틱(design heuristic)을 개발했다. 예를 들어, 이러한 휴리스틱은 두 개의 변수, 즉 네트워크가 학습하는데 소요되는 시간과 은닉층 갯수의 균형을 어떻게 맞출 지 결정한다. 그런 몇 가지 설계 휴리스틱은 나중에 살펴볼 것이다.&lt;/p&gt;
+
+&lt;p&gt;우리는 지금까지 한 층의 출력이 이어지는 층의 입력이 되는 뉴럴네트워크에 대해 논의하고 있다. 이 뉴럴네트워크를 &lt;em&gt;전향(feedforward)&lt;/em&gt; 네트워크라 부른다. 전향 네트워크는 루프(loop)가 존재하지 않으므로 정보의 반복적인 순환이 없으며, 정보를 앞쪽 방향으로만 전달하고 뒤쪽 방향으로는 전달하지 않는다.  그런 루프가 존재한다면, $\sigma$함수에 대한 입력이 $\sigma$함수에 대한 출력으로부터 다시 영향받는 상황도 그려볼 수 있다. 이런 상황은 타당하지 않으므로 루프는 허용되지 않는다.&lt;/p&gt;
+
+&lt;p&gt;그러나, 어떤 뉴럴네트워크 모델은 피드백 루프가 가능하기도 하다. 이런 모델은 재귀 (recurrent) 뉴럴네트워크라고 한다. 이 모델의 아이디어는 진행이 중단될때까지 제한된 시간동안 계속 발화하는 뉴런을 모방하는 것이다. 여기서, 뉴런이 발화하면 그 다음 뉴런들이 자극을 받아서 조금 늦게 그리고 마찬가지로 제한된 시간동안 계속 발화한다. 이것이 많은 뉴런들이 여전히 발화하는 원인이 되므로 시간이 흐르면서 뉴런의 발화는 폭포처럼 쏟아진다.&lt;/p&gt;
+
+&lt;p&gt;재귀 뉴럴네트워크는 전향 뉴럴네트워크에 비해 덜 유명하다. 그 이유는 부분적으로 지금까지 재귀 네트워크에 대한 학습 알고리즘이 덜 강력했기 때문이다. 하지만, 재귀 네트워크는 아직도 굉장히 흥미롭다. 우리의 뇌가 작동하는 방식이 전형 네트워크보다 더 닮아있기 때문이다. 재귀 네트워크가 전형 네트워크가 풀기 대단히 어려운 중요한 문제를 쉽게 해결할 수도 있다. 그러나, 이 책에서는 일반적으로 많이 쓰이는 전형 네트워크로 범위를 한정하고 집중하기로 하자.&lt;/p&gt;
+</description>
+                <link>http://galji.github.io//2016/01/16/nndl_ch01_neuralnetworkarchitecture</link>
+                <guid>http://galji.github.io//2016/01/16/nndl_ch01_neuralnetworkarchitecture</guid>
+                <pubDate>2016-01-16T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 4부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neural네트워크sanddeeplearning.com/chap1.html&quot;&gt;http://neural네트워크sanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;뉴럴네트워크 구조&lt;/h3&gt;
+
+&lt;p&gt;다음 절에서 나는 손글씨 숫자들을 꽤 잘 분류할 수 있는 뉴럴네트워크를 소개할 것이다. 따라서, 이 네트워크에서 각 부분들에 대한 이름을 붙이는 것이 용어들을 설명하는데 도움이 될 것 같다. 아래 그림과 같은 네트워크가 있다고 생각해 보자:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/tikz10.png&quot; alt=&quot;handwritten digits&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 네트워크에서 가장 왼쪽에 있는 층은 앞서 언급했듯이 입력층이라고 부르며, 입력층 안에 있는 뉴런들을 입력뉴런이라고 부른다. 가장 오른쪽 층은 출력층이라고 부르며 출력뉴런들을 포함한다 (여기서는 단 하나의 출력뉴런이 있다). 중간 층은 입력층이나 출력층도 아니므로 은닉층(hiden layer)라고 부른다. “은닉”이라는 용어가 조금 신비하게 들릴지 모른다. 이 용어를 처음 들었을때, 나는 이것에 철학적인 혹은 수학적인 심오함이 있을거라 생각했다). 그러나 은닉이라는 단어는 입력도 출력도 아닌 것을 의미할 뿐이다. 위에 예시된 네트워크는 한 개의 은닉층이 있지만 여러 개의 은닉층도 가능하다. 예를 들어, 아래의  4층짜리 네트워크에서 은닉층은 두 개이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/assets/images/tikz11.png&quot; alt=&quot;handwritten digits&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;역사적인 이유로 위와 같은 시그모이드 뉴런 네트워크를 다층 퍼셉트론 (multilayer perceptron)이나 MLP라는 이름으로 부르기도 한다. 사실, 좀 혼동스러울 것이다. 이 책에서는 혼란을 피하기 위해 MLP라는 용어를 쓰지 않겠다. 그러나 이러한 용어가 쓰이고 있다는 사실은 알고 있어야 한다.&lt;/p&gt;
+
+&lt;p&gt;뉴럴네트워크의 입력층과 출력층을 설계(design)하기는 쉬워보인다. 예를들면, 어떤 손글씨 숫자를 “$9$”인지 판별하고 싶다고 가정해 보자. 가장 자연스러워 보이는 방법은, 이미지에서 픽셀 밝기를 입력뉴런으로 부호화(encoding)하여 네트워크를 만드는 것이다. 만약, 이미지가 $64 \times 64$ 크기의 회색조(greyscale) 이미지라면, $64 \times 64$개, 즉 $4096$개의 입력뉴런이 필요하다. 여기서의 밝기는 원본 밝기를 $0$에서 $1$ 사이로 정규화(normalization)한 것이다. 이 출력층에는 하나의 뉴런만 포함하고 있다. 만약, 출력값이 $0.5$보다 작으면 “입력 이미지는 $9$가 아니다”라고 가리킬 것이다. 그리고 출력값이 $0.5$보다 크면 “입력 이미지는 $9$다”라고 가리킬 것이다.&lt;/p&gt;
+
+&lt;p&gt;뉴럴네트워크에서 입력층이나 출력층을 설계하는 것은 꽤 쉬운 반면에, 은닉층을 설계하는 것은 예술이라고 말할 수 있을 정도로 어렵다. hidden layer를 디자인 하는것은 꽤나 어려워 보인다. 특히, 경험으로 얻은  몇개의 규칙만으로 은닉층을 전체적으로 설계하기는 불가능하다. 대신에, 뉴럴네트워크 연구자들은 네트워크를 원하는 방향으로 움직이게끔 도와주는 다양한 설계 휴리스틱(design heuristic)을 개발했다. 예를 들어, 이러한 휴리스틱은 두 개의 변수, 즉 네트워크가 학습하는데 소요되는 시간과 은닉층 갯수의 균형을 어떻게 맞출 지 결정한다. 그런 몇 가지 설계 휴리스틱은 나중에 살펴볼 것이다.&lt;/p&gt;
+
+&lt;p&gt;우리는 지금까지 한 층의 출력이 이어지는 층의 입력이 되는 뉴럴네트워크에 대해 논의하고 있다. 이 뉴럴네트워크를 &lt;em&gt;전향(feedforward)&lt;/em&gt; 네트워크라 부른다. 전향 네트워크는 루프(loop)가 존재하지 않으므로 정보의 반복적인 순환이 없으며, 정보를 앞쪽 방향으로만 전달하고 뒤쪽 방향으로는 전달하지 않는다.  그런 루프가 존재한다면, $\sigma$함수에 대한 입력이 $\sigma$함수에 대한 출력으로부터 다시 영향받는 상황도 그려볼 수 있다. 이런 상황은 타당하지 않으므로 루프는 허용되지 않는다.&lt;/p&gt;
+
+&lt;p&gt;그러나, 어떤 뉴럴네트워크 모델은 피드백 루프가 가능하기도 하다. 이런 모델은 재귀 (recurrent) 뉴럴네트워크라고 한다. 이 모델의 아이디어는 진행이 중단될때까지 제한된 시간동안 계속 발화하는 뉴런을 모방하는 것이다. 여기서, 뉴런이 발화하면 그 다음 뉴런들이 자극을 받아서 조금 늦게 그리고 마찬가지로 제한된 시간동안 계속 발화한다. 이것이 많은 뉴런들이 여전히 발화하는 원인이 되므로 시간이 흐르면서 뉴런의 발화는 폭포처럼 쏟아진다.&lt;/p&gt;
+
+&lt;p&gt;재귀 뉴럴네트워크는 전향 뉴럴네트워크에 비해 덜 유명하다. 그 이유는 부분적으로 지금까지 재귀 네트워크에 대한 학습 알고리즘이 덜 강력했기 때문이다. 하지만, 재귀 네트워크는 아직도 굉장히 흥미롭다. 우리의 뇌가 작동하는 방식이 전형 네트워크보다 더 닮아있기 때문이다. 재귀 네트워크가 전형 네트워크가 풀기 대단히 어려운 중요한 문제를 쉽게 해결할 수도 있다. 그러나, 이 책에서는 일반적으로 많이 쓰이는 전형 네트워크로 범위를 한정하고 집중하기로 하자.&lt;/p&gt;
+</description>
+                <link>http://galji.github.io//2016/01/16/nndl_ch01_neuralnetworkarchitecture</link>
+                <guid>http://galji.github.io//2016/01/16/nndl_ch01_neuralnetworkarchitecture</guid>
+                <pubDate>2016-01-16T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 3부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neural네트워크sanddeeplearning.com/chap1.html&quot;&gt;http://neural네트워크sanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;시그모이드 뉴런&lt;/h3&gt;
+
+&lt;p&gt;학습 알고리즘이라고 하니 좀 대단해 보인다. 하지만, 어떻게 뉴럴네트워크에다 이런 알고리즘을 적용할 수 있을까? 우리가 퍼셉트론을 어떤 문제를 해결하기 위해 사용한다고 가정해 보자. 예를들어, 손글씨 숫자를 스캔하여 픽셀 데이터를 얻고 그것을 네트워크의 입력으로 넣었다고 말이다. 그렇다면, 네트워크가 가중치와 편향치를 학습하여 스캔된 숫자를 정확히 분류하길 원할 것이다. 학습이 어떻게 작동하는지 보기 위해, 네트워크에서 가중치나 편향치를 살짝 변화시켜 보자. 가중치를 살짝 변경해서 네트워크에서 출력도 그에 맞게 적당히 변화하길 바라는 것이다. 금방 알게 되겠지만, 이런 속성이 학습을 가능하게 한다. 이것이 개략적으로 우리가 원하는 것이다 (당연히, 이 네트워크를 손글씨 인식에 쓰기엔 너무 단순하다).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz8.png&quot; alt=&quot;handwritten digits&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;만약 가중치나 편향치를 살짝 변화시킬때 출력도 조금만 변화될 뿐이라면, 이 사실로 볼때 좀 더 우리가 원하는 방향으로 네트워크가 작동하도록 가중치나 편향치를 변경시킬 수도 있을 이다. 예를 들어, 네트워크가 이미지를 숫자 “$9$”를 “$8$”이라고 잘못 분류했다고 가정하자. 이 때 이미지를 분류하여 숫자 “$9$”에 조금씩 가까워지도록 하기 위해  어떻게 가중치와 편향치를 변경해야 하는지가 문제이다. 조금씩 가중치와 편향치를 변화하여 반복하게 되면 점점 더 좋은 결과를 얻게된다. 이것이 네트워크가 학습하는 원리이다.&lt;/p&gt;
+
+&lt;p&gt;그런데 네트워크가 퍼셉트론으로 이루어져 있다면 위의 학습이 불가능하다. 당연하게도, 가중치와 편향치를 조금 건드리면 네트워크의 결과가 급격히 변동한다. 사실, $0$에서 $1$처럼 급격하게 바뀐다. 이러한 급격한 변동은 네트워크의 나머지 부분도 완전히 이해하기 어렵고 복잡하게 변하게 한다. 그래서 이미지가 숫자 “9”로 올바로 분류가 되는 한편, 다른 숫자 이미지를 인지하는 네트워크의 작용은 통제하기 어렵게 변할지도 모른다. 이 때문에,  네트워크가 가중치와 편향치를 점진적으로 변화시키는 방법이 좋은 결과로 수렴하기 어렵게 한다. 다행이 이러한 문제를 성공적으로 해결할 방법이 있긴 하다. 하지만, 퍼셉트론으로 이것을 어떻게 해결할 지 지금 당장은 불명확해 보인다.&lt;/p&gt;
+
+&lt;p&gt;이 문제는 새로운 인공뉴런의 종류인 시그모이드 뉴런(sigmoid neuron)으로 해결할 수 있다. 시그모이드 뉴런은 퍼셉트론과 비슷하지만, 가중치와 편향치를 약간 변동시키면 출력에도 약간의 변화만을 일으키도록 개선되었다. 이 사실이 퍼셉트론에 비해 시그모이드 뉴런의 네트워크가 더 잘 학습하는 중대한 요인이다.&lt;/p&gt;
+
+&lt;p&gt;좋다, 그럼 시그모이드 뉴런을 묘사해보자. 시그모이드 뉴런도 퍼셉트론을 그렸던 방식처럼 그려보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz9.png&quot; alt=&quot;handwritten digits&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;시그모이드 뉴런도 퍼셉트론처럼 $x_1$, $x_2,\ldots$같은 입력을 받는다. 그렇지만 $0$과 $1$ 대신에 그 사이값의 입력도 가능하다. 그래서 $0.638\ldots$ 같은 값도 시그모이드 뉴런에서는 유효한 입력이다. 또한, 시그모이드 뉴런에는 $w_1, w_2, \ldots$와 $b$ 같은 가중치와 총 편향치가 존재한다. 하지만 출력은 $0$이나 $1$ 아니다. 츨력은 실수로서 $\sigma(w \cdot x+b)$의 값을 가지는데, 여기서 $\sigma$는 &lt;em&gt;시그모이드 함수&lt;/em&gt;이다. 시그모이드 함수의 정의는 다음과 같다:&lt;/p&gt;
+
+&lt;p&gt;\begin{eqnarray}
+\label{eq:sig_func}
+ \sigma(z) \equiv \frac{1}{1+e^{-z}}. \tag{3}\end{eqnarray}&lt;/p&gt;
+
+&lt;p&gt;위 수식을 명시적으로 보이자면, 입력 $x_1, x_2,\ldots$, 가중치 $w_1, w_2,\ldots$ 그리고 총 편향치 $b$를 가진 시그모이드 뉴런은 아래와 같다.&lt;/p&gt;
+
+&lt;p&gt;\begin{eqnarray}
+\label{eq:sig_func_2}
+ \frac{1}{1+\exp(-\sum_j w_j x_j-b)}. \tag{4}\end{eqnarray}&lt;/p&gt;
+
+&lt;p&gt;처음 시그모이드 뉴런의 수식을 보면 퍼셉트론과는 매우 달라보인다. 시그모이드 함수의 대수적(algebraic) 형태는 이것에 익숙한 사람이 아니라면 뭔가 불투명하고 어지럽게 보일지 모른다. 당신이 이미 친숙한 경우가 아니라면 접근하기 어려워 보일지도 모른다. 복잡한 수식이 이해를 막는 장벽이 될 수는 없다. 왜냐하면 두 자기 형태의 뉴런 사이에는 많은 공통점이 있고, 시그모이드 함수의 대수적 형태가 퍼셉트론보다 좀 더 많은 기술적인 세부사항이 있는 것 뿐이다.&lt;/p&gt;
+
+&lt;p&gt;퍼셉트론과의 유사성을 이해하기 위해, $z \equiv w \cdot x + b$으로 표시되는 $z$가 큰 양수라고 가정해보자. 그렇다면 $e^{-z}\approx 0$가 되며 $\sigma(z)\approx 1$이 된다. 다시 말해, $z$가 큰 양수라면, 시그모이드 뉴런의 출력은 대략 $1$이므로 퍼셉트론의 출력인 $1$과 매우 비슷해진다. 반대로, $z$값이 큰 음수라면 어떨까. 그렇다면 $e^{-z}\approx \infty$가 되며 $\sigma(z)\approx 0$이 된다. 그래서 만약 $z$가 큰 음수라면, 시그모이드 뉴런의 출력은 대략 $0$이므로 퍼셉트론의 출력인 $0$과 매우 비슷해진다. 퍼셉트론 모델과 큰 편차가 생기는 지점은 오로지 $w \cdot x+b$가 적당한 값을 가지는 구간 뿐이다.&lt;/p&gt;
+
+&lt;p&gt;그렇다면 $\sigma$의 대수적 형태는 어떠한가? 그것은 어떻게 이해할 수 있을까? 사실,  $\sigma$의 정확한 형태보다 정말 중요한 것은 함수의 플롯(plot) 형태이다. 함수의 플롯은 함수의 좌표를 찍었을 때 그려지는 모양이다. 여기 아래 그림은 함수를 플롯한 것이다:&lt;/p&gt;
+
+&lt;div id=&quot;sigmoid_graph&quot;&gt;&lt;a name=&quot;sigmoid_graph&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;script src=&quot;http://d3js.org/d3.v3.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+function s(x) {return 1/(1+Math.exp(-x));}
+var m = [40, 120, 50, 120];
+var height = 290 - m[0] - m[2];
+var width = 600 - m[1] - m[3];
+var xmin = -5;
+var xmax = 5;
+var sample = 400;
+var x1 = d3.scale.linear().domain([0, sample]).range([xmin, xmax]);
+var data = d3.range(sample).map(function(d){ return {
+        x: x1(d), 
+        y: s(x1(d))}; 
+    });
+var x = d3.scale.linear().domain([xmin, xmax]).range([0, width]);
+var y = d3.scale.linear()
+                .domain([0, 1])
+                .range([height, 0]);
+var line = d3.svg.line()
+    .x(function(d) { return x(d.x); })
+    .y(function(d) { return y(d.y); })
+var graph = d3.select(&quot;#sigmoid_graph&quot;)
+    .append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, width + m[1] + m[3])
+    .attr(&quot;height&quot;, height + m[0] + m[2])
+    .append(&quot;g&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + m[3] + &quot;,&quot; + m[0] + &quot;)&quot;);
+var xAxis = d3.svg.axis()
+                  .scale(x)
+                  .tickValues(d3.range(-4, 5, 1))
+                  .orient(&quot;bottom&quot;)
+graph.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;x axis&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(0, &quot; + height + &quot;)&quot;)
+    .call(xAxis);
+var yAxis = d3.svg.axis()
+                  .scale(y)
+                  .tickValues(d3.range(0, 1.01, 0.2))
+                  .orient(&quot;left&quot;)
+                  .ticks(5)
+graph.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;y axis&quot;)
+    .call(yAxis);
+graph.append(&quot;path&quot;).attr(&quot;d&quot;, line(data));
+graph.append(&quot;text&quot;)
+     .attr(&quot;class&quot;, &quot;x label&quot;)
+     .attr(&quot;text-anchor&quot;, &quot;end&quot;)
+     .attr(&quot;x&quot;, width/2)
+     .attr(&quot;y&quot;, height+35)
+     .text(&quot;z&quot;);
+graph.append(&quot;text&quot;)
+        .attr(&quot;x&quot;, (width / 2))             
+        .attr(&quot;y&quot;, -10)
+        .attr(&quot;text-anchor&quot;, &quot;middle&quot;)  
+        .style(&quot;font-size&quot;, &quot;16px&quot;) 
+        .text(&quot;시그모이드 함수&quot;);
+&lt;/script&gt;
+
+&lt;p&gt;이 형태는 스텝함수(step function)처럼 원본 함수를 평평하게 만든 것이다: 
+&lt;/p&gt;
+&lt;div id=&quot;step_graph&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+function s(x) {return x &lt; 0 ? 0 : 1;}
+var m = [40, 120, 50, 120];
+var height = 290 - m[0] - m[2];
+var width = 600 - m[1] - m[3];
+var xmin = -5;
+var xmax = 5;
+var sample = 400;
+var x1 = d3.scale.linear().domain([0, sample]).range([xmin, xmax]);
+var data = d3.range(sample).map(function(d){ return {
+        x: x1(d), 
+        y: s(x1(d))}; 
+    });
+var x = d3.scale.linear().domain([xmin, xmax]).range([0, width]);
+var y = d3.scale.linear()
+                .domain([0,1])
+                .range([height, 0]);
+var line = d3.svg.line()
+    .x(function(d) { return x(d.x); })
+    .y(function(d) { return y(d.y); })
+var graph = d3.select(&quot;#step_graph&quot;)
+    .append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, width + m[1] + m[3])
+    .attr(&quot;height&quot;, height + m[0] + m[2])
+    .append(&quot;g&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + m[3] + &quot;,&quot; + m[0] + &quot;)&quot;);
+var xAxis = d3.svg.axis()
+                  .scale(x)
+                  .tickValues(d3.range(-4, 5, 1))
+                  .orient(&quot;bottom&quot;)
+graph.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;x axis&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(0, &quot; + height + &quot;)&quot;)
+    .call(xAxis);
+var yAxis = d3.svg.axis()
+                  .scale(y)
+                  .tickValues(d3.range(0, 1.01, 0.2))
+                  .orient(&quot;left&quot;)
+                  .ticks(5)
+graph.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;y axis&quot;)
+    .call(yAxis);
+graph.append(&quot;path&quot;).attr(&quot;d&quot;, line(data));
+graph.append(&quot;text&quot;)
+     .attr(&quot;class&quot;, &quot;x label&quot;)
+     .attr(&quot;text-anchor&quot;, &quot;end&quot;)
+     .attr(&quot;x&quot;, width/2)
+     .attr(&quot;y&quot;, height+35)
+     .text(&quot;z&quot;);
+graph.append(&quot;text&quot;)
+        .attr(&quot;x&quot;, (width / 2))             
+        .attr(&quot;y&quot;, -10)
+        .attr(&quot;text-anchor&quot;, &quot;middle&quot;)  
+        .style(&quot;font-size&quot;, &quot;16px&quot;) 
+        .text(&quot;스텝함수&quot;);
+&lt;/script&gt;
+
+&lt;p&gt;만약 $\sigma$가 스텝함수였다면, 시그모이드 뉴런은 퍼셉트론과 같다. 왜냐하면, 시그모이드 뉴런의 출력을 1이나 0으로 결정하는 요인은 $w \cdot x + b$값이 양수인지 음수인지에만 관련있기 때문이다. 하지만 원본 $\sigma$ 함수를 사용하면서 퍼셉트론을 매끈한 모양으로 만들 수 있다. 따라서 세부적인 형태보다는 이러한 매끈함이 $\sigma$ 함수의 핵심이다. $\sigma$의 매끈함은 작은 가중치 변화량 $\Delta w_j$와 작은 편향치 변화량 $\Delta b$이 뉴런에서 작은 출력 변화 $\Delta \mbox{output}$를 줄 수 있다는 것을 의미한다. 미분을 이용하면 $\Delta \mbox{output}$이 대략 아래와 같이 근사된다.&lt;/p&gt;
+
+&lt;p&gt;\begin{eqnarray} 
+\label{eq:delta_output}
+  \Delta \mbox{output} \approx \sum_j \left(\frac{\partial \, \mbox{output}}{\partial w_j}
+  \Delta w_j + \frac{\partial \, \mbox{output}}{\partial b} \Delta b\right).
+\tag{5}\end{eqnarray}&lt;/p&gt;
+
+&lt;p&gt;여러분이 편도함수(partial derivatives)에 익숙하지 않다고 해서 두려워 하지 마시라!  위 수식은 편미분이 등장해 복잡해보이지만, 사실 매우 간단한 걸 이야기해 준다 (좋은 소식이다): $\Delta \mbox{output}$는 $\Delta w_j$와 $\Delta b$의 선형 함수ㅔ 불과하다. 이러한 선형성은 가중치와 편향치를 살짝 변화시켜서 우리가 희망하는 어떤 작은 변화를 출력에서 얻기 쉽다는 것을 의미한다. 따라서, 시그모이드 뉴런이 퍼셉트론의 형태와 질적으로 많이 비슷해보일지라도, 원하는 출력을 얻기 위해 가중치와 편향치를 바꾸는 방법을 알아내기 훨씬 쉽다.&lt;/p&gt;
+
+&lt;p&gt;$\sigma$ 함수 본연의 형식이 아니라 플롯 모양이 훨씬 중요하다면, 왜 우리는 수식 \eqref{eq:sig_func}은 어떻게 나오게 된걸까? 실제로, 우리는 이따금씩 몇몇 다른 활성화 함수(activation function)들인 $f(\cdot)$에 대하여 출력이 $f(w \cdot x + b)$인 뉴런을 다룰 것이다다. 다른 활성화 함수를 사용할때 가장 큰 변화는 수식 \eqref{eq:delta_output}에 있는 특정한 변수에 대한 편미분값의 변화이다. 나중에 알게되겠지만, $\sigma$함수를 이용해서 이러한 편도함수를 계산하는 것은 지수함수의 미분에서 특별한 성질을 이용하면 간단하다. 어쨌든, $\sigma$함수는 뉴럴네트워크에서 보편적으로 쓰이며, 이 책에서 가장 많이 등장하는 활성화 함수다.&lt;/p&gt;
+
+&lt;p&gt;시그모이드 뉴런의 출력을 어떻게 해석해야 할까? 퍼셉트론과 시그모이드 뉴런의 가장 큰 차이는 시그모이드 뉴런의 출력이 $0$과 $1$만이 아니라는 것이다. 출력값이 $0$과 $1$ 사이의 실수이므로 $0.173$이나 $0.689$같은 값들도 타당한 출력이다. 이러한 속성은 매우 유용하다. 예를 들어, 한 이미지에 있는 픽셀값들의 평균 밝기(intensity)를 뉴럴네트워크의 출력으로 나타낼 수 있게 된다. 하지만 이러한 속성도 가끔은 골칫거리가 될 수 있다. 만약 “입력 이미지가 $9$다”나 “입력 이미지가 $9$가 아니다”처럼 두 가지 상태만을 출력으로 하는 네트워크가 있다고 생각해 보자. 당연히, 퍼셉트론처럼 0과 1읠 출력을 준다면 문제는 쉽다. 하지만, 실제로 중간에 있는 출력에 대해 분류할 수 있도록 하나의 규칙처럼 쓰이는 관례(convention)을 정할 수 있다. 예를 들어, $0.5$와 같거나 더 큰 출력이라면 “$9$”로 분류 하고, 작다면 “$9$”가 아닌 것으로 분류하는 것이다. 혼란을 피하기 위해서, 매번 그것이 관례임을 분명하게 선언하고 사용할 것임을 알려드린다.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;연습문제&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p style=&quot;font-weight: bold&quot;&gt; 퍼셉트론을 모방하는 시그모이드 뉴런, 파트 1&lt;/p&gt;
+    &lt;p&gt;– 퍼셉트론 네트워크의 모든 가중치와 편향치에다 양의 상수 $c$를 곱하더라도 네트워크의 거동이 변하지 않음을 보여라.
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p style=&quot;font-weight: bold&quot;&gt; 퍼셉트론을 모방하는 시그모이드 뉴런, 파트 2&lt;/p&gt;
+    &lt;p&gt;– 위의 문제와 설정이 같다고 전제한다.  퍼셉트론 네트워크에 모든 입력이 정해졌다고 가정하자. 실제 입력값은 필요가 없고 그저 고정된 입력이 필요할 뿐이다. 또한, 네트워크에서 어떤 특정한 퍼셉트론으로의 입력 $x$가 $w\cdot x + b \neq 0$을 만족하는 가중치와 편향치들이 있다고 가정하자. 이제 네트워크에서 모든 퍼셉트론 시그모이드 뉴런으로 교체하자. 그리고 모든 가중치와 편향치에다 양의 상수 $c$를를 곱하자. $c\to\infty$라면, 이러한 시그모이드 뉴런 네트워크의 거동은 퍼셉트론 네트워크와 정확히 일치함을 보여라. 퍼셉트론 중 하나가 $w\cdot x + b = 0$인 경우 어떻게 이것이 실패하는지 보여라.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <link>http://galji.github.io//2016/01/15/nndl_ch01_sigmoidneuron</link>
+                <guid>http://galji.github.io//2016/01/15/nndl_ch01_sigmoidneuron</guid>
+                <pubDate>2016-01-15T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 3부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neural네트워크sanddeeplearning.com/chap1.html&quot;&gt;http://neural네트워크sanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;시그모이드 뉴런&lt;/h3&gt;
+
+&lt;p&gt;학습 알고리즘이라고 하니 좀 대단해 보인다. 하지만, 어떻게 뉴럴네트워크에다 이런 알고리즘을 적용할 수 있을까? 우리가 퍼셉트론을 어떤 문제를 해결하기 위해 사용한다고 가정해 보자. 예를들어, 손글씨 숫자를 스캔하여 픽셀 데이터를 얻고 그것을 네트워크의 입력으로 넣었다고 말이다. 그렇다면, 네트워크가 가중치와 편향치를 학습하여 스캔된 숫자를 정확히 분류하길 원할 것이다. 학습이 어떻게 작동하는지 보기 위해, 네트워크에서 가중치나 편향치를 살짝 변화시켜 보자. 가중치를 살짝 변경해서 네트워크에서 출력도 그에 맞게 적당히 변화하길 바라는 것이다. 금방 알게 되겠지만, 이런 속성이 학습을 가능하게 한다. 이것이 개략적으로 우리가 원하는 것이다 (당연히, 이 네트워크를 손글씨 인식에 쓰기엔 너무 단순하다).&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz8.png&quot; alt=&quot;handwritten digits&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;만약 가중치나 편향치를 살짝 변화시킬때 출력도 조금만 변화될 뿐이라면, 이 사실로 볼때 좀 더 우리가 원하는 방향으로 네트워크가 작동하도록 가중치나 편향치를 변경시킬 수도 있을 이다. 예를 들어, 네트워크가 이미지를 숫자 “$9$”를 “$8$”이라고 잘못 분류했다고 가정하자. 이 때 이미지를 분류하여 숫자 “$9$”에 조금씩 가까워지도록 하기 위해  어떻게 가중치와 편향치를 변경해야 하는지가 문제이다. 조금씩 가중치와 편향치를 변화하여 반복하게 되면 점점 더 좋은 결과를 얻게된다. 이것이 네트워크가 학습하는 원리이다.&lt;/p&gt;
+
+&lt;p&gt;그런데 네트워크가 퍼셉트론으로 이루어져 있다면 위의 학습이 불가능하다. 당연하게도, 가중치와 편향치를 조금 건드리면 네트워크의 결과가 급격히 변동한다. 사실, $0$에서 $1$처럼 급격하게 바뀐다. 이러한 급격한 변동은 네트워크의 나머지 부분도 완전히 이해하기 어렵고 복잡하게 변하게 한다. 그래서 이미지가 숫자 “9”로 올바로 분류가 되는 한편, 다른 숫자 이미지를 인지하는 네트워크의 작용은 통제하기 어렵게 변할지도 모른다. 이 때문에,  네트워크가 가중치와 편향치를 점진적으로 변화시키는 방법이 좋은 결과로 수렴하기 어렵게 한다. 다행이 이러한 문제를 성공적으로 해결할 방법이 있긴 하다. 하지만, 퍼셉트론으로 이것을 어떻게 해결할 지 지금 당장은 불명확해 보인다.&lt;/p&gt;
+
+&lt;p&gt;이 문제는 새로운 인공뉴런의 종류인 시그모이드 뉴런(sigmoid neuron)으로 해결할 수 있다. 시그모이드 뉴런은 퍼셉트론과 비슷하지만, 가중치와 편향치를 약간 변동시키면 출력에도 약간의 변화만을 일으키도록 개선되었다. 이 사실이 퍼셉트론에 비해 시그모이드 뉴런의 네트워크가 더 잘 학습하는 중대한 요인이다.&lt;/p&gt;
+
+&lt;p&gt;좋다, 그럼 시그모이드 뉴런을 묘사해보자. 시그모이드 뉴런도 퍼셉트론을 그렸던 방식처럼 그려보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz9.png&quot; alt=&quot;handwritten digits&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;시그모이드 뉴런도 퍼셉트론처럼 $x_1$, $x_2,\ldots$같은 입력을 받는다. 그렇지만 $0$과 $1$ 대신에 그 사이값의 입력도 가능하다. 그래서 $0.638\ldots$ 같은 값도 시그모이드 뉴런에서는 유효한 입력이다. 또한, 시그모이드 뉴런에는 $w_1, w_2, \ldots$와 $b$ 같은 가중치와 총 편향치가 존재한다. 하지만 출력은 $0$이나 $1$ 아니다. 츨력은 실수로서 $\sigma(w \cdot x+b)$의 값을 가지는데, 여기서 $\sigma$는 &lt;em&gt;시그모이드 함수&lt;/em&gt;이다. 시그모이드 함수의 정의는 다음과 같다:&lt;/p&gt;
+
+&lt;p&gt;\begin{eqnarray}
+\label{eq:sig_func}
+ \sigma(z) \equiv \frac{1}{1+e^{-z}}. \tag{3}\end{eqnarray}&lt;/p&gt;
+
+&lt;p&gt;위 수식을 명시적으로 보이자면, 입력 $x_1, x_2,\ldots$, 가중치 $w_1, w_2,\ldots$ 그리고 총 편향치 $b$를 가진 시그모이드 뉴런은 아래와 같다.&lt;/p&gt;
+
+&lt;p&gt;\begin{eqnarray}
+\label{eq:sig_func_2}
+ \frac{1}{1+\exp(-\sum_j w_j x_j-b)}. \tag{4}\end{eqnarray}&lt;/p&gt;
+
+&lt;p&gt;처음 시그모이드 뉴런의 수식을 보면 퍼셉트론과는 매우 달라보인다. 시그모이드 함수의 대수적(algebraic) 형태는 이것에 익숙한 사람이 아니라면 뭔가 불투명하고 어지럽게 보일지 모른다. 당신이 이미 친숙한 경우가 아니라면 접근하기 어려워 보일지도 모른다. 복잡한 수식이 이해를 막는 장벽이 될 수는 없다. 왜냐하면 두 자기 형태의 뉴런 사이에는 많은 공통점이 있고, 시그모이드 함수의 대수적 형태가 퍼셉트론보다 좀 더 많은 기술적인 세부사항이 있는 것 뿐이다.&lt;/p&gt;
+
+&lt;p&gt;퍼셉트론과의 유사성을 이해하기 위해, $z \equiv w \cdot x + b$으로 표시되는 $z$가 큰 양수라고 가정해보자. 그렇다면 $e^{-z}\approx 0$가 되며 $\sigma(z)\approx 1$이 된다. 다시 말해, $z$가 큰 양수라면, 시그모이드 뉴런의 출력은 대략 $1$이므로 퍼셉트론의 출력인 $1$과 매우 비슷해진다. 반대로, $z$값이 큰 음수라면 어떨까. 그렇다면 $e^{-z}\approx \infty$가 되며 $\sigma(z)\approx 0$이 된다. 그래서 만약 $z$가 큰 음수라면, 시그모이드 뉴런의 출력은 대략 $0$이므로 퍼셉트론의 출력인 $0$과 매우 비슷해진다. 퍼셉트론 모델과 큰 편차가 생기는 지점은 오로지 $w \cdot x+b$가 적당한 값을 가지는 구간 뿐이다.&lt;/p&gt;
+
+&lt;p&gt;그렇다면 $\sigma$의 대수적 형태는 어떠한가? 그것은 어떻게 이해할 수 있을까? 사실,  $\sigma$의 정확한 형태보다 정말 중요한 것은 함수의 플롯(plot) 형태이다. 함수의 플롯은 함수의 좌표를 찍었을 때 그려지는 모양이다. 여기 아래 그림은 함수를 플롯한 것이다:&lt;/p&gt;
+
+&lt;div id=&quot;sigmoid_graph&quot;&gt;&lt;a name=&quot;sigmoid_graph&quot;&gt;&lt;/a&gt;&lt;/div&gt;
+&lt;script src=&quot;http://d3js.org/d3.v3.min.js&quot;&gt;&lt;/script&gt;
+
+&lt;script&gt;
+function s(x) {return 1/(1+Math.exp(-x));}
+var m = [40, 120, 50, 120];
+var height = 290 - m[0] - m[2];
+var width = 600 - m[1] - m[3];
+var xmin = -5;
+var xmax = 5;
+var sample = 400;
+var x1 = d3.scale.linear().domain([0, sample]).range([xmin, xmax]);
+var data = d3.range(sample).map(function(d){ return {
+        x: x1(d), 
+        y: s(x1(d))}; 
+    });
+var x = d3.scale.linear().domain([xmin, xmax]).range([0, width]);
+var y = d3.scale.linear()
+                .domain([0, 1])
+                .range([height, 0]);
+var line = d3.svg.line()
+    .x(function(d) { return x(d.x); })
+    .y(function(d) { return y(d.y); })
+var graph = d3.select(&quot;#sigmoid_graph&quot;)
+    .append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, width + m[1] + m[3])
+    .attr(&quot;height&quot;, height + m[0] + m[2])
+    .append(&quot;g&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + m[3] + &quot;,&quot; + m[0] + &quot;)&quot;);
+var xAxis = d3.svg.axis()
+                  .scale(x)
+                  .tickValues(d3.range(-4, 5, 1))
+                  .orient(&quot;bottom&quot;)
+graph.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;x axis&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(0, &quot; + height + &quot;)&quot;)
+    .call(xAxis);
+var yAxis = d3.svg.axis()
+                  .scale(y)
+                  .tickValues(d3.range(0, 1.01, 0.2))
+                  .orient(&quot;left&quot;)
+                  .ticks(5)
+graph.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;y axis&quot;)
+    .call(yAxis);
+graph.append(&quot;path&quot;).attr(&quot;d&quot;, line(data));
+graph.append(&quot;text&quot;)
+     .attr(&quot;class&quot;, &quot;x label&quot;)
+     .attr(&quot;text-anchor&quot;, &quot;end&quot;)
+     .attr(&quot;x&quot;, width/2)
+     .attr(&quot;y&quot;, height+35)
+     .text(&quot;z&quot;);
+graph.append(&quot;text&quot;)
+        .attr(&quot;x&quot;, (width / 2))             
+        .attr(&quot;y&quot;, -10)
+        .attr(&quot;text-anchor&quot;, &quot;middle&quot;)  
+        .style(&quot;font-size&quot;, &quot;16px&quot;) 
+        .text(&quot;시그모이드 함수&quot;);
+&lt;/script&gt;
+
+&lt;p&gt;이 형태는 스텝함수(step function)처럼 원본 함수를 평평하게 만든 것이다: 
+&lt;/p&gt;
+&lt;div id=&quot;step_graph&quot;&gt;&lt;/div&gt;
+&lt;script&gt;
+function s(x) {return x &lt; 0 ? 0 : 1;}
+var m = [40, 120, 50, 120];
+var height = 290 - m[0] - m[2];
+var width = 600 - m[1] - m[3];
+var xmin = -5;
+var xmax = 5;
+var sample = 400;
+var x1 = d3.scale.linear().domain([0, sample]).range([xmin, xmax]);
+var data = d3.range(sample).map(function(d){ return {
+        x: x1(d), 
+        y: s(x1(d))}; 
+    });
+var x = d3.scale.linear().domain([xmin, xmax]).range([0, width]);
+var y = d3.scale.linear()
+                .domain([0,1])
+                .range([height, 0]);
+var line = d3.svg.line()
+    .x(function(d) { return x(d.x); })
+    .y(function(d) { return y(d.y); })
+var graph = d3.select(&quot;#step_graph&quot;)
+    .append(&quot;svg&quot;)
+    .attr(&quot;width&quot;, width + m[1] + m[3])
+    .attr(&quot;height&quot;, height + m[0] + m[2])
+    .append(&quot;g&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(&quot; + m[3] + &quot;,&quot; + m[0] + &quot;)&quot;);
+var xAxis = d3.svg.axis()
+                  .scale(x)
+                  .tickValues(d3.range(-4, 5, 1))
+                  .orient(&quot;bottom&quot;)
+graph.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;x axis&quot;)
+    .attr(&quot;transform&quot;, &quot;translate(0, &quot; + height + &quot;)&quot;)
+    .call(xAxis);
+var yAxis = d3.svg.axis()
+                  .scale(y)
+                  .tickValues(d3.range(0, 1.01, 0.2))
+                  .orient(&quot;left&quot;)
+                  .ticks(5)
+graph.append(&quot;g&quot;)
+    .attr(&quot;class&quot;, &quot;y axis&quot;)
+    .call(yAxis);
+graph.append(&quot;path&quot;).attr(&quot;d&quot;, line(data));
+graph.append(&quot;text&quot;)
+     .attr(&quot;class&quot;, &quot;x label&quot;)
+     .attr(&quot;text-anchor&quot;, &quot;end&quot;)
+     .attr(&quot;x&quot;, width/2)
+     .attr(&quot;y&quot;, height+35)
+     .text(&quot;z&quot;);
+graph.append(&quot;text&quot;)
+        .attr(&quot;x&quot;, (width / 2))             
+        .attr(&quot;y&quot;, -10)
+        .attr(&quot;text-anchor&quot;, &quot;middle&quot;)  
+        .style(&quot;font-size&quot;, &quot;16px&quot;) 
+        .text(&quot;스텝함수&quot;);
+&lt;/script&gt;
+
+&lt;p&gt;만약 $\sigma$가 스텝함수였다면, 시그모이드 뉴런은 퍼셉트론과 같다. 왜냐하면, 시그모이드 뉴런의 출력을 1이나 0으로 결정하는 요인은 $w \cdot x + b$값이 양수인지 음수인지에만 관련있기 때문이다. 하지만 원본 $\sigma$ 함수를 사용하면서 퍼셉트론을 매끈한 모양으로 만들 수 있다. 따라서 세부적인 형태보다는 이러한 매끈함이 $\sigma$ 함수의 핵심이다. $\sigma$의 매끈함은 작은 가중치 변화량 $\Delta w_j$와 작은 편향치 변화량 $\Delta b$이 뉴런에서 작은 출력 변화 $\Delta \mbox{output}$를 줄 수 있다는 것을 의미한다. 미분을 이용하면 $\Delta \mbox{output}$이 대략 아래와 같이 근사된다.&lt;/p&gt;
+
+&lt;p&gt;\begin{eqnarray} 
+\label{eq:delta_output}
+  \Delta \mbox{output} \approx \sum_j \left(\frac{\partial \, \mbox{output}}{\partial w_j}
+  \Delta w_j + \frac{\partial \, \mbox{output}}{\partial b} \Delta b\right).
+\tag{5}\end{eqnarray}&lt;/p&gt;
+
+&lt;p&gt;여러분이 편도함수(partial derivatives)에 익숙하지 않다고 해서 두려워 하지 마시라!  위 수식은 편미분이 등장해 복잡해보이지만, 사실 매우 간단한 걸 이야기해 준다 (좋은 소식이다): $\Delta \mbox{output}$는 $\Delta w_j$와 $\Delta b$의 선형 함수ㅔ 불과하다. 이러한 선형성은 가중치와 편향치를 살짝 변화시켜서 우리가 희망하는 어떤 작은 변화를 출력에서 얻기 쉽다는 것을 의미한다. 따라서, 시그모이드 뉴런이 퍼셉트론의 형태와 질적으로 많이 비슷해보일지라도, 원하는 출력을 얻기 위해 가중치와 편향치를 바꾸는 방법을 알아내기 훨씬 쉽다.&lt;/p&gt;
+
+&lt;p&gt;$\sigma$ 함수 본연의 형식이 아니라 플롯 모양이 훨씬 중요하다면, 왜 우리는 수식 \eqref{eq:sig_func}은 어떻게 나오게 된걸까? 실제로, 우리는 이따금씩 몇몇 다른 활성화 함수(activation function)들인 $f(\cdot)$에 대하여 출력이 $f(w \cdot x + b)$인 뉴런을 다룰 것이다다. 다른 활성화 함수를 사용할때 가장 큰 변화는 수식 \eqref{eq:delta_output}에 있는 특정한 변수에 대한 편미분값의 변화이다. 나중에 알게되겠지만, $\sigma$함수를 이용해서 이러한 편도함수를 계산하는 것은 지수함수의 미분에서 특별한 성질을 이용하면 간단하다. 어쨌든, $\sigma$함수는 뉴럴네트워크에서 보편적으로 쓰이며, 이 책에서 가장 많이 등장하는 활성화 함수다.&lt;/p&gt;
+
+&lt;p&gt;시그모이드 뉴런의 출력을 어떻게 해석해야 할까? 퍼셉트론과 시그모이드 뉴런의 가장 큰 차이는 시그모이드 뉴런의 출력이 $0$과 $1$만이 아니라는 것이다. 출력값이 $0$과 $1$ 사이의 실수이므로 $0.173$이나 $0.689$같은 값들도 타당한 출력이다. 이러한 속성은 매우 유용하다. 예를 들어, 한 이미지에 있는 픽셀값들의 평균 밝기(intensity)를 뉴럴네트워크의 출력으로 나타낼 수 있게 된다. 하지만 이러한 속성도 가끔은 골칫거리가 될 수 있다. 만약 “입력 이미지가 $9$다”나 “입력 이미지가 $9$가 아니다”처럼 두 가지 상태만을 출력으로 하는 네트워크가 있다고 생각해 보자. 당연히, 퍼셉트론처럼 0과 1읠 출력을 준다면 문제는 쉽다. 하지만, 실제로 중간에 있는 출력에 대해 분류할 수 있도록 하나의 규칙처럼 쓰이는 관례(convention)을 정할 수 있다. 예를 들어, $0.5$와 같거나 더 큰 출력이라면 “$9$”로 분류 하고, 작다면 “$9$”가 아닌 것으로 분류하는 것이다. 혼란을 피하기 위해서, 매번 그것이 관례임을 분명하게 선언하고 사용할 것임을 알려드린다.&lt;/p&gt;
+
+&lt;h3 id=&quot;section-1&quot;&gt;연습문제&lt;/h3&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p style=&quot;font-weight: bold&quot;&gt; 퍼셉트론을 모방하는 시그모이드 뉴런, 파트 1&lt;/p&gt;
+    &lt;p&gt;– 퍼셉트론 네트워크의 모든 가중치와 편향치에다 양의 상수 $c$를 곱하더라도 네트워크의 거동이 변하지 않음을 보여라.
+&lt;br /&gt;&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p style=&quot;font-weight: bold&quot;&gt; 퍼셉트론을 모방하는 시그모이드 뉴런, 파트 2&lt;/p&gt;
+    &lt;p&gt;– 위의 문제와 설정이 같다고 전제한다.  퍼셉트론 네트워크에 모든 입력이 정해졌다고 가정하자. 실제 입력값은 필요가 없고 그저 고정된 입력이 필요할 뿐이다. 또한, 네트워크에서 어떤 특정한 퍼셉트론으로의 입력 $x$가 $w\cdot x + b \neq 0$을 만족하는 가중치와 편향치들이 있다고 가정하자. 이제 네트워크에서 모든 퍼셉트론 시그모이드 뉴런으로 교체하자. 그리고 모든 가중치와 편향치에다 양의 상수 $c$를를 곱하자. $c\to\infty$라면, 이러한 시그모이드 뉴런 네트워크의 거동은 퍼셉트론 네트워크와 정확히 일치함을 보여라. 퍼셉트론 중 하나가 $w\cdot x + b = 0$인 경우 어떻게 이것이 실패하는지 보여라.&lt;/p&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+</description>
+                <link>http://galji.github.io//2016/01/15/nndl_ch01_sigmoidneuron</link>
+                <guid>http://galji.github.io//2016/01/15/nndl_ch01_sigmoidneuron</guid>
+                <pubDate>2016-01-15T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 2부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neuralnetworksanddeeplearning.com/chap1.html&quot;&gt;http://neuralnetworksanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;퍼셉트론&lt;/h3&gt;
+
+&lt;p&gt;뉴럴네트워크란 무엇일까? 시작하기에 앞서, 인공뉴런의 하나인 ‘&lt;em&gt;퍼셉트론(perceptron)&lt;/em&gt;‘에 대해 알아보자. 퍼셉트론은 &lt;a href=&quot;https://en.wikipedia.org/wiki/Warren_Sturgis_McCulloch&quot;&gt;워렌 맥쿨로치(Warren McCulloch)&lt;/a&gt;와 &lt;a href=&quot;https://en.wikipedia.org/wiki/Walter_Pitts&quot;&gt;월터 피츠(Walter Pitss)&lt;/a&gt;의 연구에서 힌트를 얻어 1950~1960년대에 과학자 &lt;a href=&quot;https://en.wikipedia.org/wiki/Frank_Rosenblatt&quot;&gt;프랭크 로젠블래트(Frank Rosenblatt)&lt;/a&gt;가 개발했다. 그러나, 현재는 또다른 인공뉴런 모델이 일반적으로 쓰인다. - 이 책에서, 그리고 현대 신경망 연구의 대부분에서 &lt;em&gt;시그모이드 뉴런&lt;/em&gt; 모델을 쓰고 있다. 시그모이드 뉴런에 대해서 곧 공부할 것이다. 하지만 시그모이드 뉴런을 왜 특정한 방식으로 정의했는지 이해하려면 먼저 퍼셉트론부터 들여다 봐야 한다.&lt;/p&gt;
+
+&lt;p&gt;그럼 퍼셉트론은 어떻게 작동하는 걸까? 퍼셉트론은 몇 개의 이진수 입력 &lt;script type=&quot;math/tex&quot;&gt;x_1,x_2,\ldots,&lt;/script&gt;을 받아들이고 한개의 이진수 출력을 가진다:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz0.png&quot; alt=&quot;perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 예는 &lt;script type=&quot;math/tex&quot;&gt;x_1,x_2,x_3&lt;/script&gt;를 입력으로 받는다. 입력 갯수가 이것보다 적거나 많아도 된다. 로젠블래트는 퍼셉트론의 출력을 계산하는 간단한 방법을 제안했다. 각각의 입력이 출력에 대한 상대적 중요도를 실수형의 가중치인 &lt;script type=&quot;math/tex&quot;&gt;w_1,w_2,\ldots,&lt;/script&gt;등으로 표현하는 것이다. 뉴런의 출력은 가중합&lt;script type=&quot;math/tex&quot;&gt;\sum_j{w_jx_j}&lt;/script&gt;이 정해진 &lt;a href=&quot;http://toparadic.tistory.com/495&quot;&gt;문턱값&lt;/a&gt;보다 작으면 0을, 크면 1로 결정된다. 문턱값은 실수로서 뉴런의 매개변수이다. 이를 좀 더 대수적으로 표현하면:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{equation}
+output (출력)=
+  \begin{cases}
+    0       &amp; \quad \text{if } \sum_j{w_jx_j} \le\text{문턱값}\\
+    1  		&amp; \quad \text{if } \sum_j{w_jx_j} &gt; \text{문턱값}\\
+  \end{cases}
+ \end{equation} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;이것이 퍼셉트론이 작동하는 원리의 전부이다.&lt;/p&gt;
+
+&lt;p&gt;퍼셉트론은 기본적인 수학모델이다. 퍼셉트론은 여러 입력들을 심사숙고하여 결정하는 장치와 같다고 생각하면 된다. 그렇게 현실적인 예는 아니지만 쉬운 예를 들어보자. 나중에 곧 현실적인 예를 보여줄 것이다. 주말이 다가오고 있고, 여러분이 살고 있는 동네에 치즈 축제가 열린다고 가정 해보자. 여러분은 치즈를 좋아하기 때문에 갈지 말지 고민하기 시작했다. 이 때 여러분은 3가지 요소를 가늠해서 결정을 내릴지 모른다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;날씨가 화창한가?&lt;/li&gt;
+  &lt;li&gt;여러분의 연인이 같이 가고 싶어하는가?&lt;/li&gt;
+  &lt;li&gt;축제가 대중교통 근처인가? (자가용이 없다고 가정)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;위의 세 가지 요소를 &lt;script type=&quot;math/tex&quot;&gt;x_1,x_2,x_3&lt;/script&gt;이라고 두자. 예를 들어, 날씨가 화창하면 &lt;script type=&quot;math/tex&quot;&gt;x_1=1&lt;/script&gt;을, 날씨가 나쁘다면 &lt;script type=&quot;math/tex&quot;&gt;x_1=0&lt;/script&gt;이 된다. 비슷하게, 연인이 같이 가고 싶어하면 &lt;script type=&quot;math/tex&quot;&gt;x_2=1&lt;/script&gt;을, 같이 가기 싫어하면 &lt;script type=&quot;math/tex&quot;&gt;x_2=0&lt;/script&gt;이 된다. 마지막으로, 대중 교통이 근처에 있다면 &lt;script type=&quot;math/tex&quot;&gt;x_3=1&lt;/script&gt;을, 대중 교통이 근처에 없다면 &lt;script type=&quot;math/tex&quot;&gt;x_3=0&lt;/script&gt;이 된다.&lt;/p&gt;
+
+&lt;p&gt;지금 여러분은 치즈를 너무 너무 좋아해서 심지어 연인이 축제에 관심이 없고 마땅히 이용할 교통수단이 없어도 축제에 가고 싶다고 가정하자. 그렇지만 여러분은 혹시 나쁜 날씨를 정말 싫어하는 성격일지도 모른다. 이런 종류의 의사결정은 퍼셉트론으로 가능하다. 의사결정의 한가지 방법은 날씨 가중치를 &lt;script type=&quot;math/tex&quot;&gt;w_1=6&lt;/script&gt;로 두고 다른 가중치를 각각 &lt;script type=&quot;math/tex&quot;&gt;w_2=2&lt;/script&gt;와 &lt;script type=&quot;math/tex&quot;&gt;w_3=2&lt;/script&gt;로 놓는 것이다. 두 가중치보다 &lt;script type=&quot;math/tex&quot;&gt;w_1&lt;/script&gt;이 크므로 날씨가 연인이나 대중교통 접근성보다 훨씬 중요하다는 사실을 나타낸다. 마지막으로, 문턱값을 5로 정했다고 가정하자. 이 선택에서 퍼셉트론은 날씨가 화창하면 출력은 언제나 1이 되고, 나쁘면 출력은 0이 된다. 그렇다면, 연인의 선택과 대중교통의 접근성이 결과에 전혀 영향을 미치지 않는 것이다.&lt;/p&gt;
+
+&lt;p&gt;가중치와 문턱값을 다양하게 조정해보면 우리는 다른 의사결정 모델을 얻게 된다. 예를 들어, 문턱값을 3으로 골랐다고 가정하자. 그렇다면 퍼셉트론은 우리에게 날씨가 화창할때는 언제든지, 아니면 대중교통 접근성이 좋고 연인이 같이 가길 원할때면 축제에 가라고 말한다. 이건 앞선 것과 또 다른 의사결정 모델이다. 문턱값을 내림으로서 축제에 가고싶은 욕구를 더 나타내는 것이다.&lt;/p&gt;
+
+&lt;p&gt;당연히, 퍼셉트론은 인간의 의사결정에 이써 완전한 모델은 아니다! 하지만 위의 예에서 퍼셉트론이 의사 결정을 내리기 위해 어떻게 다른 종류의 정황을 저울질 하는지 보여주었다. 좀 더 복잡한 퍼셉트론 네트워크를 사용하면 더 예리한 결정도 가능할 듯 하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz1.png&quot; alt=&quot;complex perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 네트워크에서, 첫번째 열의 퍼셉트론들은 여러 입력들을 저울질하여 3개의 매우 간단한 결정을 내린다. 이 때, 첫번째 열의 각 퍼셉트론을 첫번째 퍼셉트론 층(layer)라고 부를 것이다. 두번째 퍼셉트론 층에서는 무엇을 하는가? 첫번째 층에 있는 결과들을 이 곳의 퍼셉트론들이 다시 저울질하여 의사결정을 만든다. 두번째 층에서는 첫번째 층에서 이루어진 의사결정 레벨보다 한층 복잡하고 추상적인 결정을 내릴 수 있다. 세번째 퍼셉트론 층은 그보다 훨씬 복잡한 의사결정도 가능하다. 이런 식으로, 퍼셉트론의 다층(many-layer) 네트워크는 수준높은 의사결정 문제의 해결도 가능하다.&lt;/p&gt;
+
+&lt;p&gt;그런데, 아까 퍼셉트론을 정의할 때 그것이 하나의 출력만을 가진다고 말했다. 위의 네트워크에서 퍼셉트론의 출력은 여러개처럼 보임에도 말이다. 사실, 그것들은 여전히 하나의 출력이다. 각각의 출력 화살표들은 다른 퍼셉트론들의 입력으로 사용되는 것을 가리킬 때만 유용하다. 단일한 출력 선을 그린 후 그것을 다시 여러개로 갈라지게 하는 것보다 덜 복잡하기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;이제 간단한 방식으로 퍼셉트론이 무엇인지 서술해보자. $\sum_j{w_jx_j}=문턱값$이라는 조건은 복잡해보이므로 표기법에 두가지 변화를 주었다. 첫째로, $\sum_j{w_jx_j}$를 내적값 $w\cdot x \equiv \sum_j{w_jx_j}$으로 바꾸는 것이다. 여기에서 $w$와 $x$는 각각 가중치와 입력 벡터이다. 둘째로, (1)의 식에 있던 문턱치를 왼쪽편으로 넘겨버리는 것이다. 이 때 퍼셉트론의 편향치(bias) $b$는 음의 문턱값과 동일하다. 문턱값 대신에 편향치를 이용해서 퍼셉트론 규칙을 다시 써보면 다음과 같다.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{eqnarray} 
+\mbox{출력} = \left\{ \begin{array}{ll} 0 &amp; \mbox{if } w\cdot x + b \leq 0 \\ 1 &amp; \mbox{if } w\cdot x + b &gt; 0 \end{array} \right. \tag{2}\end{eqnarray} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;여기에서, 편향치는 퍼셉트론이 1인 출력을 얻는 것이 얼마나 쉬운지 척도를 말해준다. 생물학적인 용어로 말하자면, 편향치는 퍼셉트론이 얼마나 쉽게 &lt;em&gt;발화&lt;/em&gt;하는 지의 척도이다. 굉장히 큰 편향치를 가진 퍼셉트론의 경우, 퍼셉트론이 1의 출력을 만드는 것은 너무 쉽다. 하지만 만약 편향치가 너무 큰 음수라면, 출력을 1로 만드는 것은 어렵다. 여기선 비록 편향치가 퍼셉트론을 설명하는 비중이 작지만, 나중에 이것이 수식을 더욱 간단하게 만들어 줄 것이다. 이것 때문에, 책의 나머지 부분에서, 우리는 언제나 편중치를 문턱값 대신 사용할 것이다.&lt;/p&gt;
+
+&lt;p&gt;나는 퍼셉트론이 입력들을 가중치에 따라 저울질하여 의사결정하는 방법이라고 소개했다. 우리는 퍼셉트론을 AND, OR, 그리고 NAND같은 기초적인 논리 함수를 계산하는데도 사용할 수 있다. 예를 들어, 아래의 그림처럼 각각의 가중치가 모두 $-2$이고 총 편향치는 $3$인 두개의 입력을 가진 퍼셉트론이 있다고 하자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz2.png&quot; alt=&quot;complex perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서, 입력 $00$을 계산하면 $(-2)\times 0 + (-2)\times 0 + 3 = 3$이 양수이므로 출력은 1이 된다. 입력 $01$과 $10$도 $1$을 출력한다. 하지만, 입력 $11$을 계산하면 $(-2)\times 1 + (-2)\times 1 + 3 = -1$ 음수이므로 $0$을 출력한다. 자, 이제 퍼셉트론을 가지고 NAND게이트를 만들어 보자!&lt;/p&gt;
+
+&lt;p&gt;NAND만들기 예제는 퍼셉트론을 간단한 논리함수 계산에 이용할 수 있다는 것을 보여준다. 실제로, 퍼셉트론은 어떤 논리함수든 계산할 수 있다. 그 이유는 NAND게이트는 모든 계산에서 보편적 요소이고, 그 말은 NAND를 가지고 어떤 계산식도 세울 수 있다는 이야기다. 예를 들어, NAND게이트로 $x_1$과 $x_2$를 더하는 회로를 만들 수 있다. 이 때, $x_1$과 $x_2$가 모두 $1$이면 윗자리로 1을 넘겨주는 비트올림(carry bit)이 가능해야 하고, 또한 비트단위합 $x_1\oplus x_2$도 필요하다. 비트올림은 그저 비트단위곱인 $x_1x_2$다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/add.png&quot; alt=&quot;NAND gate addition&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;두 개의 입력을 가중치를 $-2$ 그리고 총 편향치를 $3$으로 세팅한 퍼셉트론은 위의 연산과 같다. 아래의 네트워크가 결과를 보여준다. 도표를 보면, 오른쪽 아래 NAND 게이트에 해당하는 퍼셉트론을 화살표를 쉽게 그리기 위해 살짝 옮겨 놓았다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz4.png&quot; alt=&quot;complex perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 퍼셉트론 네트워크에서 한가지 주목할 만한 점은 가장 왼쪽에 있는 퍼셉트론에서 나온 출력이 가장 아래에 있는 퍼셉트론에 두번이나 입력된다는 것이다.  퍼셉트론 모델을 정의할때, 나는 이런 중복 입력이 가능한지 말하지 않았다. 사실, 이건 별 문제가 아니다. 만약 이런 종류의 입력을 차단하려면, 가중치가 각각 $2$인 두개의 선을 가중치가 $4$인 하나의 선으로 합치면 된다. (잘 이해가 안된다면, 하던 걸 멈추고 이것이 맞는지 스스로 증명해 보라.) 이렇게 바꾸면, 가중치를 표시하지 않은 선의 가중치는 모두 $-2$이고 편향치는 $3$인 네트워크와 같음을 볼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz5.png&quot; alt=&quot;complex perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;지금까지 우리는 $x_1$이나 $x_2$와 같은 입력을 퍼센트론 네트워크의 왼쪽에서 떠다니는 변수로 그려왔다. 사실, 입력은 ‘입력 층’이라고 부르는 별도의 퍼셉트론 층으로 표현하는 방법이 좀 더 일반적이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz6.png&quot; alt=&quot;complex perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;따라서, 출력은 있지만 입력은 없는 입력 퍼셉트론은  다음과 같이 약식으로 표기할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz7.png&quot; alt=&quot;complex perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이건 입력이 없는 퍼셉트론을 뜻하지는 않는다. 이걸 이해하려면 입력이 없는 퍼셉트론을 가정해보아야 한다. 그렇다면 가중합 $\sum_j w_j x_j$은 언제나 0이 되고, $b &amp;gt; 0$라면 퍼셉트론은 출력을 $1$로, $b \leq 0$면 출력을 $0$으로 가질 것이기 때문이다. 즉, 퍼셉트론은 당연히 나오는 출력값(여기서는 $x_1$)이 아니라 항상 고정된 값만 출력할 것이다. 따라서, 입력 퍼셉트론은 진짜 퍼셉트론이 아니라 $x1$, $x2$등과 같은 입력을 단순히 출력해주는 특별한 유닛(unit)으로 간주해야 한다.&lt;/p&gt;
+
+&lt;p&gt;위의 덧셈 예제에서는 퍼셉트론 네트워크를 가지고 여러개의 NAND 게이트를 가진 회로를 시뮬레이션 하는 방법을 보여주었다. NAND 게이트가 계산보편성이 있으므로, 당연히 퍼셉트론도 그렇다.&lt;/p&gt;
+
+&lt;p&gt;퍼셉트론의 계산보편성은 장점과 단점을 동시에 보여준다. 퍼셉트론 네트워크가 다른 계산장치들 만큼이나 강력하다는 것은 좋은 소식이다. 하지만, 한편으로는 이것이 새로운 NAND 게이트의 종류에 불과해보여 실망스러울 지 모른다. 그건 결코 좋은 소식이 아니다!&lt;/p&gt;
+
+&lt;p&gt;그러나 실제로는 위의 관점보다 낙관적이다. &lt;em&gt;학습 알고리즘&lt;/em&gt;을 고안해서 인공뉴런 네트워크의 가중치와 편향치를 자동으로 조정(tuning) 줄 수 있기 때문이다. 이 조정은 프로그래머의 직접적인 개입없이 외부의 자극에 반응하여 일어난다. 이런 학습 알고리즘은 전통적인 논리게이트와 근본적으로 다른 방식으로 인공뉴런의 사용을 가능케 해준다. 결론적으로, 전통적 회로설계법을 이용하여 NAND및 여타 게이트들을 회로위에 직접 깔아두고 문제를 푸는 대신에, 뉴럴네트워크는 극도로 어려운 문제도 쉽게 풀 수 있다.&lt;/p&gt;
+</description>
+                <link>http://galji.github.io//2016/01/14/nndl_ch01_perceptron</link>
+                <guid>http://galji.github.io//2016/01/14/nndl_ch01_perceptron</guid>
+                <pubDate>2016-01-14T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 2부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neuralnetworksanddeeplearning.com/chap1.html&quot;&gt;http://neuralnetworksanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;section&quot;&gt;퍼셉트론&lt;/h3&gt;
+
+&lt;p&gt;뉴럴네트워크란 무엇일까? 시작하기에 앞서, 인공뉴런의 하나인 ‘&lt;em&gt;퍼셉트론(perceptron)&lt;/em&gt;‘에 대해 알아보자. 퍼셉트론은 &lt;a href=&quot;https://en.wikipedia.org/wiki/Warren_Sturgis_McCulloch&quot;&gt;워렌 맥쿨로치(Warren McCulloch)&lt;/a&gt;와 &lt;a href=&quot;https://en.wikipedia.org/wiki/Walter_Pitts&quot;&gt;월터 피츠(Walter Pitss)&lt;/a&gt;의 연구에서 힌트를 얻어 1950~1960년대에 과학자 &lt;a href=&quot;https://en.wikipedia.org/wiki/Frank_Rosenblatt&quot;&gt;프랭크 로젠블래트(Frank Rosenblatt)&lt;/a&gt;가 개발했다. 그러나, 현재는 또다른 인공뉴런 모델이 일반적으로 쓰인다. - 이 책에서, 그리고 현대 신경망 연구의 대부분에서 &lt;em&gt;시그모이드 뉴런&lt;/em&gt; 모델을 쓰고 있다. 시그모이드 뉴런에 대해서 곧 공부할 것이다. 하지만 시그모이드 뉴런을 왜 특정한 방식으로 정의했는지 이해하려면 먼저 퍼셉트론부터 들여다 봐야 한다.&lt;/p&gt;
+
+&lt;p&gt;그럼 퍼셉트론은 어떻게 작동하는 걸까? 퍼셉트론은 몇 개의 이진수 입력 &lt;script type=&quot;math/tex&quot;&gt;x_1,x_2,\ldots,&lt;/script&gt;을 받아들이고 한개의 이진수 출력을 가진다:&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz0.png&quot; alt=&quot;perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 예는 &lt;script type=&quot;math/tex&quot;&gt;x_1,x_2,x_3&lt;/script&gt;를 입력으로 받는다. 입력 갯수가 이것보다 적거나 많아도 된다. 로젠블래트는 퍼셉트론의 출력을 계산하는 간단한 방법을 제안했다. 각각의 입력이 출력에 대한 상대적 중요도를 실수형의 가중치인 &lt;script type=&quot;math/tex&quot;&gt;w_1,w_2,\ldots,&lt;/script&gt;등으로 표현하는 것이다. 뉴런의 출력은 가중합&lt;script type=&quot;math/tex&quot;&gt;\sum_j{w_jx_j}&lt;/script&gt;이 정해진 &lt;a href=&quot;http://toparadic.tistory.com/495&quot;&gt;문턱값&lt;/a&gt;보다 작으면 0을, 크면 1로 결정된다. 문턱값은 실수로서 뉴런의 매개변수이다. 이를 좀 더 대수적으로 표현하면:&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{equation}
+output (출력)=
+  \begin{cases}
+    0       &amp; \quad \text{if } \sum_j{w_jx_j} \le\text{문턱값}\\
+    1  		&amp; \quad \text{if } \sum_j{w_jx_j} &gt; \text{문턱값}\\
+  \end{cases}
+ \end{equation} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;이것이 퍼셉트론이 작동하는 원리의 전부이다.&lt;/p&gt;
+
+&lt;p&gt;퍼셉트론은 기본적인 수학모델이다. 퍼셉트론은 여러 입력들을 심사숙고하여 결정하는 장치와 같다고 생각하면 된다. 그렇게 현실적인 예는 아니지만 쉬운 예를 들어보자. 나중에 곧 현실적인 예를 보여줄 것이다. 주말이 다가오고 있고, 여러분이 살고 있는 동네에 치즈 축제가 열린다고 가정 해보자. 여러분은 치즈를 좋아하기 때문에 갈지 말지 고민하기 시작했다. 이 때 여러분은 3가지 요소를 가늠해서 결정을 내릴지 모른다.&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;날씨가 화창한가?&lt;/li&gt;
+  &lt;li&gt;여러분의 연인이 같이 가고 싶어하는가?&lt;/li&gt;
+  &lt;li&gt;축제가 대중교통 근처인가? (자가용이 없다고 가정)&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;위의 세 가지 요소를 &lt;script type=&quot;math/tex&quot;&gt;x_1,x_2,x_3&lt;/script&gt;이라고 두자. 예를 들어, 날씨가 화창하면 &lt;script type=&quot;math/tex&quot;&gt;x_1=1&lt;/script&gt;을, 날씨가 나쁘다면 &lt;script type=&quot;math/tex&quot;&gt;x_1=0&lt;/script&gt;이 된다. 비슷하게, 연인이 같이 가고 싶어하면 &lt;script type=&quot;math/tex&quot;&gt;x_2=1&lt;/script&gt;을, 같이 가기 싫어하면 &lt;script type=&quot;math/tex&quot;&gt;x_2=0&lt;/script&gt;이 된다. 마지막으로, 대중 교통이 근처에 있다면 &lt;script type=&quot;math/tex&quot;&gt;x_3=1&lt;/script&gt;을, 대중 교통이 근처에 없다면 &lt;script type=&quot;math/tex&quot;&gt;x_3=0&lt;/script&gt;이 된다.&lt;/p&gt;
+
+&lt;p&gt;지금 여러분은 치즈를 너무 너무 좋아해서 심지어 연인이 축제에 관심이 없고 마땅히 이용할 교통수단이 없어도 축제에 가고 싶다고 가정하자. 그렇지만 여러분은 혹시 나쁜 날씨를 정말 싫어하는 성격일지도 모른다. 이런 종류의 의사결정은 퍼셉트론으로 가능하다. 의사결정의 한가지 방법은 날씨 가중치를 &lt;script type=&quot;math/tex&quot;&gt;w_1=6&lt;/script&gt;로 두고 다른 가중치를 각각 &lt;script type=&quot;math/tex&quot;&gt;w_2=2&lt;/script&gt;와 &lt;script type=&quot;math/tex&quot;&gt;w_3=2&lt;/script&gt;로 놓는 것이다. 두 가중치보다 &lt;script type=&quot;math/tex&quot;&gt;w_1&lt;/script&gt;이 크므로 날씨가 연인이나 대중교통 접근성보다 훨씬 중요하다는 사실을 나타낸다. 마지막으로, 문턱값을 5로 정했다고 가정하자. 이 선택에서 퍼셉트론은 날씨가 화창하면 출력은 언제나 1이 되고, 나쁘면 출력은 0이 된다. 그렇다면, 연인의 선택과 대중교통의 접근성이 결과에 전혀 영향을 미치지 않는 것이다.&lt;/p&gt;
+
+&lt;p&gt;가중치와 문턱값을 다양하게 조정해보면 우리는 다른 의사결정 모델을 얻게 된다. 예를 들어, 문턱값을 3으로 골랐다고 가정하자. 그렇다면 퍼셉트론은 우리에게 날씨가 화창할때는 언제든지, 아니면 대중교통 접근성이 좋고 연인이 같이 가길 원할때면 축제에 가라고 말한다. 이건 앞선 것과 또 다른 의사결정 모델이다. 문턱값을 내림으로서 축제에 가고싶은 욕구를 더 나타내는 것이다.&lt;/p&gt;
+
+&lt;p&gt;당연히, 퍼셉트론은 인간의 의사결정에 이써 완전한 모델은 아니다! 하지만 위의 예에서 퍼셉트론이 의사 결정을 내리기 위해 어떻게 다른 종류의 정황을 저울질 하는지 보여주었다. 좀 더 복잡한 퍼셉트론 네트워크를 사용하면 더 예리한 결정도 가능할 듯 하다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz1.png&quot; alt=&quot;complex perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;위의 네트워크에서, 첫번째 열의 퍼셉트론들은 여러 입력들을 저울질하여 3개의 매우 간단한 결정을 내린다. 이 때, 첫번째 열의 각 퍼셉트론을 첫번째 퍼셉트론 층(layer)라고 부를 것이다. 두번째 퍼셉트론 층에서는 무엇을 하는가? 첫번째 층에 있는 결과들을 이 곳의 퍼셉트론들이 다시 저울질하여 의사결정을 만든다. 두번째 층에서는 첫번째 층에서 이루어진 의사결정 레벨보다 한층 복잡하고 추상적인 결정을 내릴 수 있다. 세번째 퍼셉트론 층은 그보다 훨씬 복잡한 의사결정도 가능하다. 이런 식으로, 퍼셉트론의 다층(many-layer) 네트워크는 수준높은 의사결정 문제의 해결도 가능하다.&lt;/p&gt;
+
+&lt;p&gt;그런데, 아까 퍼셉트론을 정의할 때 그것이 하나의 출력만을 가진다고 말했다. 위의 네트워크에서 퍼셉트론의 출력은 여러개처럼 보임에도 말이다. 사실, 그것들은 여전히 하나의 출력이다. 각각의 출력 화살표들은 다른 퍼셉트론들의 입력으로 사용되는 것을 가리킬 때만 유용하다. 단일한 출력 선을 그린 후 그것을 다시 여러개로 갈라지게 하는 것보다 덜 복잡하기 때문이다.&lt;/p&gt;
+
+&lt;p&gt;이제 간단한 방식으로 퍼셉트론이 무엇인지 서술해보자. $\sum_j{w_jx_j}=문턱값$이라는 조건은 복잡해보이므로 표기법에 두가지 변화를 주었다. 첫째로, $\sum_j{w_jx_j}$를 내적값 $w\cdot x \equiv \sum_j{w_jx_j}$으로 바꾸는 것이다. 여기에서 $w$와 $x$는 각각 가중치와 입력 벡터이다. 둘째로, (1)의 식에 있던 문턱치를 왼쪽편으로 넘겨버리는 것이다. 이 때 퍼셉트론의 편향치(bias) $b$는 음의 문턱값과 동일하다. 문턱값 대신에 편향치를 이용해서 퍼셉트론 규칙을 다시 써보면 다음과 같다.&lt;/p&gt;
+
+&lt;script type=&quot;math/tex; mode=display&quot;&gt;% &lt;![CDATA[
+\begin{eqnarray} 
+\mbox{출력} = \left\{ \begin{array}{ll} 0 &amp; \mbox{if } w\cdot x + b \leq 0 \\ 1 &amp; \mbox{if } w\cdot x + b &gt; 0 \end{array} \right. \tag{2}\end{eqnarray} %]]&gt;&lt;/script&gt;
+
+&lt;p&gt;여기에서, 편향치는 퍼셉트론이 1인 출력을 얻는 것이 얼마나 쉬운지 척도를 말해준다. 생물학적인 용어로 말하자면, 편향치는 퍼셉트론이 얼마나 쉽게 &lt;em&gt;발화&lt;/em&gt;하는 지의 척도이다. 굉장히 큰 편향치를 가진 퍼셉트론의 경우, 퍼셉트론이 1의 출력을 만드는 것은 너무 쉽다. 하지만 만약 편향치가 너무 큰 음수라면, 출력을 1로 만드는 것은 어렵다. 여기선 비록 편향치가 퍼셉트론을 설명하는 비중이 작지만, 나중에 이것이 수식을 더욱 간단하게 만들어 줄 것이다. 이것 때문에, 책의 나머지 부분에서, 우리는 언제나 편중치를 문턱값 대신 사용할 것이다.&lt;/p&gt;
+
+&lt;p&gt;나는 퍼셉트론이 입력들을 가중치에 따라 저울질하여 의사결정하는 방법이라고 소개했다. 우리는 퍼셉트론을 AND, OR, 그리고 NAND같은 기초적인 논리 함수를 계산하는데도 사용할 수 있다. 예를 들어, 아래의 그림처럼 각각의 가중치가 모두 $-2$이고 총 편향치는 $3$인 두개의 입력을 가진 퍼셉트론이 있다고 하자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz2.png&quot; alt=&quot;complex perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;여기서, 입력 $00$을 계산하면 $(-2)\times 0 + (-2)\times 0 + 3 = 3$이 양수이므로 출력은 1이 된다. 입력 $01$과 $10$도 $1$을 출력한다. 하지만, 입력 $11$을 계산하면 $(-2)\times 1 + (-2)\times 1 + 3 = -1$ 음수이므로 $0$을 출력한다. 자, 이제 퍼셉트론을 가지고 NAND게이트를 만들어 보자!&lt;/p&gt;
+
+&lt;p&gt;NAND만들기 예제는 퍼셉트론을 간단한 논리함수 계산에 이용할 수 있다는 것을 보여준다. 실제로, 퍼셉트론은 어떤 논리함수든 계산할 수 있다. 그 이유는 NAND게이트는 모든 계산에서 보편적 요소이고, 그 말은 NAND를 가지고 어떤 계산식도 세울 수 있다는 이야기다. 예를 들어, NAND게이트로 $x_1$과 $x_2$를 더하는 회로를 만들 수 있다. 이 때, $x_1$과 $x_2$가 모두 $1$이면 윗자리로 1을 넘겨주는 비트올림(carry bit)이 가능해야 하고, 또한 비트단위합 $x_1\oplus x_2$도 필요하다. 비트올림은 그저 비트단위곱인 $x_1x_2$다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/add.png&quot; alt=&quot;NAND gate addition&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;두 개의 입력을 가중치를 $-2$ 그리고 총 편향치를 $3$으로 세팅한 퍼셉트론은 위의 연산과 같다. 아래의 네트워크가 결과를 보여준다. 도표를 보면, 오른쪽 아래 NAND 게이트에 해당하는 퍼셉트론을 화살표를 쉽게 그리기 위해 살짝 옮겨 놓았다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz4.png&quot; alt=&quot;complex perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이 퍼셉트론 네트워크에서 한가지 주목할 만한 점은 가장 왼쪽에 있는 퍼셉트론에서 나온 출력이 가장 아래에 있는 퍼셉트론에 두번이나 입력된다는 것이다.  퍼셉트론 모델을 정의할때, 나는 이런 중복 입력이 가능한지 말하지 않았다. 사실, 이건 별 문제가 아니다. 만약 이런 종류의 입력을 차단하려면, 가중치가 각각 $2$인 두개의 선을 가중치가 $4$인 하나의 선으로 합치면 된다. (잘 이해가 안된다면, 하던 걸 멈추고 이것이 맞는지 스스로 증명해 보라.) 이렇게 바꾸면, 가중치를 표시하지 않은 선의 가중치는 모두 $-2$이고 편향치는 $3$인 네트워크와 같음을 볼 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz5.png&quot; alt=&quot;complex perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;지금까지 우리는 $x_1$이나 $x_2$와 같은 입력을 퍼센트론 네트워크의 왼쪽에서 떠다니는 변수로 그려왔다. 사실, 입력은 ‘입력 층’이라고 부르는 별도의 퍼셉트론 층으로 표현하는 방법이 좀 더 일반적이다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz6.png&quot; alt=&quot;complex perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;따라서, 출력은 있지만 입력은 없는 입력 퍼셉트론은  다음과 같이 약식으로 표기할 수 있다.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/tikz7.png&quot; alt=&quot;complex perceptron&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;이건 입력이 없는 퍼셉트론을 뜻하지는 않는다. 이걸 이해하려면 입력이 없는 퍼셉트론을 가정해보아야 한다. 그렇다면 가중합 $\sum_j w_j x_j$은 언제나 0이 되고, $b &amp;gt; 0$라면 퍼셉트론은 출력을 $1$로, $b \leq 0$면 출력을 $0$으로 가질 것이기 때문이다. 즉, 퍼셉트론은 당연히 나오는 출력값(여기서는 $x_1$)이 아니라 항상 고정된 값만 출력할 것이다. 따라서, 입력 퍼셉트론은 진짜 퍼셉트론이 아니라 $x1$, $x2$등과 같은 입력을 단순히 출력해주는 특별한 유닛(unit)으로 간주해야 한다.&lt;/p&gt;
+
+&lt;p&gt;위의 덧셈 예제에서는 퍼셉트론 네트워크를 가지고 여러개의 NAND 게이트를 가진 회로를 시뮬레이션 하는 방법을 보여주었다. NAND 게이트가 계산보편성이 있으므로, 당연히 퍼셉트론도 그렇다.&lt;/p&gt;
+
+&lt;p&gt;퍼셉트론의 계산보편성은 장점과 단점을 동시에 보여준다. 퍼셉트론 네트워크가 다른 계산장치들 만큼이나 강력하다는 것은 좋은 소식이다. 하지만, 한편으로는 이것이 새로운 NAND 게이트의 종류에 불과해보여 실망스러울 지 모른다. 그건 결코 좋은 소식이 아니다!&lt;/p&gt;
+
+&lt;p&gt;그러나 실제로는 위의 관점보다 낙관적이다. &lt;em&gt;학습 알고리즘&lt;/em&gt;을 고안해서 인공뉴런 네트워크의 가중치와 편향치를 자동으로 조정(tuning) 줄 수 있기 때문이다. 이 조정은 프로그래머의 직접적인 개입없이 외부의 자극에 반응하여 일어난다. 이런 학습 알고리즘은 전통적인 논리게이트와 근본적으로 다른 방식으로 인공뉴런의 사용을 가능케 해준다. 결론적으로, 전통적 회로설계법을 이용하여 NAND및 여타 게이트들을 회로위에 직접 깔아두고 문제를 푸는 대신에, 뉴럴네트워크는 극도로 어려운 문제도 쉽게 풀 수 있다.&lt;/p&gt;
+</description>
+                <link>http://galji.github.io//2016/01/14/nndl_ch01_perceptron</link>
+                <guid>http://galji.github.io//2016/01/14/nndl_ch01_perceptron</guid>
+                <pubDate>2016-01-14T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 1부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neuralnetworksanddeeplearning.com/chap1.html&quot;&gt;http://neuralnetworksanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;뉴럴네트워크로 손글씨 숫자를 인식하기&lt;/h2&gt;
+
+&lt;p&gt;인간의 시각시스템은 이 세상에서 경이로운 것 중 하나이다. 아래의 필기체 숫자를 잠시 보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/digits.png&quot; alt=&quot;handwritten digits&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;사람들은 이 숫자를 별 노력 없이 504192라고 인식할 것이다. 그런데 그 원리는 사실 복잡하다. 인간의 좌뇌와 우뇌에는 각각 1.4억 개의 뉴런과 그 뉴런들이 수백억 개나 연결된 V1이라고 불리는 ‘1차시각피질(primary visual cortex)’이 자리하고 있다. 점진적으로 고도의 영상 처리를 가능하게 하려면 V2, V3, V4 그리고 V5 같은 시각피질들도 시각시스템에 모두 연루되어야만 한다. 인간의 머릿속에는 수 억년 동안 진화하며 시각 세계를 이해하기 위해 훌륭하게 적응된 슈퍼컴퓨터가 있다. 필기체 숫자를 인식하기는 쉽지 않은데도 우리 인간은 경탄스럽게도 눈이 보는 것을 너무 잘 이해하는 것이다. 이런 과정은 무의식적으로 일어나기 때문에 시각시스템이 얼마나 힘든 문제를 해결하는지 그  진가를 알지 못한다.&lt;/p&gt;
+
+&lt;p&gt;위와 같은 숫자를 컴퓨터 프로그램을 작성해서 인식하도록 하면 시각패턴인식이 얼마나 어려운지 명백해진다. 아까는 쉬웠던 일이 갑자기 극도로 어려워지는 것이다. 우리가 어떻게 모양을 인지하는지 간단한 예를 들어보자. “9는 윗쪽에 고리 모양이 있고 오른쪽 아래에는 수직의 획이 있다.” 이것을 알고리즘으로 나타내는 것은 간단하지 않다. 이런 규칙들을 정밀하게 만들려고 시도하면 할수록 예외, 경고, 특별한 사례들로 수렁에 빠질 것이다. 절망적인 순간이다.&lt;/p&gt;
+
+&lt;p&gt;뉴럴네트워크는 이 문제를 다른 방식으로 접근한다. 발상은 다음과 같이&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/mnist_100_digits.png&quot; alt=&quot;mnist_100_digits&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;훈련 사례(training example)라고 부를 수 있는 많은 손글씨 숫자들을 취합하는 것이다. 그다음에 훈련사례들을 가지고 학습할 수 있는 시스템을 만든다. 다시 말하자면, 뉴럴네트워크가 훈련사례들을 이용해서 손글씨 숫자를 인식하는 규칙들을 자동으로 추론하는 것이다. 훈련사례의 개수를 늘리면 뉴럴네트워크는 좀 더 많은 손글씨를 학습할 수 있으므로 결국 추론의 정확도는 올라간다. 여기에선 단지 100개의 훈련사례만 사용했지만 수천, 수백만 개 더 나아가 수십억 개의 훈련사례를 사용하면 손글씨 인식기의 성능을 훨씬 높일 수 있을 것이다.&lt;/p&gt;
+
+&lt;p&gt;이번 장에서 우리는 뉴럴네트워크가 손글씨 숫자를 인식하도록 학습하는 컴퓨터 프로그램을 짤 것이다. 이건 코드가 74줄밖에 안 되고 특별한 뉴럴네트워크 라이브러리도 필요없다. 하지만 이 짧은 프로그램은 사람의 개입 없이 96%의 정확도로 숫자들을 인식할 수 있다. 다음 장들에서는 이 프로그램의 정확도를 점차 99%까지 향상할 것이다. 현재 가장 좋은 유료의 뉴럴네트워크 프로그램들은 카메라 이미지에서 은행의 수표나 편지의 주소를 인식하는 데 쓰일 정도로 성능이 좋다는 것을 알아두자.&lt;/p&gt;
+
+&lt;p&gt;당분간 손글씨 인식에 집중하기로 하자. 이것이 뉴럴네트워크를 공부하기 위한 일반적으로 훌륭한 전형적 문제이기 때문이다. 손글씨 인식은 도전적이지만 또한 균형이 잡힌 사례이다. 손글씨 숫자인식은 간단한 것이 아니지만, 해결책이 극도로 복잡하거나 엄청난 계산량이 필요한 만큼 어렵지는 않다. 게다가 딥러닝 같은 고급 기법을 이해하는데 훌륭한 방법이기도 하다. 따라서 이 책에서 반복적으로 손글씨 인식문제를 상기시킬 것이다. 이어 책 후반부에서는 컴퓨터비젼, 음성인식, 자연어 처리 등의 분야에서 이러한 아이디어가 어떻게 적용되는지 논의할 것이다.&lt;/p&gt;
+
+&lt;p&gt;컴퓨터 프로그램이 손글씨 숫자를 인식하게 하는 것만이 목표라면, 이번 장은 당연히 훨씬 짧았을 것이다. 하지만 우리는 뉴럴네트워크의 핵심인 퍼셉트론(perceptron)과 시그모이드 뉴런(sigmoid neuron) 같은 두 가지 인공뉴런과 확률적 경사하강법(stochastic gradient descent) 같은 표준학습 알고리즘을 섭렵해야 한다. 나는 핵심 아이디어들을 왜 그렇게 배치했는지 설명하고 뉴럴네트워크에 대한 독자의 직관을 세우는 데 집중할 것이다. 따라서 뉴럴네트워크에서 어떤 일들이 벌어지는지 기본적인 역학을 설명하는 것보다 더 긴 논의가 필요했다. 더 깊은 이해를 위해서는 이것이 바람직하다. 1장을 다 읽고 우리는 딥러닝이 무엇이며 왜 중요한지 이해하게 될 것이다.&lt;/p&gt;
+
+</description>
+                <link>http://galji.github.io//2016/01/13/nndl_ch01_intro</link>
+                <guid>http://galji.github.io//2016/01/13/nndl_ch01_intro</guid>
+                <pubDate>2016-01-13T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>(번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 1부</title>
+                <description>&lt;p&gt;-&lt;strong&gt;원저자: &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;Michael Neilson&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;원문주소: &lt;a href=&quot;http://neuralnetworksanddeeplearning.com/chap1.html&quot;&gt;http://neuralnetworksanddeeplearning.com/chap1.html&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+-&lt;strong&gt;역자: &lt;a href=&quot;joonghyunji@gmail.com&quot;&gt;galji(지중현)&lt;/a&gt;&lt;/strong&gt;&lt;br /&gt;
+&lt;strong&gt;&lt;em&gt;본 번역의 무단 전재 및 재배포를 금지합니다.&lt;/em&gt;&lt;/strong&gt;
+&lt;br /&gt;
+&lt;br /&gt;&lt;/p&gt;
+
+&lt;h2 id=&quot;section&quot;&gt;뉴럴네트워크로 손글씨 숫자를 인식하기&lt;/h2&gt;
+
+&lt;p&gt;인간의 시각시스템은 이 세상에서 경이로운 것 중 하나이다. 아래의 필기체 숫자를 잠시 보자.&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/digits.png&quot; alt=&quot;handwritten digits&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;사람들은 이 숫자를 별 노력 없이 504192라고 인식할 것이다. 그런데 그 원리는 사실 복잡하다. 인간의 좌뇌와 우뇌에는 각각 1.4억 개의 뉴런과 그 뉴런들이 수백억 개나 연결된 V1이라고 불리는 ‘1차시각피질(primary visual cortex)’이 자리하고 있다. 점진적으로 고도의 영상 처리를 가능하게 하려면 V2, V3, V4 그리고 V5 같은 시각피질들도 시각시스템에 모두 연루되어야만 한다. 인간의 머릿속에는 수 억년 동안 진화하며 시각 세계를 이해하기 위해 훌륭하게 적응된 슈퍼컴퓨터가 있다. 필기체 숫자를 인식하기는 쉽지 않은데도 우리 인간은 경탄스럽게도 눈이 보는 것을 너무 잘 이해하는 것이다. 이런 과정은 무의식적으로 일어나기 때문에 시각시스템이 얼마나 힘든 문제를 해결하는지 그  진가를 알지 못한다.&lt;/p&gt;
+
+&lt;p&gt;위와 같은 숫자를 컴퓨터 프로그램을 작성해서 인식하도록 하면 시각패턴인식이 얼마나 어려운지 명백해진다. 아까는 쉬웠던 일이 갑자기 극도로 어려워지는 것이다. 우리가 어떻게 모양을 인지하는지 간단한 예를 들어보자. “9는 윗쪽에 고리 모양이 있고 오른쪽 아래에는 수직의 획이 있다.” 이것을 알고리즘으로 나타내는 것은 간단하지 않다. 이런 규칙들을 정밀하게 만들려고 시도하면 할수록 예외, 경고, 특별한 사례들로 수렁에 빠질 것이다. 절망적인 순간이다.&lt;/p&gt;
+
+&lt;p&gt;뉴럴네트워크는 이 문제를 다른 방식으로 접근한다. 발상은 다음과 같이&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&quot;/deeplearning/assets/images/mnist_100_digits.png&quot; alt=&quot;mnist_100_digits&quot; class=&quot;center-image&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;훈련 사례(training example)라고 부를 수 있는 많은 손글씨 숫자들을 취합하는 것이다. 그다음에 훈련사례들을 가지고 학습할 수 있는 시스템을 만든다. 다시 말하자면, 뉴럴네트워크가 훈련사례들을 이용해서 손글씨 숫자를 인식하는 규칙들을 자동으로 추론하는 것이다. 훈련사례의 개수를 늘리면 뉴럴네트워크는 좀 더 많은 손글씨를 학습할 수 있으므로 결국 추론의 정확도는 올라간다. 여기에선 단지 100개의 훈련사례만 사용했지만 수천, 수백만 개 더 나아가 수십억 개의 훈련사례를 사용하면 손글씨 인식기의 성능을 훨씬 높일 수 있을 것이다.&lt;/p&gt;
+
+&lt;p&gt;이번 장에서 우리는 뉴럴네트워크가 손글씨 숫자를 인식하도록 학습하는 컴퓨터 프로그램을 짤 것이다. 이건 코드가 74줄밖에 안 되고 특별한 뉴럴네트워크 라이브러리도 필요없다. 하지만 이 짧은 프로그램은 사람의 개입 없이 96%의 정확도로 숫자들을 인식할 수 있다. 다음 장들에서는 이 프로그램의 정확도를 점차 99%까지 향상할 것이다. 현재 가장 좋은 유료의 뉴럴네트워크 프로그램들은 카메라 이미지에서 은행의 수표나 편지의 주소를 인식하는 데 쓰일 정도로 성능이 좋다는 것을 알아두자.&lt;/p&gt;
+
+&lt;p&gt;당분간 손글씨 인식에 집중하기로 하자. 이것이 뉴럴네트워크를 공부하기 위한 일반적으로 훌륭한 전형적 문제이기 때문이다. 손글씨 인식은 도전적이지만 또한 균형이 잡힌 사례이다. 손글씨 숫자인식은 간단한 것이 아니지만, 해결책이 극도로 복잡하거나 엄청난 계산량이 필요한 만큼 어렵지는 않다. 게다가 딥러닝 같은 고급 기법을 이해하는데 훌륭한 방법이기도 하다. 따라서 이 책에서 반복적으로 손글씨 인식문제를 상기시킬 것이다. 이어 책 후반부에서는 컴퓨터비젼, 음성인식, 자연어 처리 등의 분야에서 이러한 아이디어가 어떻게 적용되는지 논의할 것이다.&lt;/p&gt;
+
+&lt;p&gt;컴퓨터 프로그램이 손글씨 숫자를 인식하게 하는 것만이 목표라면, 이번 장은 당연히 훨씬 짧았을 것이다. 하지만 우리는 뉴럴네트워크의 핵심인 퍼셉트론(perceptron)과 시그모이드 뉴런(sigmoid neuron) 같은 두 가지 인공뉴런과 확률적 경사하강법(stochastic gradient descent) 같은 표준학습 알고리즘을 섭렵해야 한다. 나는 핵심 아이디어들을 왜 그렇게 배치했는지 설명하고 뉴럴네트워크에 대한 독자의 직관을 세우는 데 집중할 것이다. 따라서 뉴럴네트워크에서 어떤 일들이 벌어지는지 기본적인 역학을 설명하는 것보다 더 긴 논의가 필요했다. 더 깊은 이해를 위해서는 이것이 바람직하다. 1장을 다 읽고 우리는 딥러닝이 무엇이며 왜 중요한지 이해하게 될 것이다.&lt;/p&gt;
+
+</description>
+                <link>http://galji.github.io//2016/01/13/nndl_ch01_intro</link>
+                <guid>http://galji.github.io//2016/01/13/nndl_ch01_intro</guid>
+                <pubDate>2016-01-13T00:00:00+09:00</pubDate>
+        </item>
+
+        <item>
+                <title>Neural networks and deep learning 책 번역</title>
+                <description>&lt;p&gt;제 블로그에 오신 것을 환영합니다..^^&lt;/p&gt;
+
+&lt;p&gt;제가 이 블로그를 만든 이유는 단순합니다. 시중에 뉴럴네트워크나 딥러닝 관련 정보들이 넘쳐나고 있어서 이것저것 데모를 끄적여 보고 있었는데요. 좀 더 이론적인 공부를 하고 싶었습니다. (제 전공은 컴퓨터그래픽스 쪽이라 뉴럴네트워크와는 거리가 멉니다. ㅠㅠ) 국내 이론서를 찾아보았지만 딱히 없거나 한 두 챕터만 설명하고 마는 정도에 지나지 않아서, 제가 직접 입문서를 집필해볼까 생각도 했습니다.&lt;/p&gt;
+
+&lt;p&gt;그러던 도중에 아주 적당한 책을 찾았습니다. 구글에서 관련 키워드를 검색하면 거의 처음에 나오는데 내가 왜 이걸 몰랐을까.. (한숨) 데모나 튜토리얼만 사용해보며 지식을 역공학적으로 얻은 저는 이 책을 읽다가 유레카!!를 외쳤습니다. BONUS, 게다가 이 책은 놀랍게도 대중들에게 공개된 “무료”책 이라는 사실!!&lt;/p&gt;
+
+&lt;p&gt;이 책의 이름은 &lt;a href=&quot;http://neuralnetworksanddeeplearning.com&quot;&gt;Neural Networks and Deep Learning&lt;/a&gt; 이고요. 저자인 Michael Nielson씨의 홈페이지는 &lt;a href=&quot;http://michaelnielsen.org/&quot;&gt;여기&lt;/a&gt;를 통해 접속하실 수 있습니다. 물리학자, 작가, 프로그래머로 활동하고 있으며 &lt;a href=&quot;http://www.ted.com/talks/michael_nielsen_open_science_now&quot;&gt;TED&lt;/a&gt; 강연도 참여하신 비교적 유명한 분인 것 같습니다.&lt;/p&gt;
+
+&lt;p&gt;최신의 번역서를 애타게 기다리시는 분들에게 제 재능을 기부하는 형식으로 이 책의 번역을 올립니다. 번역서 이름은 “뉴럴네트워크과 딥러닝’입니다.&lt;/p&gt;
+
+&lt;p&gt;&lt;strong&gt;* 책의 번역이 이미 대부분 완료되었으므로 조금씩 웹에 올리도록 하겠습니다.&lt;/strong&gt;*&lt;/p&gt;
+
+&lt;p&gt;다음에도 딥러닝이나 머신러닝 분야의 주옥같은 정보와 책들을 계속 번역할 예정입니다. 많은 성원 부탁합니다.&lt;/p&gt;
+
+&lt;p&gt;오탈자나 수정이 필요한 부분은 얼마든지 말씀해주시길 바랍니다.&lt;/p&gt;
+
+&lt;p&gt;감사합니다.&lt;/p&gt;
+
+</description>
+                <link>http://galji.github.io//2016/01/06/beginning</link>
+                <guid>http://galji.github.io//2016/01/06/beginning</guid>
+                <pubDate>2016-01-06T00:00:00+09:00</pubDate>
+        </item>
+
+
+</channel>
+</rss>
+
+  </div>
+</div>
+
+
+      <hr>
+      <footer>
+        <p>
+          &copy; 2016 Joonghyun Ji
+          <span class="pull-right text-muted">
+            powered by
+            <a href="http://dbtek.github.io/jekyll-bootstrap-3" target="_blank" title="The Definitive Jekyll Blogging Framework">Jekyll-Bootstrap-3</a>
+            and <a href="http://getbootstrap.com" target="_blank">Twitter Bootstrap 3.0.3</a>
+          </span>
+        </p>
+      </footer>
+    </div>
+
+    
+
+    <script src="/assets/themes/bootstrap/resources/jquery/jquery.min.js"></script>
+    <script src="/assets/themes/bootstrap/resources/bootstrap/js/bootstrap.min.js"></script>
+  </body>
+</html>
+

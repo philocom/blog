@@ -1,0 +1,53 @@
+<div class="page-header">
+  <h4>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h4>
+    <div class="date">
+      <span>{{ page.date | date_to_long_string }}</span>
+    </div>
+</div>
+
+<div class="row post-full">
+  <div class="col-md-12">
+    <div class="content">
+      {{ content }}
+    </div>
+
+
+<div class="page-header">
+</div>
+
+
+    {% unless page.categories == empty %}
+    <h3> 관련 카테고리 </h3>
+    <ul class="tag_box inline">
+      {% assign categories_list = site.categories %}
+      {% include JB/categories_list %}
+    </ul>
+    {% endunless %}
+
+    {% unless page.tags == empty %}
+     <h3> 관련 태그 </h3>
+    <ul class="tag_box inline">
+      {% assign tags_list = site.tags %}  
+      {% include JB/tags_list %}
+    </ul>
+    {% endunless %}
+
+    <hr>
+    
+    <ul class="pagination">
+      {% if page.previous %}
+        <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous</a></li>
+      {% else %}
+        <li class="prev disabled"><a>&larr; Previous</a></li>
+      {% endif %}
+        <li><a href="{{ BASE_PATH }}{{ site.JB.archive_path }}">Archive</a></li>
+      {% if page.next %}
+        <li class="next"><a href="{{ BASE_PATH }}{{ page.next.url }}" title="{{ page.next.title }}">Next &rarr;</a></li>
+      {% else %}
+        <li class="next disabled"><a>Next &rarr;</a>
+      {% endif %}
+    </ul>
+    <hr>
+    {% include JB/comments %}
+  </div>
+</div>
