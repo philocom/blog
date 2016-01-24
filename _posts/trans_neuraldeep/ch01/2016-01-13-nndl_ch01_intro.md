@@ -1,8 +1,8 @@
 ---
 layout: post
-title: (번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 1부 
+title: (번역) Neural networks and Deep learning - Ch1. 뉴럴네트워크로 손글씨 숫지를 인식하기 - 1부
 category: neural networks and deep learning
-tags: [neural network, perceptron, deep learning, 번역, 1장]
+tags: [번역, 1장]
 ---
 -**원저자: [Michael Neilson](http://michaelnielsen.org/)**<br>
 -**원문주소: [http://neuralnetworksanddeeplearning.com/chap1.html](http://neuralnetworksanddeeplearning.com/chap1.html)**<br>
@@ -11,7 +11,7 @@ tags: [neural network, perceptron, deep learning, 번역, 1장]
 <br>
 <br>
 
-## 뉴럴네트워크로 손글씨 숫자를 인식하기 ## 
+## 뉴럴네트워크로 손글씨 숫자를 인식하기 ##
 
 인간의 시각시스템은 이 세상에서 경이로운 것 중 하나이다. 아래의 필기체 숫자를 잠시 보자.
 
@@ -31,5 +31,4 @@ tags: [neural network, perceptron, deep learning, 번역, 1장]
 
 당분간 손글씨 인식에 집중하기로 하자. 이것이 뉴럴네트워크를 공부하기 위한 일반적으로 훌륭한 전형적 문제이기 때문이다. 손글씨 인식은 도전적이지만 또한 균형이 잡힌 사례이다. 손글씨 숫자인식은 간단한 것이 아니지만, 해결책이 극도로 복잡하거나 엄청난 계산량이 필요한 만큼 어렵지는 않다. 게다가 딥러닝 같은 고급 기법을 이해하는데 훌륭한 방법이기도 하다. 따라서 이 책에서 반복적으로 손글씨 인식문제를 상기시킬 것이다. 이어 책 후반부에서는 컴퓨터비젼, 음성인식, 자연어 처리 등의 분야에서 이러한 아이디어가 어떻게 적용되는지 논의할 것이다.
 
-컴퓨터 프로그램이 손글씨 숫자를 인식하게 하는 것만이 목표라면, 이번 장은 당연히 훨씬 짧았을 것이다. 하지만 우리는 뉴럴네트워크의 핵심인 퍼셉트론(perceptron)과 시그모이드 뉴런(sigmoid neuron) 같은 두 가지 인공뉴런과 확률적 경사하강법(stochastic gradient descent) 같은 표준학습 알고리즘을 섭렵해야 한다. 나는 핵심 아이디어들을 왜 그렇게 배치했는지 설명하고 뉴럴네트워크에 대한 독자의 직관을 세우는 데 집중할 것이다. 따라서 뉴럴네트워크에서 어떤 일들이 벌어지는지 기본적인 역학을 설명하는 것보다 더 긴 논의가 필요했다. 더 깊은 이해를 위해서는 이것이 바람직하다. 1장을 다 읽고 우리는 딥러닝이 무엇이며 왜 중요한지 이해하게 될 것이다. 
-
+컴퓨터 프로그램이 손글씨 숫자를 인식하게 하는 것만이 목표라면, 이번 장은 당연히 훨씬 짧았을 것이다. 하지만 우리는 뉴럴네트워크의 핵심인 퍼셉트론(perceptron)과 시그모이드 뉴런(sigmoid neuron) 같은 두 가지 인공뉴런과 확률적 경사하강법(stochastic gradient descent) 같은 표준학습 알고리즘을 섭렵해야 한다. 나는 핵심 아이디어들을 왜 그렇게 배치했는지 설명하고 뉴럴네트워크에 대한 독자의 직관을 세우는 데 집중할 것이다. 따라서 뉴럴네트워크에서 어떤 일들이 벌어지는지 기본적인 역학을 설명하는 것보다 더 긴 논의가 필요했다. 더 깊은 이해를 위해서는 이것이 바람직하다. 1장을 다 읽고 우리는 딥러닝이 무엇이며 왜 중요한지 이해하게 될 것이다.
