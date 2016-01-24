@@ -14,11 +14,11 @@ tags: [neural network, deep learning, 번역, 1장]
 
 다음 절에서 나는 손글씨 숫자들을 꽤 잘 분류할 수 있는 뉴럴네트워크를 소개할 것이다. 따라서, 이 네트워크에서 각 부분들에 대한 이름을 붙이는 것이 용어들을 설명하는데 도움이 될 것 같다. 아래 그림과 같은 네트워크가 있다고 생각해 보자:
 
- ![handwritten digits](/assets/images/tikz10.png){: .center-image}
+ ![handwritten digits](/blog/assets/images/tikz10.png){: .center-image}
 
 이 네트워크에서 가장 왼쪽에 있는 층은 앞서 언급했듯이 입력층이라고 부르며, 입력층 안에 있는 뉴런들을 입력뉴런이라고 부른다. 가장 오른쪽 층은 출력층이라고 부르며 출력뉴런들을 포함한다 (여기서는 단 하나의 출력뉴런이 있다). 중간 층은 입력층이나 출력층도 아니므로 은닉층(hiden layer)라고 부른다. "은닉"이라는 용어가 조금 신비하게 들릴지 모른다. 이 용어를 처음 들었을때, 나는 이것에 철학적인 혹은 수학적인 심오함이 있을거라 생각했다). 그러나 은닉이라는 단어는 입력도 출력도 아닌 것을 의미할 뿐이다. 위에 예시된 네트워크는 한 개의 은닉층이 있지만 여러 개의 은닉층도 가능하다. 예를 들어, 아래의  4층짜리 네트워크에서 은닉층은 두 개이다.
 
- ![handwritten digits](/assets/images/tikz11.png){: .center-image}
+ ![handwritten digits](/blog/assets/images/tikz11.png){: .center-image}
 
 역사적인 이유로 위와 같은 시그모이드 뉴런 네트워크를 다층 퍼셉트론 (multilayer perceptron)이나 MLP라는 이름으로 부르기도 한다. 사실, 좀 혼동스러울 것이다. 이 책에서는 혼란을 피하기 위해 MLP라는 용어를 쓰지 않겠다. 그러나 이러한 용어가 쓰이고 있다는 사실은 알고 있어야 한다.
 
