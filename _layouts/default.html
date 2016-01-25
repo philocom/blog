@@ -10,6 +10,11 @@ theme :
       equationNumbers: {
         autoNumber: "AMS"
       }
+      Macros: {
+        RR: "{\\bf R}",
+        norm: ["{\\left\\lVert#1\\right\\rVert}",1],
+        bold: ["{\\bf #1}",1]
+      }
     },
     tex2jax: {
       inlineMath: [ ['$','$'] ],
@@ -27,6 +32,11 @@ theme :
     "HTML-CSS": { scale: 80}
   });
 </script>
+
+\(
+   \def\RR{\bf R}
+   \def\bold#1{\bf #1}
+\)
 
 
 {% include themes/bootstrap/default.html %}
