@@ -1,3 +1,10 @@
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+body {
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+
 .center-image
 {
     margin: 0 auto;
@@ -5,7 +12,7 @@
 }
 
 
-path { 
+path {
     stroke: steelblue;
     stroke-width: 1;
     fill: none;
