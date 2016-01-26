@@ -1,10 +1,31 @@
-@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
-
 body {
     font-family: "Nanum Gothic", sans-serif;
     font-size:14pt;
 }
 
+h1 {
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+h2 {
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+h3 {
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+h4 {
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+h5 {
+    font-family: "Nanum Gothic", sans-serif;
+}
+
+h6 {
+    font-family: "Nanum Gothic", sans-serif;
+}
 
 .center-image
 {
