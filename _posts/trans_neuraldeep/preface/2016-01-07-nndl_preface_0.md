@@ -6,7 +6,7 @@ tags: [서문,변역]
 ---
 -**원저자: [Michael Neilson](http://michaelnielsen.org/)**<br>
 -**원문주소: [http://neuralnetworksanddeeplearning.com/index.html](http://neuralnetworksanddeeplearning.com/index.html)**<br>
--**역자: [지식믹서기 == 지중현](joonghyunji@gmail.com)**<br>
+-**역자: [galji(지중현)](joonghyunji@gmail.com)**<br>
 ***본 번역의 무단 전재 및 재배포를 금지합니다.***
 <br>
 <br>

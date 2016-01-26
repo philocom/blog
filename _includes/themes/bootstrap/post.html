@@ -1,8 +1,8 @@
 <div class="page-header">
   <h4>{{ page.title }} {% if page.tagline %}<small>{{page.tagline}}</small>{% endif %}</h4>
-    <div class="date">
+    <!-- <div class="date">
       <span>{{ page.date | date_to_long_string }}</span>
-    </div>
+    </div> -->
 </div>
 
 <div class="row post-full">
@@ -27,13 +27,13 @@
     {% unless page.tags == empty %}
      <h3> 관련 태그 </h3>
     <ul class="tag_box inline">
-      {% assign tags_list = site.tags %}  
+      {% assign tags_list = site.tags %}
       {% include JB/tags_list %}
     </ul>
     {% endunless %}
 
     <hr>
-    
+
     <ul class="pagination">
       {% if page.previous %}
         <li class="prev"><a href="{{ BASE_PATH }}{{ page.previous.url }}" title="{{ page.previous.title }}">&larr; Previous</a></li>
