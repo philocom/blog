@@ -6,7 +6,7 @@
 # ordinal - /:categories/:year/:y_day/:title.html
 # none - /:categories/:title.html
 
-permalink: none
+permalink: /:categories/:title
 
 markdown: kramdown
 # markdown: rdiscount
